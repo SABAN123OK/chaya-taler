@@ -252,16 +252,16 @@ function buildHome() {
   <section class="ct-cta ct-cta--cta" id="contact" aria-label="שאלון התאמה">
     <div class="ct-cta__box">
       <div class="ct-cta__floats" aria-hidden="true">
-        <img class="ct-cta__float ct-cta__float--a" src="https://taler-arc.com/wp-content/uploads/2026/02/מטבח-חכם-שפשוט-עובד-1-768x1152.jpg" alt="" loading="lazy" decoding="async" style="--x:10;--w:185;--h:240;--D:1760;--dur:58.67s;--delay:0.00s">
-        <img class="ct-cta__float ct-cta__float--a" src="https://taler-arc.com/wp-content/uploads/2025/03/7-768x512.jpg" alt="" loading="lazy" decoding="async" style="--x:10;--w:185;--h:150;--D:1760;--dur:58.67s;--delay:-19.56s">
-        <img class="ct-cta__float ct-cta__float--a" src="https://taler-arc.com/wp-content/uploads/2024/11/1מטבח-כפרי-1-768x432.jpg" alt="" loading="lazy" decoding="async" style="--x:10;--w:185;--h:120;--D:1760;--dur:58.67s;--delay:-39.11s">
-        <img class="ct-cta__float ct-cta__float--b" src="https://taler-arc.com/wp-content/uploads/2025/12/מטבח-עגול-2-768x1152.jpg" alt="" loading="lazy" decoding="async" style="--x:210;--w:185;--h:240;--D:1207;--dur:44.7s;--delay:-22.35s">
-        <img class="ct-cta__float ct-cta__float--b" src="https://taler-arc.com/wp-content/uploads/2024/07/סלון-1-768x512.webp" alt="" loading="lazy" decoding="async" style="--x:210;--w:185;--h:150;--D:1207;--dur:44.7s;--delay:0.00s">
-        <img class="ct-cta__float ct-cta__float--b" src="https://taler-arc.com/wp-content/uploads/2023/08/חיה-טאלר_מטבח-מודרני-חם-768x966.webp" alt="" loading="lazy" decoding="async" style="--x:1251;--w:185;--h:240;--D:1207;--dur:37.72s;--delay:-9.43s">
-        <img class="ct-cta__float ct-cta__float--b" src="https://taler-arc.com/wp-content/uploads/2023/05/חיה-טאלר_רמת-אשכול_סלון--768x512.webp" alt="" loading="lazy" decoding="async" style="--x:1251;--w:185;--h:150;--D:1207;--dur:37.72s;--delay:-28.29s">
-        <img class="ct-cta__float ct-cta__float--a" src="https://taler-arc.com/wp-content/uploads/2025/09/סלון-ספות_1-1-768x432.jpg" alt="" loading="lazy" decoding="async" style="--x:1451;--w:185;--h:120;--D:1700;--dur:58.62s;--delay:-41.03s">
-        <img class="ct-cta__float ct-cta__float--a" src="https://taler-arc.com/wp-content/uploads/2023/11/חיה-טאלר-מטבח-יוקרה-768x526.png" alt="" loading="lazy" decoding="async" style="--x:1451;--w:185;--h:150;--D:1700;--dur:58.62s;--delay:-1.95s">
-        <img class="ct-cta__float ct-cta__float--a" src="https://taler-arc.com/wp-content/uploads/2023/05/חיה-טאלר_משה-סנה-21-768x512.webp" alt="" loading="lazy" decoding="async" style="--x:1451;--w:185;--h:150;--D:1700;--dur:58.62s;--delay:-21.49s">
+        <img class="ct-cta__float ct-cta__float--a" src="https://taler-arc.com/wp-content/uploads/2026/02/מטבח-חכם-שפשוט-עובד-1-768x1152.jpg" alt="" loading="lazy" decoding="async" style="--x:10;--w:185;--h:240;--D:1580;--dur:52.67s;--delay:0.00s">
+        <img class="ct-cta__float ct-cta__float--a" src="https://taler-arc.com/wp-content/uploads/2025/03/7-768x512.jpg" alt="" loading="lazy" decoding="async" style="--x:10;--w:185;--h:150;--D:1580;--dur:52.67s;--delay:-17.56s">
+        <img class="ct-cta__float ct-cta__float--a" src="https://taler-arc.com/wp-content/uploads/2024/11/1מטבח-כפרי-1-768x432.jpg" alt="" loading="lazy" decoding="async" style="--x:10;--w:185;--h:120;--D:1580;--dur:52.67s;--delay:-35.11s">
+        <img class="ct-cta__float ct-cta__float--b" src="https://taler-arc.com/wp-content/uploads/2025/12/מטבח-עגול-2-768x1152.jpg" alt="" loading="lazy" decoding="async" style="--x:210;--w:185;--h:240;--D:1087;--dur:40.26s;--delay:-20.13s">
+        <img class="ct-cta__float ct-cta__float--b" src="https://taler-arc.com/wp-content/uploads/2024/07/סלון-1-768x512.webp" alt="" loading="lazy" decoding="async" style="--x:210;--w:185;--h:150;--D:1087;--dur:40.26s;--delay:0.00s">
+        <img class="ct-cta__float ct-cta__float--b" src="https://taler-arc.com/wp-content/uploads/2023/08/חיה-טאלר_מטבח-מודרני-חם-768x966.webp" alt="" loading="lazy" decoding="async" style="--x:1251;--w:185;--h:240;--D:1087;--dur:33.97s;--delay:-8.49s">
+        <img class="ct-cta__float ct-cta__float--b" src="https://taler-arc.com/wp-content/uploads/2023/05/חיה-טאלר_רמת-אשכול_סלון--768x512.webp" alt="" loading="lazy" decoding="async" style="--x:1251;--w:185;--h:150;--D:1087;--dur:33.97s;--delay:-25.48s">
+        <img class="ct-cta__float ct-cta__float--a" src="https://taler-arc.com/wp-content/uploads/2025/09/סלון-ספות_1-1-768x432.jpg" alt="" loading="lazy" decoding="async" style="--x:1451;--w:185;--h:120;--D:1520;--dur:52.41s;--delay:-36.69s">
+        <img class="ct-cta__float ct-cta__float--a" src="https://taler-arc.com/wp-content/uploads/2023/11/חיה-טאלר-מטבח-יוקרה-768x526.png" alt="" loading="lazy" decoding="async" style="--x:1451;--w:185;--h:150;--D:1520;--dur:52.41s;--delay:-1.75s">
+        <img class="ct-cta__float ct-cta__float--a" src="https://taler-arc.com/wp-content/uploads/2023/05/חיה-טאלר_משה-סנה-21-768x512.webp" alt="" loading="lazy" decoding="async" style="--x:1451;--w:185;--h:150;--D:1520;--dur:52.41s;--delay:-19.22s">
       </div>
       <div class="ct-cta__content" data-reveal="fade">
         <h2 class="ct-cta__title">מוכנים להפוך את הבית<br>שלכם ליצירה עוצרת נשימה?</h2>

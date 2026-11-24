@@ -749,7 +749,7 @@ html body .ct-page .ct-man__sign{margin-left:auto;margin-right:auto}
    התמונות בצדדים עולות לאט כלפי מעלה בלולאה וכלואות בתוך הריבוע (overflow:hidden).
    המיקום ההתחלתי של כל תמונה = כמו בעיצוב (ה-delay השלילי מחושב ב-build-site.js). */
 html body .ct-page .ct-cta--cta{width:auto;margin:0;padding:0 0 calc(156 * var(--u))}
-html body .ct-page .ct-cta--cta .ct-cta__box{position:relative;overflow:hidden;background:#262924;--cu:var(--u);--boxh:calc(710 * var(--cu));
+html body .ct-page .ct-cta--cta .ct-cta__box{position:relative;overflow:hidden;background:#262924;--cu:var(--u);--boxh:calc(620 * var(--cu));
   width:calc(1646 * var(--u));height:var(--boxh);margin:0 auto;display:flex;align-items:center;justify-content:center}
 html body .ct-page .ct-cta--cta .ct-cta__floats{position:absolute;inset:0;direction:ltr;pointer-events:none}
 html body .ct-page .ct-cta--cta .ct-cta__float{position:absolute;top:0;left:calc(var(--x) / 1646 * 100%);
