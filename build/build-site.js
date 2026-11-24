@@ -252,17 +252,21 @@ function buildHome() {
   <section class="ct-cta ct-cta--cta" id="contact" aria-label="שאלון התאמה">
     <div class="ct-cta__box">
       <div class="ct-cta__floats" aria-hidden="true">
-        <img class="ct-cta__float" src="images/living-room.jpg" alt="" loading="lazy" style="--x:215;--w:194;--h:204;--dur:30s;--delay:-23.30s;object-position:50% 50%">
-        <img class="ct-cta__float" src="images/hero/hero-6.jpg" alt="" loading="lazy" style="--x:0;--w:194;--h:203;--dur:34s;--delay:-20.74s;object-position:72% 50%">
-        <img class="ct-cta__float" src="images/hero/hero-6.jpg" alt="" loading="lazy" style="--x:165;--w:194;--h:203;--dur:28s;--delay:-8.92s;object-position:8% 50%">
-        <img class="ct-cta__float" src="images/hero/hero-2.jpg" alt="" loading="lazy" style="--x:1278;--w:253;--h:246;--dur:36s;--delay:-26.74s;object-position:50% 50%">
-        <img class="ct-cta__float" src="images/hero/hero-6.jpg" alt="" loading="lazy" style="--x:1518;--w:194;--h:203;--dur:31s;--delay:-13.11s;object-position:12% 50%">
-        <img class="ct-cta__float" src="images/hero/hero-2.jpg" alt="" loading="lazy" style="--x:1250;--w:194;--h:203;--dur:33s;--delay:-3.18s;object-position:40% 50%">
+        <img class="ct-cta__float ct-cta__float--a" src="https://taler-arc.com/wp-content/uploads/2026/02/מטבח-חכם-שפשוט-עובד-1-768x1152.jpg" alt="" loading="lazy" decoding="async" style="--x:10;--w:185;--h:240;--D:950;--dur:31.67s;--delay:0.00s">
+        <img class="ct-cta__float ct-cta__float--a" src="https://taler-arc.com/wp-content/uploads/2025/03/7-768x512.jpg" alt="" loading="lazy" decoding="async" style="--x:10;--w:185;--h:150;--D:950;--dur:31.67s;--delay:-12.89s">
+        <img class="ct-cta__float ct-cta__float--a" src="https://taler-arc.com/wp-content/uploads/2024/11/1מטבח-כפרי-1-768x432.jpg" alt="" loading="lazy" decoding="async" style="--x:10;--w:185;--h:120;--D:950;--dur:31.67s;--delay:-22.78s">
+        <img class="ct-cta__float ct-cta__float--b" src="https://taler-arc.com/wp-content/uploads/2025/12/מטבח-עגול-2-768x1152.jpg" alt="" loading="lazy" decoding="async" style="--x:210;--w:185;--h:240;--D:950;--dur:35.19s;--delay:-17.59s">
+        <img class="ct-cta__float ct-cta__float--b" src="https://taler-arc.com/wp-content/uploads/2024/07/סלון-1-768x512.webp" alt="" loading="lazy" decoding="async" style="--x:210;--w:185;--h:150;--D:950;--dur:35.19s;--delay:-1.67s">
+        <img class="ct-cta__float ct-cta__float--b" src="https://taler-arc.com/wp-content/uploads/2023/08/חיה-טאלר_מטבח-מודרני-חם-768x966.webp" alt="" loading="lazy" decoding="async" style="--x:1251;--w:185;--h:240;--D:950;--dur:29.69s;--delay:-7.42s">
+        <img class="ct-cta__float ct-cta__float--b" src="https://taler-arc.com/wp-content/uploads/2023/05/חיה-טאלר_רמת-אשכול_סלון--768x512.webp" alt="" loading="lazy" decoding="async" style="--x:1251;--w:185;--h:150;--D:950;--dur:29.69s;--delay:-23.67s">
+        <img class="ct-cta__float ct-cta__float--a" src="https://taler-arc.com/wp-content/uploads/2025/09/סלון-ספות_1-1-768x432.jpg" alt="" loading="lazy" decoding="async" style="--x:1451;--w:185;--h:120;--D:860;--dur:29.66s;--delay:-20.76s">
+        <img class="ct-cta__float ct-cta__float--a" src="https://taler-arc.com/wp-content/uploads/2023/11/חיה-טאלר-מטבח-יוקרה-768x526.png" alt="" loading="lazy" decoding="async" style="--x:1451;--w:185;--h:150;--D:860;--dur:29.66s;--delay:-0.30s">
+        <img class="ct-cta__float ct-cta__float--a" src="https://taler-arc.com/wp-content/uploads/2023/05/חיה-טאלר_משה-סנה-21-768x512.webp" alt="" loading="lazy" decoding="async" style="--x:1451;--w:185;--h:150;--D:860;--dur:29.66s;--delay:-10.53s">
       </div>
       <div class="ct-cta__content" data-reveal="fade">
         <h2 class="ct-cta__title">מוכנים להפוך את הבית<br>שלכם ליצירה עוצרת נשימה?</h2>
         <p class="ct-cta__p">מגיע לכם להנות מתוצאה מושלמת ומגימור ללא פשרות.<br>מלאו שאלון התאמה לקראת הבית עם הגימור הטוב ביותר שראיתם אי פעם!</p>
-        <a class="ct-cta__btn" href="questionnaire.html">לחצו כאן לשאלון ההתאמה</a>
+        <a class="ct-btn ct-btn--light ct-cta__btn" href="questionnaire.html"><span class="ct-btn__label">לחצו כאן לשאלון ההתאמה</span>${ARROW}</a>
       </div>
     </div>
   </section>
