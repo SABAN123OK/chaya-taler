@@ -817,3 +817,14 @@ html body .ct-page .ct-stat__val{letter-spacing:0}
   html body .ct-page .ct-nums__grid{grid-template-columns:repeat(4,minmax(0,1fr))}
   html body .ct-page .ct-stat,html body .ct-page .ct-stat:first-child{padding:calc(40 * var(--u)) calc(40 * var(--u)) calc(10 * var(--u))}
 }
+/* TALER IN NUMBERS: המספרים והכיתובים מיושרים לקצוות הגריד — הראשון צמוד לקצה הימני, האחרון לקצה השמאלי, ורווחים שווים ביניהם */
+@media (min-width:1100px){
+  html body .ct-page .ct-nums__grid{display:flex;justify-content:space-between;align-items:flex-start;gap:calc(40 * var(--u))}
+  html body .ct-page .ct-stat,html body .ct-page .ct-stat:first-child{flex:0 1 auto;padding:calc(40 * var(--u)) 0 calc(10 * var(--u))}
+}
+@media (max-width:1099.98px){
+  html body .ct-page .ct-stat,html body .ct-page .ct-stat:nth-child(odd){padding-right:0;padding-left:0}
+  html body .ct-page .ct-stat:nth-child(even){justify-self:end}
+}
+/* הכיתובים בשורה אחת כשיש מקום (מ-1250px), כך שהרווחים בין הפריטים שווים בדיוק */
+@media (min-width:1250px){html body .ct-page .ct-stat__label{white-space:nowrap;max-width:none}}
