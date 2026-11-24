@@ -272,6 +272,9 @@ function buildHome() {
   </section>
 
   `);
+  // move CTA after projects: אזור "מוכנים להפוך את הבית..." מופיע מיד אחרי הפרויקטים (בקשת הלקוחה)
+  { const cta = between(b, '<!-- ===== CONTACT / CTA ===== -->', '<!-- ===== MANIFESTO ===== -->');
+    b = b.replace(cta, '').replace('<!-- ===== TESTIMONIALS ===== -->', cta + '<!-- ===== TESTIMONIALS ===== -->'); }
   // replace design footer with the shared one
   b = b.replace(b.slice(b.indexOf('<!-- ===== FOOTER ===== -->')), '');
   b = b.replace('<main class="ct-page" id="ct-page">', '');
