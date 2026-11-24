@@ -803,3 +803,6 @@ html body .ct-page .ct-cta2__title{line-height:.95}
   html body .ct-page .ct-nums{padding-bottom:calc(clamp(70px,12vw,120px) + 140px - 86px)}
   html body .ct-page .ct-blog{padding-bottom:calc(clamp(70px,12vw,120px) + 140px + 15px)}
 }
+
+/* ניסיון: THE PERFECT BALANCE בפופינס דק (Thin 100) */
+html body .ct-page .ct-big,html body .ct-page .ct-big *{font-family:"Poppins","Plinko FS",sans-serif;font-weight:100}
