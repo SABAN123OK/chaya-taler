@@ -253,14 +253,16 @@ function buildHome() {
     <div class="ct-cta__block" data-reveal="tm">
       <img class="ct-tm__bg ct-cta__bg" src="images/hero-kitchen.jpg" alt="" aria-hidden="true" loading="lazy">
       <div class="ct-hero__glass ct-cta__glass" aria-hidden="true"></div>
+      <p class="ct-cta__ghost" aria-hidden="true">LET'S TALK</p>
       <div class="ct-cta__inner">
         <div class="ct-cta__text" data-reveal="fade">
           <p class="ct-cta__eyebrow" aria-hidden="true">LET'S TALK</p>
-          <h2 class="ct-cta__title">מוכנים להפוך את הבית שלכם ליצירה <span>עוצרת נשימה?</span></h2>
-          <p class="ct-body">מגיע לכם להנות מתוצאה מושלמת ומגימור ללא פשרות.</p>
-          <p class="ct-body"><a class="ct-cta__link" href="questionnaire.html">לחצו כאן לשאלון ההתאמה שלנו</a> לקראת הבית עם הגימור הטוב ביותר שראיתם אי פעם!</p>
+          <h2 class="ct-cta__title">מוכנים להפוך<br>את הבית שלכם<br>ליצירה <span>עוצרת<br>נשימה?</span></h2>
+          <p class="ct-body ct-cta__p">מגיע לכם להנות מתוצאה מושלמת ומגימור ללא פשרות.</p>
+          <p class="ct-body ct-cta__p"><a class="ct-cta__link" href="questionnaire.html">לחצו כאן לשאלון ההתאמה שלנו</a> לקראת הבית עם הגימור הטוב ביותר שראיתם אי פעם!</p>
           <a class="ct-btn ct-btn--solid ct-cta__btn" href="questionnaire.html"><span class="ct-btn__label">מלאו את הטופס ונחזור אליכם</span>${ARROW}</a>
         </div>
+        <figure class="ct-cta__window" aria-hidden="true"><img src="images/hero/hero-4.jpg" alt="" loading="lazy"></figure>
       </div>
     </div>
   </section>
