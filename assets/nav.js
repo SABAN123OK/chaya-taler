@@ -21,12 +21,20 @@
   var setOpen = function (open) {
     head.classList.toggle('is-open', open);
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    document.documentElement.style.overflow = open ? 'hidden' : '';
+    document.documentElement.style.overflow = open && !desk.matches ? 'hidden' : '';
   };
   toggle.addEventListener('click', function () { setOpen(!head.classList.contains('is-open')); });
   head.querySelectorAll('.ct-head__nav a').forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
   addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
-  var onScroll = function () { head.classList.toggle('is-solid', (scrollY || pageYOffset) > 40); };
+  var desk = matchMedia('(min-width:1100px)');
+  var onScroll = function () {
+    var y = scrollY || pageYOffset;
+    head.classList.toggle('is-solid', y > 40);
+    // במחשב: בראש העמוד התפריט פתוח; אחרי גלילה הוא מתחלף בכפתור המבורגר
+    var compact = y > 80;
+    if (!compact && desk.matches && head.classList.contains('is-open')) setOpen(false);
+    head.classList.toggle('is-compact', compact);
+  };
   addEventListener('scroll', onScroll, { passive: true });
   onScroll();
 })();

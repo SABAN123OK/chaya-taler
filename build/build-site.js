@@ -56,13 +56,13 @@ ${header(current)}
 `;
 }
 function header(current) {
+  // ימין: תפריט (וכפתור המבורגר שמחליף אותו בגלילה) · שמאל: הלוגו
   return `<header class="ct-head${current === 'index.html' ? '' : ' ct-head--solid'}" data-head>
-  <a class="ct-head__logo" href="index.html" aria-label="טאלר אדריכלות ועיצוב — לדף הבית"><img src="images/logo-taler.png" alt="TALER Architecture &amp; Design" width="353" height="154"></a>
+  <button class="ct-head__toggle" type="button" aria-controls="ct-nav" aria-expanded="false" aria-label="תפריט"><span></span><span></span><span></span></button>
   <nav class="ct-head__nav" id="ct-nav" aria-label="ניווט ראשי">
     ${NAV.map(([h, t]) => `<a href="${h}"${h === current ? ' aria-current="page"' : ''}>${t}</a>`).join('\n    ')}
   </nav>
-  <a class="ct-head__cta" href="contact.html">לתיאום פגישה</a>
-  <button class="ct-head__toggle" type="button" aria-controls="ct-nav" aria-expanded="false" aria-label="תפריט"><span></span><span></span><span></span></button>
+  <a class="ct-head__logo" href="index.html" aria-label="טאלר אדריכלות ועיצוב — לדף הבית"><img src="images/logo-taler.png" alt="TALER Architecture &amp; Design" width="353" height="154"></a>
 </header>`;
 }
 const pageOpen = () => `<main class="ct-page" id="ct-page">
