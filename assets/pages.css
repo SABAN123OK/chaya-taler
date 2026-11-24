@@ -788,3 +788,6 @@ html body .ct-page .ct-cta--cta .ct-cta__btn:hover .ct-btn__arrow,html body .ct-
 
 /* רווח בין שתי השורות של "הבית שלכם ראוי" (באקסיומה) */
 html body .ct-page .ct-cta2__title{line-height:.95}
+
+/* ניסיון: THE PERFECT BALANCE במשקל רגיל של פלינקו (400) */
+html body .ct-page .ct-big,html body .ct-page .ct-big *{font-weight:400}
