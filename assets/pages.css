@@ -804,8 +804,16 @@ html body .ct-page .ct-cta2__title{line-height:.95}
   html body .ct-page .ct-blog{padding-bottom:calc(clamp(70px,12vw,120px) + 140px + 15px)}
 }
 
-/* ניסיון: THE PERFECT BALANCE בפופינס דק (Thin 100) */
-html body .ct-page .ct-big,html body .ct-page .ct-big *{font-family:"Poppins","Plinko FS",sans-serif;font-weight:100}
+/* ניסיון: THE PERFECT BALANCE בפופינס רגיל (Regular 400) */
+html body .ct-page .ct-big,html body .ct-page .ct-big *{font-family:"Poppins","Plinko FS",sans-serif;font-weight:400}
 
 /* TALER IN NUMBERS: בלי קווים בין המספרים — נשאר רק הקו העליון */
 html body .ct-page .ct-stat__line{display:none}
+/* TALER IN NUMBERS: בלי הקו העליון; המספרים באקסיומה בדרגה 2 (קטנים יותר); ארבע עמודות שוות */
+html body .ct-page .ct-nums__grid{border-top:0}
+html body .ct-page .ct-stat__num{font-family:"Axioma","Plinko FS",sans-serif;font-synthesis:none;font-weight:400;font-size:var(--fs-2)}
+html body .ct-page .ct-stat__val{letter-spacing:0}
+@media (min-width:1100px){
+  html body .ct-page .ct-nums__grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+  html body .ct-page .ct-stat,html body .ct-page .ct-stat:first-child{padding:calc(40 * var(--u)) calc(40 * var(--u)) calc(10 * var(--u))}
+}

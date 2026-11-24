@@ -48,7 +48,7 @@ function head(title, desc, current) {
 ${MOTION}
 <link rel="preload" href="fonts/Plinko_Fs-Black.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap"><!-- ניסיון: Poppins Thin ל-THE PERFECT BALANCE -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap"><!-- ניסיון: Poppins Regular ל-THE PERFECT BALANCE -->
 <link rel="preload" href="fonts/Plinko_Fs-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/site.css?v=${ASSET_V}">
 <link rel="stylesheet" href="assets/pages.css?v=${ASSET_V}">
