@@ -638,7 +638,7 @@ html body .ct-head.is-open::before{opacity:1;visibility:visible}
   html body .ct-head.is-compact .ct-head__nav a::before{content:counter(ct-nav,decimal-leading-zero);font-size:15px;letter-spacing:.2em;font-weight:700;color:#b8913f;direction:ltr}
   html body .ct-head.is-compact .ct-head__nav a:hover{transform:translateX(-10px)}
   html body .ct-head.is-compact .ct-head__nav a[aria-current="page"],html body .ct-head.is-compact .ct-head__nav a:hover{color:#4f6a64}
-  html body .ct-head.is-open.is-compact .ct-head__nav a{animation:ct-drawer-link .6s cubic-bezier(.2,.7,.2,1) both}
+  html body .ct-head.is-open.is-compact .ct-head__nav a{animation:ct-drawer-link .6s cubic-bezier(.2,.7,.2,1) backwards}
   html body .ct-head.is-open.is-compact .ct-head__nav a:nth-child(2){animation-delay:0.26s}
   html body .ct-head.is-open.is-compact .ct-head__nav a:nth-child(3){animation-delay:0.32s}
   html body .ct-head.is-open.is-compact .ct-head__nav a:nth-child(4){animation-delay:0.38s}
@@ -659,7 +659,7 @@ html body .ct-head.is-open::before{opacity:1;visibility:visible}
   html body .ct-head .ct-head__nav a::before{content:counter(ct-nav,decimal-leading-zero);font-size:15px;letter-spacing:.2em;font-weight:700;color:#b8913f;direction:ltr}
   html body .ct-head .ct-head__nav a:hover{transform:translateX(-10px)}
   html body .ct-head .ct-head__nav a[aria-current="page"],html body .ct-head .ct-head__nav a:hover{color:#4f6a64}
-  html body .ct-head.is-open .ct-head__nav a{animation:ct-drawer-link .6s cubic-bezier(.2,.7,.2,1) both}
+  html body .ct-head.is-open .ct-head__nav a{animation:ct-drawer-link .6s cubic-bezier(.2,.7,.2,1) backwards}
   html body .ct-head.is-open .ct-head__nav a:nth-child(2){animation-delay:0.26s}
   html body .ct-head.is-open .ct-head__nav a:nth-child(3){animation-delay:0.32s}
   html body .ct-head.is-open .ct-head__nav a:nth-child(4){animation-delay:0.38s}
@@ -721,3 +721,28 @@ html body .ct-page .ct-cta2__title,html body .ct-page .ct-cta2__title *{font-fam
 /* קישורי החלונית הצדדית: פונט אקסיומה, בגודל שמות הפרויקטים (דרגה 3), כל קישור בשורה אחת */
 @media (min-width:1100px){html body .ct-head.is-compact .ct-head__nav a{font-family:"Axioma","Plinko FS",sans-serif;font-synthesis:none;font-size:var(--fs-3);white-space:nowrap}}
 @media (max-width:1099.98px){html body .ct-head .ct-head__nav a{font-family:"Axioma","Plinko FS",sans-serif;font-synthesis:none;font-size:var(--fs-3);white-space:nowrap}}
+/* תפריט צדדי: רווח גדול יותר בין הקישורים, ואפקט במעבר עכבר — הצבע הירוק "נשטף" על המילה מימין לשמאל, הקישור זז מעט שמאלה, המספר נצבע ירוק, ושאר הקישורים מתעמעמים */
+@media (min-width:1100px){
+  html body .ct-head.is-compact .ct-head__nav{gap:clamp(14px,2.8vh,32px)}
+  html body .ct-head.is-compact .ct-head__nav a{background:linear-gradient(to left,#4f6a64 0 50%,#2f3a37 50% 100%);background-size:200% 100%;background-position:0 0;
+    -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;
+    transition:background-position .55s cubic-bezier(.77,0,.18,1),transform .5s cubic-bezier(.2,.7,.2,1),opacity .4s ease}
+  html body .ct-head.is-compact .ct-head__nav a::before{-webkit-text-fill-color:#b8913f;transition:-webkit-text-fill-color .4s ease}
+  html body .ct-head.is-compact .ct-head__nav a:hover,html body .ct-head.is-compact .ct-head__nav a:focus-visible{background-position:100% 0;transform:translateX(-18px)}
+  html body .ct-head.is-compact .ct-head__nav a:hover::before,html body .ct-head.is-compact .ct-head__nav a:focus-visible::before{-webkit-text-fill-color:#4f6a64}
+  html body .ct-head.is-compact .ct-head__nav a[aria-current="page"]{background-position:100% 0}
+  html body .ct-head.is-compact .ct-head__nav:hover a:not(:hover){opacity:.4}
+}
+@media (max-width:1099.98px){
+  html body .ct-head .ct-head__nav{gap:clamp(14px,2.8vh,32px)}
+  html body .ct-head .ct-head__nav a{background:linear-gradient(to left,#4f6a64 0 50%,#2f3a37 50% 100%);background-size:200% 100%;background-position:0 0;
+    -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;
+    transition:background-position .55s cubic-bezier(.77,0,.18,1),transform .5s cubic-bezier(.2,.7,.2,1),opacity .4s ease}
+  html body .ct-head .ct-head__nav a::before{-webkit-text-fill-color:#b8913f;transition:-webkit-text-fill-color .4s ease}
+  html body .ct-head .ct-head__nav a:hover,html body .ct-head .ct-head__nav a:focus-visible{background-position:100% 0;transform:translateX(-18px)}
+  html body .ct-head .ct-head__nav a:hover::before,html body .ct-head .ct-head__nav a:focus-visible::before{-webkit-text-fill-color:#4f6a64}
+  html body .ct-head .ct-head__nav a[aria-current="page"]{background-position:100% 0}
+  html body .ct-head .ct-head__nav:hover a:not(:hover){opacity:.4}
+}
+/* המספור הקטן בתפריט הצדדי נשאר בפלינקו (באקסיומה האפס נראה כמו Ø) */
+html body .ct-head .ct-head__nav a::before{font-family:"Plinko FS",sans-serif}
