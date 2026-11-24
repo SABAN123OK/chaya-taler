@@ -632,3 +632,6 @@ html body .ct-head.is-open .ct-head__toggle span:nth-child(3){transform:translat
 }
 /* ההדר לבן מלא — בלי backdrop-filter, שאחרת "כולא" את תפריט הנייד הפתוח בגובה ההדר */
 html body .ct-head,html body .ct-head.is-solid,html body .ct-head--solid{-webkit-backdrop-filter:none;backdrop-filter:none}
+
+/* TALER IN NUMBERS: ספרות צמודות מעט יותר (בקשת הלקוחה) */
+html body .ct-page .ct-stat__val{letter-spacing:-.05em;font-variant-numeric:proportional-nums}
