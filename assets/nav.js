@@ -21,11 +21,13 @@
   var setOpen = function (open) {
     head.classList.toggle('is-open', open);
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    document.documentElement.style.overflow = open && !desk.matches ? 'hidden' : '';
+    document.documentElement.style.overflow = open ? 'hidden' : '';
   };
   toggle.addEventListener('click', function () { setOpen(!head.classList.contains('is-open')); });
   head.querySelectorAll('.ct-head__nav a').forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
   addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+  // לחיצה מחוץ לחלונית הצדדית סוגרת אותה
+  document.addEventListener('click', function (e) { if (head.classList.contains('is-open') && !e.target.closest('.ct-head__nav') && !e.target.closest('.ct-head__toggle')) setOpen(false); });
   var desk = matchMedia('(min-width:1100px)');
   var onScroll = function () {
     var y = scrollY || pageYOffset;
