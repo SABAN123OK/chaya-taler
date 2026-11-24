@@ -38,7 +38,7 @@
   .ct-card__quote{width:auto;margin:0;padding:calc(125 * var(--u)) max(22px, calc(44 * var(--u))) calc(30 * var(--u))}
   /* כותרות השלבים: גדולות ב-20% מהעיצוב, ולעולם לא קטנות מהטקסט הרץ */
   .ct-step__title{font-size:max(26px, calc(33.6 * var(--u)))}
-  .ct-step__text{position:relative;top:auto;left:auto;margin-left:calc(1222 * var(--u));width:calc(408 * var(--u));padding:calc(52 * var(--u)) 0 calc(48 * var(--u))}
+  .ct-step__text{position:relative;top:auto;left:auto;margin-left:calc(930 * var(--u));width:calc(700 * var(--u));padding:calc(52 * var(--u)) 0 calc(48 * var(--u))}
 }
 /* פתיחה במחשב: תמונה אחת על כל הכרטיס, מעליה שכבת זכוכית בהירה ומטושטשת,
    ובתוך המסגרת "חור" שבו אותה תמונה נראית חדה (השכבה החדה נחתכת בדיוק לגבולות המסגרת — clip-path ב-site.css) */
