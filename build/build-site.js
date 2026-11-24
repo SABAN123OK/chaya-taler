@@ -250,19 +250,19 @@ function buildHome() {
   // "מוכנים להפוך את הבית..." — בלי טופס: טקסט וכפתור שמובילים לעמוד השאלון הנפרד (questionnaire.html)
   b = b.replace(between(b, '<!-- ===== CONTACT / CTA ===== -->', '<!-- ===== MANIFESTO ===== -->'), `<!-- ===== CONTACT / CTA ===== -->
   <section class="ct-cta ct-cta--cta" id="contact" aria-label="שאלון התאמה">
-    <div class="ct-cta__block" data-reveal="tm">
-      <img class="ct-tm__bg ct-cta__bg" src="images/hero-kitchen.jpg" alt="" aria-hidden="true" loading="lazy">
-      <div class="ct-hero__glass ct-cta__glass" aria-hidden="true"></div>
-      <p class="ct-cta__ghost" aria-hidden="true">LET'S TALK</p>
-      <div class="ct-cta__inner">
-        <div class="ct-cta__text" data-reveal="fade">
-          <p class="ct-cta__eyebrow" aria-hidden="true">LET'S TALK</p>
-          <h2 class="ct-cta__title">מוכנים להפוך<br>את הבית שלכם<br>ליצירה <span>עוצרת<br>נשימה?</span></h2>
-          <p class="ct-body ct-cta__p">מגיע לכם להנות מתוצאה מושלמת ומגימור ללא פשרות.</p>
-          <p class="ct-body ct-cta__p"><a class="ct-cta__link" href="questionnaire.html">לחצו כאן לשאלון ההתאמה שלנו</a> לקראת הבית עם הגימור הטוב ביותר שראיתם אי פעם!</p>
-          <a class="ct-btn ct-btn--solid ct-cta__btn" href="questionnaire.html"><span class="ct-btn__label">מלאו את הטופס ונחזור אליכם</span>${ARROW}</a>
-        </div>
-        <figure class="ct-cta__window" aria-hidden="true"><img src="images/hero/hero-4.jpg" alt="" loading="lazy"></figure>
+    <div class="ct-cta__box">
+      <div class="ct-cta__floats" aria-hidden="true">
+        <img class="ct-cta__float" src="images/living-room.jpg" alt="" loading="lazy" style="--x:215;--w:194;--h:204;--dur:30s;--delay:-23.30s;object-position:50% 50%">
+        <img class="ct-cta__float" src="images/hero/hero-6.jpg" alt="" loading="lazy" style="--x:0;--w:194;--h:203;--dur:34s;--delay:-20.74s;object-position:72% 50%">
+        <img class="ct-cta__float" src="images/hero/hero-6.jpg" alt="" loading="lazy" style="--x:165;--w:194;--h:203;--dur:28s;--delay:-8.92s;object-position:8% 50%">
+        <img class="ct-cta__float" src="images/hero/hero-2.jpg" alt="" loading="lazy" style="--x:1278;--w:253;--h:246;--dur:36s;--delay:-26.74s;object-position:50% 50%">
+        <img class="ct-cta__float" src="images/hero/hero-6.jpg" alt="" loading="lazy" style="--x:1518;--w:194;--h:203;--dur:31s;--delay:-13.11s;object-position:12% 50%">
+        <img class="ct-cta__float" src="images/hero/hero-2.jpg" alt="" loading="lazy" style="--x:1250;--w:194;--h:203;--dur:33s;--delay:-3.18s;object-position:40% 50%">
+      </div>
+      <div class="ct-cta__content" data-reveal="fade">
+        <h2 class="ct-cta__title">מוכנים להפוך את הבית<br>שלכם ליצירה עוצרת נשימה?</h2>
+        <p class="ct-cta__p">מגיע לכם להנות מתוצאה מושלמת ומגימור ללא פשרות.<br>מלאו שאלון התאמה לקראת הבית עם הגימור הטוב ביותר שראיתם אי פעם!</p>
+        <a class="ct-cta__btn" href="questionnaire.html">לחצו כאן לשאלון ההתאמה</a>
       </div>
     </div>
   </section>
