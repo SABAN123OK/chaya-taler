@@ -575,3 +575,7 @@ html body .ct-page .ct-ab__text p{margin:0;line-height:1.3}
   .ct-ab__vision{order:7;margin:40px 0 0}
   .ct-ab__text--3{order:8;width:auto;margin-top:20px}
 }
+
+/* שמות הפרויקטים בפונט אקסיומה; "VIEW PROJECT" באפור כהה ובלי ריווח בין האותיות */
+html body .ct-page .ct-proj__name{font-family:"Axioma","Plinko FS",sans-serif;font-weight:400;font-synthesis:none}
+html body .ct-page .ct-proj__go{color:var(--dark);letter-spacing:0}
