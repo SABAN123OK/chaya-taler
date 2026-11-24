@@ -481,8 +481,6 @@ html body .ct-page .ct-field__err{font-size:var(--fs-6)}
 }
 /* הכותרת הראשית בפונט אקסיומה */
 html body .ct-page .ct-hero .ct-title{font-family:"Axioma","Plinko FS",sans-serif;font-synthesis:none}
-/* ניסיון: THE PERFECT BALANCE באקסיומה */
-html body .ct-page .ct-big{font-family:"Axioma","Plinko FS",sans-serif;font-synthesis:none}
 @media (max-width:1099.98px){
   html body .ct-page .ct-hero .ct-title{font-size:calc(var(--fs-1) * 1.02)}
   html body .ct-page .ct-hero .ct-kicker{font-size:var(--fs-2)}
