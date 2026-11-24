@@ -806,3 +806,6 @@ html body .ct-page .ct-cta2__title{line-height:.95}
 
 /* ניסיון: THE PERFECT BALANCE בפופינס דק (Thin 100) */
 html body .ct-page .ct-big,html body .ct-page .ct-big *{font-family:"Poppins","Plinko FS",sans-serif;font-weight:100}
+
+/* TALER IN NUMBERS: בלי קווים בין המספרים — נשאר רק הקו העליון */
+html body .ct-page .ct-stat__line{display:none}
