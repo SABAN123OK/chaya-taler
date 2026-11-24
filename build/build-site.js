@@ -200,7 +200,7 @@ function buildHome() {
         ${projCard(p4, 3, { cls: ' ct-proj--4', parallax: '1.2' })}
       </div>
     </div>
-    <div class="ct-xp__more ct-projs__more">${btn('לכל הפרויקטים', 'projects.html')}</div>`;
+    <div class="ct-ctas ct-projs__ctas">${btn('לפרויקטים פרטיים', 'projects.html?type=private', 'ct-btn--solid')}${btn('לפרויקטים עסקיים', 'projects.html?type=business')}</div>`;
   b = b.replace(between(b, '<div class="ct-projs__grid">', '</section>'), projGrid + '\n  ');
   // testimonials slider: design cards + short quotes from the current site
   const cards = [...T_DESIGN, { q: ['היה לך באמת אכפת מההצלחה המושלמת של הפרויקט שלי, עם סבלנות בלי סוף והרגשה טובה.'], who: '' }, ...T_SITE_SHORT];

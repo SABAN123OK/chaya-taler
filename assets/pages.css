@@ -579,3 +579,22 @@ html body .ct-page .ct-ab__text p{margin:0;line-height:1.3}
 /* שמות הפרויקטים בפונט אקסיומה; "VIEW PROJECT" באפור כהה ובלי ריווח בין האותיות */
 html body .ct-page .ct-proj__name{font-family:"Axioma","Plinko FS",sans-serif;font-weight:400;font-synthesis:none}
 html body .ct-page .ct-proj__go{color:var(--dark);letter-spacing:0}
+
+/* ---------- כרטיס הציטוט עם התמונה (משפחת שורין) ---------- */
+/* השכבה הכהה מכסה את כל התמונה (במקור הייתה מוזחת 5 יחידות משמאל) */
+html body .ct-page .ct-card__shade{left:0;right:0}
+html body .ct-page .ct-card{overflow:hidden}
+/* כניסה עדינה: הופעה הדרגתית + עלייה קלה, והתמונה מתכווננת מ-104% ל-100% (במקום הגדלה של 135% ווילון לבן) */
+html.ct-motion body .ct-page .ct-card::after{display:none}
+html.ct-motion body .ct-page .ct-card{opacity:0;transform:translateY(24px);transition:opacity 1.4s var(--ease),transform 1.6s var(--ease)}
+html.ct-motion body .ct-page .ct-card.is-in{opacity:1;transform:none}
+html.ct-motion body .ct-page .ct-card .ct-card__img{transform:scale(1.04);transition:transform 2.2s var(--ease)}
+html.ct-motion body .ct-page .ct-card.is-in .ct-card__img{transform:scale(1)}
+html.ct-motion body .ct-page .ct-card.is-done .ct-card__img{transition:transform 1s var(--ease)}
+html.ct-motion body .ct-page .ct-card.is-done:hover .ct-card__img{transform:scale(1.03)}
+
+/* כפתורי פרטיים / עסקיים מתחת לפרויקטים בדף הבית; הראשון בירוק מלא */
+html body .ct-page .ct-projs__ctas{margin-top:calc(60 * var(--u))}
+@media (max-width:1099.98px){html body .ct-page .ct-projs__ctas{margin-top:36px}}
+html body .ct-page .ct-btn--solid{background:var(--green);border-color:var(--green);color:#fff}
+html body .ct-page .ct-btn--solid .ct-btn__arrow{color:#fff}
