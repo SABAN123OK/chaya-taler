@@ -47,7 +47,7 @@ function head(title, desc, current) {
 <meta name="description" content="${esc(desc)}">
 ${MOTION}
 <link rel="preload" href="fonts/Plinko_Fs-Black.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/metropolis@5.3.0/400.css"><!-- ניסיון: Metropolis Regular ל-THE PERFECT BALANCE (Fontsource, רישיון פתוח) -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/metropolis@5.3.0/500.css"><!-- ניסיון: Metropolis Medium ל-THE PERFECT BALANCE (Fontsource, רישיון פתוח) -->
 <link rel="preload" href="fonts/Plinko_Fs-Regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/site.css?v=${ASSET_V}">
 <link rel="stylesheet" href="assets/pages.css?v=${ASSET_V}">
