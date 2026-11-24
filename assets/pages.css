@@ -167,8 +167,9 @@ html body .ct-page .ct-hero .ct-slides--blur{filter:blur(16px) saturate(.5)}
 }
 
 /* רווח של 100px אחרי אזור THE TALER STANDARD */
-@media (min-width:1100px){.ct-page .ct-man{padding-bottom:calc(170 * var(--u) + 100px)}}
-@media (max-width:1099.98px){.ct-page .ct-man{padding-bottom:calc(clamp(70px,12vw,120px) + 100px)}}
+/* THE TALER STANDARD: רווח נוסף למעלה ולמטה (בקשת הלקוחה) */
+@media (min-width:1100px){.ct-page .ct-man{padding-top:calc(130 * var(--u));padding-bottom:calc(250 * var(--u) + 100px)}}
+@media (max-width:1099.98px){.ct-page .ct-man{padding-top:56px;padding-bottom:calc(clamp(70px,12vw,120px) + 140px)}}
 
 /* ---------- פוטר ---------- */
 /* בלי קו מעל הפוטר */
