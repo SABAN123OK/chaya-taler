@@ -709,3 +709,9 @@ html body .ct-page .ct-man__text,html body .ct-page .ct-man__text *{font-family:
 
 /* ניסיון: הפס הנע בחוויית הלקוחות באקסיומה */
 html body .ct-page .ct-mq__item{font-family:"Axioma","Plinko FS",sans-serif;font-synthesis:none}
+
+/* ניסיון: כותרות המאמרים ברשימות (דף הבית, בלוג, מאמרים קשורים) באקסיומה */
+html body .ct-page .ct-post__title{font-family:"Axioma","Plinko FS",sans-serif;font-synthesis:none}
+
+/* ניסיון: "הבית שלכם ראוי לגימור הטוב ביותר" באקסיומה (בכל העמודים) */
+html body .ct-page .ct-cta2__title,html body .ct-page .ct-cta2__title *{font-family:"Axioma","Plinko FS",sans-serif;font-synthesis:none}
