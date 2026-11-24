@@ -22,7 +22,7 @@
 /* מרווחים צפופים יותר: "להתפנק..." ← כותרת ← טקסט */
 @media (min-width:1100px){
   .ct-hero .ct-kicker{top:calc(293 * var(--u))}
-  .ct-hero .ct-hero__lead{top:calc(733 * var(--u))}
+  .ct-hero .ct-hero__lead{top:calc(683 * var(--u))}
 }
 @media (max-width:1099.98px){
   .ct-hero .ct-title--1{margin-top:-.05em}
@@ -473,16 +473,18 @@ html body .ct-page .ct-field__err{font-size:var(--fs-6)}
 /* ---- פתיחה: אותן דרגות, מחושבות ביחידה של הפתיחה (שמתחשבת גם בגובה המסך) ---- */
 /* "בבית עוצר נשימה": 20% גדול יותר מדרגה 1 (בקשת הלקוחה), והמרווחים בין השורות גדלו באותו יחס */
 @media (min-width:1100px){
-  html body .ct-page .ct-hero .ct-title{font-size:calc(180 * var(--u));line-height:calc(120 * var(--u))}
-  html body .ct-page .ct-hero .ct-title--1{top:calc(365 * var(--u))}
-  html body .ct-page .ct-hero .ct-title--2{top:calc(478 * var(--u))}
-  html body .ct-page .ct-hero .ct-title--3{top:calc(594 * var(--u))}
+  html body .ct-page .ct-hero .ct-title{font-size:calc(153 * var(--u));line-height:calc(102 * var(--u))}
+  html body .ct-page .ct-hero .ct-title--1{top:calc(367 * var(--u))}
+  html body .ct-page .ct-hero .ct-title--2{top:calc(464 * var(--u))}
+  html body .ct-page .ct-hero .ct-title--3{top:calc(561 * var(--u))}
   html body .ct-page .ct-hero .ct-kicker{font-size:max(36px, calc(64.7 * var(--u)))}
 }
 /* הכותרת הראשית בפונט אקסיומה */
 html body .ct-page .ct-hero .ct-title{font-family:"Axioma","Plinko FS",sans-serif;font-synthesis:none}
+/* ניסיון: THE PERFECT BALANCE באקסיומה */
+html body .ct-page .ct-big{font-family:"Axioma","Plinko FS",sans-serif;font-synthesis:none}
 @media (max-width:1099.98px){
-  html body .ct-page .ct-hero .ct-title{font-size:calc(var(--fs-1) * 1.2)}
+  html body .ct-page .ct-hero .ct-title{font-size:calc(var(--fs-1) * 1.02)}
   html body .ct-page .ct-hero .ct-kicker{font-size:var(--fs-2)}
 }
 /* תפריט נייד נפתח: נשאר גדול לנוחות האצבע (כותרת משנה) */
