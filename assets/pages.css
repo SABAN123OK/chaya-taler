@@ -777,3 +777,6 @@ html body .ct-page .ct-cta--cta .ct-cta__btn:hover,html body .ct-page .ct-cta--c
   html body .ct-page .ct-cta--cta .ct-cta__p{margin-top:18px}
   html body .ct-page .ct-cta--cta .ct-cta__btn{margin-top:26px;padding:15px 36px}
 }
+
+/* רווח בין שתי השורות של "הבית שלכם ראוי" (באקסיומה) */
+html body .ct-page .ct-cta2__title{line-height:.95}
