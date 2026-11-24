@@ -791,3 +791,18 @@ html body .ct-page .ct-cta2__title{line-height:.95}
 
 /* ניסיון: THE PERFECT BALANCE במשקל רגיל של פלינקו (400) */
 html body .ct-page .ct-big,html body .ct-page .ct-big *{font-weight:400}
+
+/* רווח אחיד בין כל אזורי דף הבית — כמו אחרי שורת המיצוב (THE TALER STANDARD): 250u + 100px במחשב (≈286 ב-1440), clamp(70px,12vw,120px) + 140px בנייד (≈210 ב-390).
+   חלק מהאזורים מקבלים תיקון קטן כי התוכן שלהם לא צמוד לקצה (ההמלצות, המספרים, הבלוג) */
+@media (min-width:1100px){
+  html body .ct-page .ct-bottom,html body .ct-page .ct-projs,html body .ct-page .ct-cta,html body .ct-page .ct-steps,html body .ct-page .ct-xp{padding-bottom:calc(250 * var(--u) + 100px)}
+  html body .ct-page .ct-tm{padding-bottom:calc(181 * var(--u) + 100px)}
+  html body .ct-page .ct-nums{padding-bottom:calc(110 * var(--u) + 100px)}
+  html body .ct-page .ct-blog{padding-bottom:calc(270 * var(--u) + 100px)}
+}
+@media (max-width:1099.98px){
+  html body .ct-page .ct-bottom,html body .ct-page .ct-projs,html body .ct-page .ct-cta,html body .ct-page .ct-steps,html body .ct-page .ct-xp{padding-bottom:calc(clamp(70px,12vw,120px) + 140px)}
+  html body .ct-page .ct-tm{padding-bottom:calc(clamp(70px,12vw,120px) + 140px - 48px)}
+  html body .ct-page .ct-nums{padding-bottom:calc(clamp(70px,12vw,120px) + 140px - 86px)}
+  html body .ct-page .ct-blog{padding-bottom:calc(clamp(70px,12vw,120px) + 140px + 15px)}
+}
