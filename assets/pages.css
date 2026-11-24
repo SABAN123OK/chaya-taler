@@ -632,3 +632,19 @@ html body .ct-page .ct-hero .ct-hero__frame{box-shadow:none}
 
 /* ניסיון: "להתפנק כל יום מחדש" באקסיומה */
 html body .ct-page .ct-hero .ct-kicker{font-family:"Axioma","Plinko FS",sans-serif;font-synthesis:none}
+
+/* ---------- "מוכנים להפוך את הבית..." בדף הבית: בלי טופס — עמודה אחת ממורכזת עם כפתור לעמוד השאלון ---------- */
+html body .ct-page .ct-cta--cta .ct-cta__inner{justify-content:center;padding:calc(150 * var(--u)) calc(104 * var(--u))}
+html body .ct-page .ct-cta--cta .ct-cta__text{width:calc(900 * var(--u));max-width:100%;text-align:center;display:flex;flex-direction:column;align-items:center}
+html body .ct-page .ct-cta--cta .ct-cta__eyebrow{text-align:center}
+html body .ct-page .ct-cta--cta .ct-cta__title{text-align:center}
+html body .ct-page .ct-cta--cta .ct-cta__text .ct-body{max-width:calc(720 * var(--u))}
+html body .ct-page .ct-cta--cta .ct-cta__link{color:var(--green);font-weight:700;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.22em}
+html body .ct-page .ct-cta--cta .ct-cta__btn{margin-top:calc(44 * var(--u))}
+@media (max-width:1099.98px){
+  html body .ct-page .ct-cta--cta .ct-cta__inner{padding:56px clamp(20px,6vw,48px)}
+  html body .ct-page .ct-cta--cta .ct-cta__text .ct-body{max-width:none}
+  html body .ct-page .ct-cta--cta .ct-cta__btn{margin-top:28px}
+}
+html body .ct-page .ct-cta--cta .ct-cta__btn{width:auto;min-width:0;padding:14px 32px;gap:24px;line-height:1.2}
+html body .ct-page .ct-cta--cta .ct-cta__btn .ct-btn__arrow{width:34px}

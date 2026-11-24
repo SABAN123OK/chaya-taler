@@ -243,6 +243,25 @@ function buildHome() {
   // the tagline flows under the lead text instead of sitting at a fixed spot (the 22px text is taller than the design's)
   b = b.replace(/(<div class="ct-hero__lead ct-body"[^>]*>[\s\S]*?)(\s*<\/div>)\s*<p class="ct-tagline ct-body"[^>]*>([^<]*)<\/p>/, '$1\n          <a class="ct-btn ct-hero__btn" href="projects.html" data-magnetic><span class="ct-btn__label">$3</span>' + ARROW + '</a>$2');
   b = b.replace(/\s*<!-- תמונה מתחת למשפט[\s\S]*?<div class="ct-man__pic"[\s\S]*?<\/div>/, ''); // design placeholder image that doesn't exist
+  // "מוכנים להפוך את הבית..." — בלי טופס: טקסט וכפתור שמובילים לעמוד השאלון הנפרד (questionnaire.html)
+  b = b.replace(between(b, '<!-- ===== CONTACT / CTA ===== -->', '<!-- ===== MANIFESTO ===== -->'), `<!-- ===== CONTACT / CTA ===== -->
+  <section class="ct-cta ct-cta--cta" id="contact" aria-label="שאלון התאמה">
+    <div class="ct-cta__block" data-reveal="tm">
+      <img class="ct-tm__bg ct-cta__bg" src="images/hero-kitchen.jpg" alt="" aria-hidden="true" loading="lazy">
+      <div class="ct-hero__glass ct-cta__glass" aria-hidden="true"></div>
+      <div class="ct-cta__inner">
+        <div class="ct-cta__text" data-reveal="fade">
+          <p class="ct-cta__eyebrow" aria-hidden="true">LET'S TALK</p>
+          <h2 class="ct-cta__title">מוכנים להפוך את הבית שלכם ליצירה <span>עוצרת נשימה?</span></h2>
+          <p class="ct-body">מגיע לכם להנות מתוצאה מושלמת ומגימור ללא פשרות.</p>
+          <p class="ct-body"><a class="ct-cta__link" href="questionnaire.html">לחצו כאן לשאלון ההתאמה שלנו</a> לקראת הבית עם הגימור הטוב ביותר שראיתם אי פעם!</p>
+          <a class="ct-btn ct-btn--solid ct-cta__btn" href="questionnaire.html"><span class="ct-btn__label">מלאו את הטופס ונחזור אליכם</span>${ARROW}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  `);
   // replace design footer with the shared one
   b = b.replace(b.slice(b.indexOf('<!-- ===== FOOTER ===== -->')), '');
   b = b.replace('<main class="ct-page" id="ct-page">', '');
@@ -497,6 +516,18 @@ ${items.join('\n')}
 // =========================================================
 // 8. PRIVACY + ACCESSIBILITY (placeholders — the legal text must be supplied before launch)
 // =========================================================
+// עמוד השאלון / הטופס — זמני, יעוצב בהמשך יחד עם הלקוחה
+function buildQuestionnaire() {
+  return head('שאלון התאמה | חיה טאלר', 'שאלון ההתאמה של חיה טאלר — אדריכלות ועיצוב פנים. מלאו את הפרטים ונחזור אליכם.', 'questionnaire.html') + pageOpen()
+    + ph({ he: 'שאלון התאמה' })
+    + `  <section class="ct-wrap ct-sec">
+    <div class="ct-article ct-body">
+      <p>כאן יופיע שאלון ההתאמה — העמוד בעיצוב.</p>
+      <p>בינתיים אפשר לפנות אלינו: <a class="ct-home-link" href="tel:${S.phoneIntl}">${S.phone}</a> או <a class="ct-home-link" href="mailto:${S.email}">${S.email}</a>.</p>
+    </div>
+  </section>
+` + pageClose();
+}
 function buildLegal(title, desc) {
   return head(`${title} | חיה טאלר`, desc, '') + pageOpen()
     + ph({ he: title })
@@ -522,6 +553,7 @@ if (SHOW_VIZ) out('visualizations.html', buildViz());
 else if (fs.existsSync(path.join(ROOT, 'visualizations.html'))) fs.unlinkSync(path.join(ROOT, 'visualizations.html'));
 out('contact.html', buildContact());
 out('testimonials.html', buildTestimonials());
+out('questionnaire.html', buildQuestionnaire());
 out('privacy.html', buildLegal('הצהרת פרטיות', 'הצהרת הפרטיות של אתר חיה טאלר — אדריכלות ועיצוב פנים.'));
 out('accessibility.html', buildLegal('הצהרת נגישות', 'הצהרת הנגישות של אתר חיה טאלר — אדריכלות ועיצוב פנים.'));
 console.log('built', 7 + S.projects.length + S.posts.length, 'pages');
