@@ -746,3 +746,6 @@ html body .ct-page .ct-cta2__title,html body .ct-page .ct-cta2__title *{font-fam
 }
 /* המספור הקטן בתפריט הצדדי נשאר בפלינקו (באקסיומה האפס נראה כמו Ø) */
 html body .ct-head .ct-head__nav a::before{font-family:"Plinko FS",sans-serif}
+
+/* THE TALER STANDARD: הפסקה כמעט עד קצה הגריד (1630) */
+@media (min-width:1100px){html body .ct-page .ct-man__text{max-width:calc(1600 * var(--u))}}
