@@ -756,3 +756,8 @@ html body .ct-head .ct-head__nav a::before{font-family:"Plinko FS",sans-serif}
 /* חתימת חיה מתחת לפסקת המיצוב; multiply מעלים את הרקע הלבן של התמונה */
 html body .ct-page .ct-man__sign{display:block;width:calc(300 * var(--u));height:auto;margin:calc(40 * var(--u)) 0 0 auto;mix-blend-mode:multiply}
 @media (max-width:1099.98px){html body .ct-page .ct-man__sign{width:180px;margin-top:24px}}
+
+/* THE TALER STANDARD ממורכז: התווית, הפסקה (בלוק ממורכז) והחתימה */
+html body .ct-page .ct-man__eyebrow{text-align:center;padding-left:.25em}
+html body .ct-page .ct-man__text{text-align:center;margin-left:auto;margin-right:auto}
+html body .ct-page .ct-man__sign{margin-left:auto;margin-right:auto}
