@@ -220,6 +220,8 @@ function buildHome() {
   b = b.replace('<span class="ct-tm__cur">01</span> / 04', `<span class="ct-tm__cur">01</span> / ${pad(n)}`);
   // כותרת שלב 5: ירידת שורה אחרי "ופיקוח"
   b = b.replace('נוכחות בשטח ופיקוח בהתאמה מלאה לתוכניות', 'נוכחות בשטח ופיקוח<br>בהתאמה מלאה לתוכניות');
+  // חתימת חיה מתחת לפסקת המיצוב (THE TALER STANDARD)
+  b = b.replace(/(<p class="ct-man__text"[\s\S]*?<\/p>)/, '$1\n    <img class="ct-man__sign" src="images/signature-chaya.png" alt="חתימה: חיה טאלר" width="526" height="176" loading="lazy">');
   // step buttons, all-testimonials, blog
   b = b.replace('href="#" data-magnetic><span class="ct-btn__label">לפרויקטים פרטיים', 'href="projects.html?type=private" data-magnetic><span class="ct-btn__label">לפרויקטים פרטיים');
   b = b.replace('href="#" data-magnetic><span class="ct-btn__label">לפרויקטים עסקיים', 'href="projects.html?type=business" data-magnetic><span class="ct-btn__label">לפרויקטים עסקיים');
