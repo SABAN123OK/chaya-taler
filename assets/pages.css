@@ -648,3 +648,7 @@ html body .ct-page .ct-cta--cta .ct-cta__btn{margin-top:calc(44 * var(--u))}
 }
 html body .ct-page .ct-cta--cta .ct-cta__btn{width:auto;min-width:0;padding:14px 32px;gap:24px;line-height:1.2}
 html body .ct-page .ct-cta--cta .ct-cta__btn .ct-btn__arrow{width:34px}
+@media (max-width:1099.98px){
+  html body .ct-page .ct-cta--cta .ct-cta__btn{padding:12px 20px;gap:14px;white-space:nowrap}
+  html body .ct-page .ct-cta--cta .ct-cta__btn .ct-btn__arrow{width:26px}
+}
