@@ -827,5 +827,5 @@ html body .ct-page .ct-stat__val{letter-spacing:0}
   html body .ct-page .ct-stat,html body .ct-page .ct-stat:nth-child(odd){padding-right:0;padding-left:0}
   html body .ct-page .ct-stat:nth-child(even){justify-self:end}
 }
-/* הכיתובים בשורה אחת כשיש מקום (מ-1250px), כך שהרווחים בין הפריטים שווים בדיוק */
-@media (min-width:1250px){html body .ct-page .ct-stat__label{white-space:nowrap;max-width:none}}
+/* כל כיתוב בשתי שורות קבועות (שבירה ידנית ב-HTML) ובלי גלישה נוספת — הרוחב שווה לטקסט, ולכן הרווחים בין הפריטים שווים בדיוק */
+@media (min-width:1100px){html body .ct-page .ct-stat__label{white-space:nowrap;max-width:none}}
