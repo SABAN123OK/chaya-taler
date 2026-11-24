@@ -806,7 +806,7 @@ html body .ct-page .ct-cta2__title{line-height:.95}
 
 /* ניסיון: THE PERFECT BALANCE במטרופוליס Medium (500), עם מעט יותר רווח בין השורות */
 html body .ct-page .ct-big,html body .ct-page .ct-big *{font-family:"Metropolis","Plinko FS",sans-serif;font-weight:500}
-html body .ct-page .ct-big{line-height:.78;font-size:calc(var(--fs-1) * .82)}
+html body .ct-page .ct-big{line-height:.78;font-size:calc(var(--fs-1) * .82);letter-spacing:-.02em}
 
 /* TALER IN NUMBERS: בלי קווים בין המספרים — נשאר רק הקו העליון */
 html body .ct-page .ct-stat__line{display:none}
