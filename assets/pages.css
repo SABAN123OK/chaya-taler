@@ -804,8 +804,9 @@ html body .ct-page .ct-cta2__title{line-height:.95}
   html body .ct-page .ct-blog{padding-bottom:calc(clamp(70px,12vw,120px) + 140px + 15px)}
 }
 
-/* ניסיון: THE PERFECT BALANCE בפופינס רגיל (Regular 400) */
-html body .ct-page .ct-big,html body .ct-page .ct-big *{font-family:"Poppins","Plinko FS",sans-serif;font-weight:400}
+/* ניסיון: THE PERFECT BALANCE במטרופוליס רגיל (Regular 400), עם מעט יותר רווח בין השורות */
+html body .ct-page .ct-big,html body .ct-page .ct-big *{font-family:"Metropolis","Plinko FS",sans-serif;font-weight:400}
+html body .ct-page .ct-big{line-height:.85;font-size:calc(var(--fs-1) * .9)}
 
 /* TALER IN NUMBERS: בלי קווים בין המספרים — נשאר רק הקו העליון */
 html body .ct-page .ct-stat__line{display:none}
