@@ -625,3 +625,7 @@ html body .ct-head .ct-head__logo img,html body .ct-head.is-solid .ct-head__logo
 /* החור בזכוכית: בלי קו לבן ובלי צל פנימי (בקשת הלקוחה) — בכל המסכים */
 html body .ct-page .ct-hero .ct-hero__frame > .ct-frame-line{display:none}
 html body .ct-page .ct-hero .ct-hero__frame{box-shadow:none}
+
+/* רווח מתחת ל"להתפנק כל יום מחדש" במסך הפתיחה */
+@media (min-width:1100px){html body .ct-page .ct-hero .ct-kicker{top:calc(271 * var(--u))}}
+@media (max-width:1099.98px){html body .ct-page .ct-hero .ct-kicker{margin-bottom:14px}}
