@@ -617,10 +617,13 @@ html body .ct-head,html body .ct-head.is-solid,html body .ct-head--solid{-webkit
 
 /* ===== תפריט צדדי: לחיצה על ההמבורגר פותחת חלונית ירוקה-בהירה מימין לכל גובה המסך, עם קישורים גדולים וממוספרים.
    במחשב — אחרי שמתחילים לגלול (בראש העמוד התפריט בשורה); בנייד — תמיד. ===== */
-:root{--drawer-bg:#dfe8e4;--drawer-w:min(560px, 88vw)}
+:root{--drawer-bg:rgba(246,248,247,.38);--drawer-w:min(560px, 88vw)}
+/* זכוכית עמומה: טשטוש חזק של מה שמאחורי החלונית + גוון לבן שקוף וקו אור דק בקצה */
+@media (min-width:1100px){html body .ct-head.is-compact .ct-head__nav{-webkit-backdrop-filter:blur(26px) saturate(.85);backdrop-filter:blur(26px) saturate(.85);border-left:1px solid rgba(255,255,255,.55)}}
+@media (max-width:1099.98px){html body .ct-head .ct-head__nav{-webkit-backdrop-filter:blur(26px) saturate(.85);backdrop-filter:blur(26px) saturate(.85);border-left:1px solid rgba(255,255,255,.55)}}
 @keyframes ct-drawer-link{from{opacity:0;transform:translateX(48px)}to{opacity:1;transform:none}}
 html body .ct-head .ct-head__toggle,html body .ct-head.is-open .ct-head__toggle{position:relative;z-index:3}
-html body .ct-head::before{content:"";position:fixed;inset:0;z-index:1;background:rgba(29,29,29,.28);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .5s ease,visibility .5s}
+html body .ct-head::before{content:"";position:fixed;inset:0;z-index:1;background:rgba(29,29,29,.16);opacity:0;visibility:hidden;pointer-events:none;transition:opacity .5s ease,visibility .5s}
 html body .ct-head.is-open::before{opacity:1;visibility:visible}
 @media (min-width:1100px){
   html body .ct-head.is-compact .ct-head__nav{position:fixed;top:0;right:0;bottom:0;left:auto;width:var(--drawer-w);z-index:2;margin:0;box-sizing:border-box;
