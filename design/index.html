@@ -1,0 +1,1875 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>חיה טאלר | אדריכלות ועיצוב פנים</title>
+<meta name="description" content="Architecture and Design by Chaya Taler — תכנון ארכיטקטוני מדויק, עיצוב פנים ופיקוח בשטח.">
+<script>
+/* מפעיל אנימציות רק אם JS רץ ואין העדפת "הפחתת תנועה". ‎?static בכתובת = בלי אנימציות (לייבוא לפיגמה). אם משהו נכשל — אחרי 5 שניות הכל מוצג */
+(function(d){if(!matchMedia('(prefers-reduced-motion: reduce)').matches && !/[?&]static\b/.test(location.search)){d.classList.add('ct-motion');setTimeout(function(){if(!window.__ctOk)d.classList.remove('ct-motion')},5000)}})(document.documentElement);
+</script>
+<link rel="preload" href="images/hero-kitchen.jpg" as="image">
+<link rel="preload" href="fonts/Plinko_Fs-Black.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+/* ===== פונט העיצוב: Plinko FS (תיקיית fonts) ===== */
+@font-face{font-family:"Plinko FS";src:url("fonts/Plinko_Fs-Regular.woff2") format("woff2"),url("fonts/Plinko_Fs-Regular.woff") format("woff");font-weight:400;font-display:swap}
+@font-face{font-family:"Plinko FS";src:url("fonts/Plinko_Fs-Medium.woff2") format("woff2"),url("fonts/Plinko_Fs-Medium.woff") format("woff");font-weight:500;font-display:swap}
+@font-face{font-family:"Plinko FS";src:url("fonts/Plinko_Fs-Bold.woff2") format("woff2"),url("fonts/Plinko_Fs-Bold.woff") format("woff");font-weight:700;font-display:swap}
+@font-face{font-family:"Plinko FS";src:url("fonts/Plinko_Fs-Black.woff2") format("woff2"),url("fonts/Plinko_Fs-Black.woff") format("woff");font-weight:900;font-display:swap}
+
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+
+.ct-page, .ct-page *{box-sizing:border-box;margin:0;padding:0}
+.ct-page{
+  --green:#79938d; --dark:#3e3e3e; --gray:#5b5b5b; --text:#1d1d1d; --line:#b5bdb7; --gold:#b8913f;
+  --ease:cubic-bezier(.2,.7,.2,1); --ease-io:cubic-bezier(.77,0,.18,1);
+  --font:"Plinko FS","Heebo","Assistant",sans-serif;
+  container-type:inline-size;
+  width:100%; max-width:1920px; margin-inline:auto;
+  background:#fff; color:var(--text); font-family:var(--font);
+  overflow:hidden; direction:rtl; -webkit-font-smoothing:antialiased;
+}
+.ct-page img{display:block;max-width:none}
+.ct-page p{line-height:normal}
+.ct-txt{text-align:right;color:var(--text);font-weight:400}
+.ct-txt b,.ct-quote b{font-weight:700}
+.ct-quote{text-align:right;font-weight:400}
+
+/* ---------- סליידר הפתיחה (משותף) ---------- */
+.ct-slides{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.ct-slide{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  opacity:0;transform:scale(1.12);
+  transition:opacity 1.8s ease, transform 0s linear 1.8s;
+}
+.ct-slide.is-active{opacity:1;transform:scale(1);transition:opacity 1.8s ease, transform 8s cubic-bezier(.25,.6,.3,1)}
+.ct-hero__glass{position:absolute;inset:0;background:rgba(250,250,250,.2);pointer-events:none}
+.ct-grain{
+  position:absolute;inset:-50%;pointer-events:none;opacity:.07;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation:ct-grain 1s steps(6) infinite;
+}
+@keyframes ct-grain{0%{transform:translate(0,0)}20%{transform:translate(-4%,3%)}40%{transform:translate(3%,-5%)}60%{transform:translate(-6%,-2%)}80%{transform:translate(5%,4%)}100%{transform:translate(0,0)}}
+
+/* קו המסגרת (מצויר באנימציה) */
+.ct-frame-line{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.ct-frame-line rect{fill:none;stroke:var(--line);stroke-width:1;stroke-dasharray:1;stroke-dashoffset:0}
+
+/* מונה שקופיות */
+.ct-welcome,.ct-credit,.ct-counter{text-shadow:0 1px 14px rgba(0,0,0,.28)}
+.ct-counter{display:flex;align-items:center;direction:ltr;color:#fff;font-weight:400;white-space:nowrap}
+.ct-counter__bar{position:relative;display:block;overflow:hidden;background:rgba(255,255,255,.35);height:1px}
+.ct-counter__fill{position:absolute;inset:0;background:#fff;transform-origin:left;transform:scaleX(0);animation:ct-fill 6s linear forwards}
+@keyframes ct-fill{to{transform:scaleX(1)}}
+
+/* ========================================================
+   DESKTOP (≥1100px) — מבוסס על פריים 1920px
+   1u = 1px בפיגמה. במסך הפתיחה u מוגבל גם לפי הגובה כדי שהכל ייכנס ב-100vh
+   ======================================================== */
+@media (min-width:1100px){
+  .ct-page{--u:calc(100cqw / 1920)}
+  .ct-body{font-size:max(14px, calc(20 * var(--u)))}
+
+  /* ---------- HERO 100vh ---------- */
+  .ct-hero{
+    --u:min(calc(100cqw / 1920), calc(100svh / 1119));
+    position:relative;height:100vh;height:100svh;overflow:hidden;background:#ebe7e1;
+  }
+  .ct-slides--blur{filter:blur(calc(12 * var(--u)));transform:scale(1.06)}
+  /* השכבה החדה נחתכת בדיוק לגבולות המסגרת (המסגרת ממורכזת במסך) */
+  .ct-slides--sharp{
+    clip-path:inset(calc(50% - 463.5 * var(--u)) calc(50% - 818 * var(--u)) calc(50% - 409.5 * var(--u)) calc(50% + 64 * var(--u)));
+  }
+  .ct-slides--frame{display:none}
+  .ct-hero__stage{
+    position:absolute;left:50%;top:50%;
+    width:calc(1920 * var(--u));height:calc(1119 * var(--u));
+    transform:translate(-50%,-50%);
+  }
+  .ct-hero__frame{
+    position:absolute;left:calc(1024 * var(--u));top:calc(96 * var(--u));
+    width:calc(754 * var(--u));height:calc(873 * var(--u));
+  }
+  .ct-welcome{
+    position:absolute;left:calc(455 * var(--u));top:calc(35 * var(--u));width:calc(257 * var(--u));
+    font-size:calc(20 * var(--u));letter-spacing:calc(10 * var(--u));color:#fff;text-align:right;
+    direction:ltr;white-space:nowrap;font-weight:400;
+  }
+  .ct-credit{
+    position:absolute;left:calc(52 * var(--u));top:calc(804 * var(--u));
+    font-size:calc(20 * var(--u));letter-spacing:calc(4 * var(--u));color:#fff;
+    direction:ltr;text-align:left;white-space:nowrap;font-weight:400;
+  }
+  .ct-counter{position:absolute;left:calc(52 * var(--u));top:calc(38 * var(--u));font-size:calc(15 * var(--u));letter-spacing:calc(3 * var(--u));gap:calc(14 * var(--u))}
+  .ct-counter__bar{width:calc(90 * var(--u))}
+
+  .ct-hero__text{position:absolute;inset:0;pointer-events:none}
+  .ct-hero__text > *{position:absolute;pointer-events:auto}
+  .ct-kicker{
+    right:calc(1075 * var(--u));top:calc(275 * var(--u));
+    font-size:calc(60 * var(--u));line-height:calc(100 * var(--u));
+    font-weight:500;color:var(--green);white-space:nowrap;
+  }
+  .ct-title{position:absolute;font-weight:900;color:var(--dark);font-size:calc(150 * var(--u));line-height:calc(100 * var(--u));white-space:nowrap;right:calc(1075 * var(--u))}
+  .ct-title--1{top:calc(373 * var(--u))}
+  .ct-title--2{top:calc(467 * var(--u))}
+  .ct-title--3{top:calc(564 * var(--u))}
+  .ct-hero__lead{right:calc(1099 * var(--u));top:calc(715 * var(--u));width:calc(561 * var(--u));color:#fff;text-align:right}
+  .ct-tagline{left:calc(652 * var(--u));top:calc(834 * var(--u));width:calc(184 * var(--u));color:#fff;font-weight:700;text-align:center;white-space:nowrap}
+  .ct-scroll{display:flex;position:absolute;left:calc(392 * var(--u));top:calc(1000 * var(--u));width:calc(70 * var(--u))}
+
+  /* ---------- BALANCE ---------- */
+  .ct-balance{display:flex;direction:ltr;align-items:flex-start;padding-top:calc(106 * var(--u))}
+  .ct-balance > *{direction:rtl}
+  .ct-col-a{margin-left:calc(148 * var(--u));width:calc(561 * var(--u))}
+  .ct-col-b{margin-left:calc(28 * var(--u));width:calc(391 * var(--u))}
+  .ct-col-c{margin-left:calc(60 * var(--u));width:calc(590 * var(--u))}
+  .ct-img-bedroom{width:100%;height:calc(316 * var(--u))}
+  .ct-how{margin-top:calc(34 * var(--u));margin-left:calc(300 * var(--u));width:calc(261 * var(--u))}
+  .ct-big{
+    margin-top:calc(132 * var(--u));min-height:calc(696 * var(--u));
+    font-size:calc(150 * var(--u));line-height:calc(100 * var(--u));
+    font-weight:900;color:var(--green);direction:ltr;text-align:left;padding-left:calc(14 * var(--u));
+  }
+  .ct-design{margin-left:calc(98 * var(--u));width:calc(299 * var(--u))}
+  .ct-intro{margin-top:calc(227 * var(--u));width:calc(205 * var(--u));min-height:calc(344 * var(--u));margin-right:auto;text-align:left}
+  .ct-img-living{width:100%;height:calc(354 * var(--u))}
+
+  /* ---------- WIDE IMAGE + GLASS ---------- */
+  .ct-wide{position:relative;margin-top:calc(49 * var(--u));margin-right:calc(142 * var(--u));width:calc(1630 * var(--u));min-height:calc(385 * var(--u));direction:ltr;overflow:hidden}
+  .ct-wide__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .ct-wide__glass{position:absolute;left:0;top:0;width:calc(1168 * var(--u));height:100%;overflow:hidden}
+  .ct-wide__glass img{position:absolute;left:0;top:0;width:calc(1630 * var(--u));height:100%;object-fit:cover;filter:blur(calc(12 * var(--u)));transform:scale(1.1)}
+  .ct-wide__quote{position:relative;direction:rtl;margin-left:calc(61 * var(--u));width:calc(228 * var(--u));padding:calc(116 * var(--u)) 0 calc(30 * var(--u));color:#fff}
+
+  /* ---------- BOTTOM ROW ---------- */
+  .ct-bottom{display:flex;direction:ltr;align-items:flex-start;margin-top:calc(49 * var(--u));padding-bottom:calc(156 * var(--u))}
+  .ct-bottom > *{direction:rtl}
+  .ct-card{position:relative;margin-left:calc(147 * var(--u));width:calc(357 * var(--u));min-height:calc(422 * var(--u));flex:none}
+  .ct-card__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .ct-card__shade{position:absolute;top:0;bottom:0;left:calc(5 * var(--u));right:0;background:rgba(39,39,39,.8);mix-blend-mode:multiply}
+  .ct-card__quote{position:relative;margin-left:calc(37 * var(--u));width:calc(264 * var(--u));padding:calc(125 * var(--u)) 0 calc(24 * var(--u));color:#fffbfb}
+  .ct-gold{margin-left:calc(43 * var(--u));margin-top:calc(2 * var(--u));width:calc(217 * var(--u));height:calc(211 * var(--u));flex:none}
+  .ct-onsite{margin-left:calc(552 * var(--u));margin-top:calc(23 * var(--u));width:calc(458 * var(--u))}
+
+  /* ---------- HOW IT WORKS ---------- */
+  .ct-steps{margin-right:calc(142 * var(--u));width:calc(1630 * var(--u));padding-bottom:calc(156 * var(--u))}
+  .ct-steps__big{font-size:calc(150 * var(--u));line-height:calc(100 * var(--u));margin-left:calc(-4 * var(--u));margin-bottom:calc(30 * var(--u))}
+  .ct-step{min-height:calc(330 * var(--u))}
+  .ct-step__label{left:0;top:calc(46 * var(--u));font-size:calc(15 * var(--u));letter-spacing:calc(8 * var(--u))}
+  .ct-step__numwrap{left:calc(-10 * var(--u));bottom:calc(-112 * var(--u))}
+  .ct-step__num{font-size:calc(340 * var(--u))}
+  .ct-step__text{position:absolute;top:calc(52 * var(--u));left:calc(1292 * var(--u));width:calc(338 * var(--u))}
+  .ct-step__title{font-size:calc(28 * var(--u))}
+  .ct-step__sep{width:calc(44 * var(--u));margin-bottom:calc(18 * var(--u))}
+
+  .ct-ctas{margin-top:calc(90 * var(--u));gap:calc(30 * var(--u))}
+  .ct-btn{min-width:calc(440 * var(--u));padding:calc(30 * var(--u)) calc(48 * var(--u));font-size:max(17px,calc(26 * var(--u)));gap:calc(40 * var(--u))}
+  .ct-btn__arrow{width:calc(40 * var(--u))}
+
+  /* ---------- NUMBERS ---------- */
+  .ct-nums{margin-right:calc(142 * var(--u));width:calc(1630 * var(--u));padding-bottom:calc(156 * var(--u))}
+  .ct-nums__big{font-size:calc(150 * var(--u));line-height:calc(100 * var(--u));margin-left:calc(-4 * var(--u));margin-bottom:calc(70 * var(--u))}
+  .ct-nums__grid{grid-template-columns:minmax(0,1fr) minmax(0,1.35fr) minmax(0,.75fr) minmax(0,1.15fr)}
+  .ct-stat{padding:calc(56 * var(--u)) calc(40 * var(--u)) calc(10 * var(--u))}
+  .ct-stat:first-child{padding-right:0}
+  .ct-stat__line{top:0;bottom:0;left:0;width:1px}
+  .ct-stat:last-child .ct-stat__line{display:none}
+  .ct-stat__num{font-size:calc(175 * var(--u))}
+  .ct-stat__sep{width:calc(44 * var(--u));margin:calc(34 * var(--u)) 0 calc(18 * var(--u))}
+  .ct-stat__label{font-size:max(15px,calc(24 * var(--u)));max-width:calc(300 * var(--u))}
+
+  /* ---------- MANIFESTO ---------- */
+  .ct-man{margin-right:calc(142 * var(--u));width:calc(1630 * var(--u));padding-bottom:calc(170 * var(--u))}
+  .ct-man__eyebrow{font-size:calc(15 * var(--u));letter-spacing:calc(8 * var(--u));margin-bottom:calc(40 * var(--u))}
+  .ct-man__text{font-size:calc(66 * var(--u));max-width:calc(1460 * var(--u))}
+  .ct-man__pic{margin-top:calc(110 * var(--u))} .ct-man__pic img{width:calc(526 * var(--u))}
+  .ct-man__fig--1{width:calc(470 * var(--u))} .ct-man__fig--1 .ct-man__img{height:calc(590 * var(--u))}
+  .ct-man__fig--2{width:calc(400 * var(--u));margin-top:calc(180 * var(--u))} .ct-man__fig--2 .ct-man__img{height:calc(470 * var(--u))}
+  .ct-man__fig--3{width:calc(520 * var(--u));margin-top:calc(60 * var(--u))} .ct-man__fig--3 .ct-man__img{height:calc(380 * var(--u))}
+  .ct-man__fig figcaption{margin-top:calc(22 * var(--u));gap:calc(16 * var(--u))}
+  .ct-man__no,.ct-man__en{font-size:calc(14 * var(--u));letter-spacing:calc(6 * var(--u))}
+  .ct-man__he{font-size:max(15px,calc(22 * var(--u)))}
+
+  /* ---------- PROJECTS ---------- */
+  .ct-projs{margin-right:calc(142 * var(--u));width:calc(1630 * var(--u));padding-bottom:calc(170 * var(--u))}
+  .ct-projs__grid{display:flex;gap:calc(80 * var(--u));align-items:flex-start}
+  .ct-projs__col--a{width:calc(900 * var(--u))}
+  .ct-projs__col--b{width:calc(650 * var(--u));margin-top:calc(220 * var(--u))}
+  .ct-proj{margin-bottom:calc(100 * var(--u))}
+  .ct-proj--1 .ct-proj__img{height:calc(580 * var(--u))}
+  .ct-proj--3{width:calc(568 * var(--u));margin-right:0} .ct-proj--3 .ct-proj__img{height:calc(720 * var(--u))}
+  .ct-proj--2 .ct-proj__img{height:calc(860 * var(--u))}
+  .ct-proj--4 .ct-proj__img{height:calc(440 * var(--u))}
+  .ct-proj__cap{margin-top:calc(24 * var(--u));gap:calc(18 * var(--u))}
+  .ct-proj__no{font-size:calc(15 * var(--u));letter-spacing:calc(5 * var(--u))}
+  .ct-proj__name{font-size:max(17px,calc(32 * var(--u)))}
+  .ct-proj__go{font-size:calc(13 * var(--u));letter-spacing:calc(5 * var(--u));gap:calc(12 * var(--u))}
+  .ct-proj__go svg{width:calc(30 * var(--u))}
+  .ct-projs__more{margin-top:calc(10 * var(--u))}
+
+  /* ---------- CLIENTS EXPERIENCE ---------- */
+  .ct-xp{margin-right:calc(142 * var(--u));width:calc(1630 * var(--u));padding-bottom:calc(170 * var(--u))}
+  .ct-xp__big{font-size:calc(150 * var(--u));line-height:calc(100 * var(--u));margin-left:calc(-4 * var(--u))}
+  .ct-mq{width:calc(1920 * var(--u));margin:calc(70 * var(--u)) calc(-142 * var(--u)) calc(90 * var(--u)) 0;padding:calc(26 * var(--u)) 0}
+  .ct-mq__item{font-size:calc(84 * var(--u));-webkit-text-stroke-width:calc(1.4 * var(--u))}
+  .ct-mq__dot{width:calc(14 * var(--u));height:calc(14 * var(--u));margin:0 calc(50 * var(--u))}
+  .ct-xp__pane{display:flex;gap:calc(80 * var(--u));align-items:stretch}
+  .ct-xp__list{width:calc(540 * var(--u));flex:none}
+  .ct-xp__btn{padding:calc(27 * var(--u)) 0;gap:calc(26 * var(--u))}
+  .ct-xp__no{font-size:calc(15 * var(--u));letter-spacing:calc(4 * var(--u))}
+  .ct-xp__name{font-size:calc(32 * var(--u))}
+  .ct-xp__q{display:none}
+  .ct-xp__panel{flex:1;min-height:calc(560 * var(--u))}
+  .ct-xp__content{padding:calc(64 * var(--u)) calc(80 * var(--u)) calc(60 * var(--u))}
+  .ct-xp__label{font-size:calc(14 * var(--u));letter-spacing:calc(6 * var(--u))}
+  .ct-xp__content .ct-tm-card__mark{font-size:calc(170 * var(--u));height:calc(80 * var(--u));margin-top:calc(30 * var(--u))}
+  .ct-xp__quote{font-size:calc(38 * var(--u))}
+  .ct-xp__content .ct-tm-card__sep{width:calc(50 * var(--u));margin:calc(34 * var(--u)) 0 calc(14 * var(--u))}
+  .ct-xp__who{font-size:max(15px,calc(22 * var(--u)))}
+  .ct-xp__more{margin-top:calc(60 * var(--u))}
+  .ct-projs__head{margin-bottom:calc(64 * var(--u))}
+  .ct-xp__more .ct-btn{min-width:calc(440 * var(--u));padding:calc(30 * var(--u)) calc(48 * var(--u));font-size:max(17px,calc(26 * var(--u)));gap:calc(40 * var(--u))}
+  .ct-xp__more .ct-btn__arrow{width:calc(40 * var(--u))}
+
+  /* ---------- BLOG ---------- */
+  .ct-blog{margin-right:calc(142 * var(--u));width:calc(1630 * var(--u));padding-bottom:calc(170 * var(--u))}
+  .ct-post__link{grid-template-columns:calc(80 * var(--u)) calc(230 * var(--u)) minmax(0,1fr) calc(300 * var(--u)) calc(76 * var(--u));gap:calc(40 * var(--u));padding:calc(34 * var(--u)) 0}
+  .ct-post__thumbwrap{width:calc(230 * var(--u));height:calc(150 * var(--u))}
+  .ct-post__no{font-size:calc(15 * var(--u));letter-spacing:calc(5 * var(--u))}
+  .ct-post__title{font-size:calc(42 * var(--u))}
+  .ct-post__cat{font-size:max(14px,calc(18 * var(--u)))}
+  .ct-post__go{width:calc(76 * var(--u));height:calc(56 * var(--u))}
+  .ct-post__go svg{width:calc(32 * var(--u))}
+
+  /* ---------- CTA 2 + FOOTER ---------- */
+  .ct-cta2{margin-right:calc(142 * var(--u));width:calc(1630 * var(--u));padding-bottom:calc(150 * var(--u))}
+  .ct-cta2__block{min-height:calc(640 * var(--u))}
+  .ct-cta2__inner{padding:calc(120 * var(--u)) calc(110 * var(--u));max-width:calc(1100 * var(--u))}
+  .ct-cta2__eyebrow{font-size:calc(15 * var(--u));letter-spacing:calc(8 * var(--u));margin-bottom:calc(30 * var(--u))}
+  .ct-cta2__title{font-size:calc(96 * var(--u))}
+  .ct-cta2__sub{margin-top:calc(30 * var(--u));max-width:calc(620 * var(--u))}
+  .ct-cta2__btns{margin-top:calc(54 * var(--u));gap:calc(24 * var(--u))}
+  .ct-cta2__btns .ct-btn{min-width:calc(400 * var(--u));padding:calc(28 * var(--u)) calc(44 * var(--u));font-size:max(16px,calc(24 * var(--u)));gap:calc(36 * var(--u))}
+  .ct-cta2__btns .ct-btn__arrow{width:calc(38 * var(--u))}
+  .ct-badge{left:calc(150 * var(--u));top:50%;width:calc(230 * var(--u));height:calc(230 * var(--u));margin-top:calc(-115 * var(--u))}
+  .ct-badge__ring text{font-size:17px}
+  .ct-badge__arrow{width:calc(56 * var(--u))}
+  .ct-foot{margin-right:calc(142 * var(--u));width:calc(1630 * var(--u))}
+  .ct-foot__top{grid-template-columns:minmax(0,1.6fr) repeat(3,minmax(0,1fr));gap:calc(60 * var(--u));padding:calc(90 * var(--u)) 0 calc(70 * var(--u))}
+  .ct-foot__word{font-size:calc(54 * var(--u));letter-spacing:calc(14 * var(--u))}
+  .ct-foot__tag{font-size:max(13px,calc(16 * var(--u)))}
+  .ct-foot__about{max-width:calc(420 * var(--u));margin-top:calc(26 * var(--u))}
+  .ct-foot__giant{font-size:calc(258 * var(--u))}
+  .ct-foot__logobar{padding:calc(20 * var(--u)) 0 calc(26 * var(--u));padding-left:calc(12 * var(--u))}
+  .ct-foot__logoimg{width:calc(509 * var(--u))}
+
+  /* ---------- CTA ---------- */
+  .ct-cta{margin-right:calc(142 * var(--u));width:calc(1630 * var(--u));padding-bottom:calc(156 * var(--u))}
+  .ct-cta__inner{display:flex;justify-content:space-between;align-items:center;gap:calc(80 * var(--u));padding:calc(110 * var(--u)) calc(104 * var(--u))}
+  .ct-cta__text{width:calc(640 * var(--u))}
+  .ct-cta__eyebrow{font-size:calc(15 * var(--u));letter-spacing:calc(8 * var(--u));margin-bottom:calc(26 * var(--u))}
+  .ct-cta__title{font-size:calc(64 * var(--u));margin-bottom:calc(34 * var(--u))}
+  .ct-cta__text .ct-body + .ct-body{margin-top:calc(14 * var(--u))}
+  .ct-cta__lead{margin-top:calc(40 * var(--u)) !important}
+  .ct-cta__lead svg{width:calc(40 * var(--u))}
+  .ct-form-wrap{width:calc(620 * var(--u));padding:calc(56 * var(--u)) calc(52 * var(--u)) calc(48 * var(--u))}
+  .ct-field{margin-bottom:calc(26 * var(--u))}
+  .ct-field input,.ct-field textarea{font-size:max(15px,calc(20 * var(--u)));padding:calc(26 * var(--u)) 0 calc(10 * var(--u))}
+  .ct-field label{font-size:max(15px,calc(20 * var(--u)));top:calc(26 * var(--u))}
+  .ct-choice{margin:calc(6 * var(--u)) 0 calc(28 * var(--u))}
+  .ct-choice span{padding:calc(12 * var(--u)) calc(26 * var(--u));font-size:max(14px,calc(18 * var(--u)))}
+  .ct-form .ct-btn{width:100%;margin-top:calc(14 * var(--u))}
+
+  /* ---------- TESTIMONIALS ---------- */
+  .ct-tm{margin-right:calc(142 * var(--u));width:calc(1630 * var(--u));padding-bottom:calc(156 * var(--u))}
+  .ct-tm__head{display:flex;direction:ltr;justify-content:space-between;align-items:flex-end;margin-bottom:calc(64 * var(--u))}
+  .ct-tm__big{font-size:calc(150 * var(--u));line-height:calc(100 * var(--u));font-weight:900;color:var(--green);direction:ltr;text-align:left;margin-left:calc(-4 * var(--u))}
+  .ct-tm__kicker{direction:rtl;font-size:max(15px,calc(28 * var(--u)));letter-spacing:calc(14 * var(--u));line-height:1.2;font-weight:500;color:var(--green);white-space:nowrap;margin-bottom:calc(10 * var(--u))}
+  .ct-tm__block{min-height:calc(690 * var(--u))}
+  .ct-tm__track{gap:calc(75 * var(--u));padding:calc(110 * var(--u)) calc(104 * var(--u));scroll-padding-inline:calc(104 * var(--u))}
+  .ct-tm__track::after{display:none}
+  .ct-tm-card{flex:0 0 calc(400 * var(--u));min-height:calc(470 * var(--u));padding:calc(52 * var(--u)) calc(44 * var(--u)) calc(48 * var(--u))}
+  .ct-tm__ctrl{margin-top:calc(34 * var(--u));gap:calc(28 * var(--u))}
+  .ct-tm__arrow{width:calc(78 * var(--u));height:calc(56 * var(--u))}
+  .ct-tm__arrow svg{width:calc(34 * var(--u))}
+  .ct-tm__count{font-size:calc(15 * var(--u));letter-spacing:calc(5 * var(--u))}
+  .ct-tm-card__img{left:calc(var(--ox,0) * -1px);top:calc(var(--oy,0) * -1px);width:calc(var(--sw,0) * 1px);height:calc(var(--sh,0) * 1px)}
+  .ct-tm-card__num{font-size:calc(15 * var(--u));letter-spacing:calc(6 * var(--u))}
+  .ct-tm-card__mark{font-size:calc(150 * var(--u));height:calc(70 * var(--u));margin-top:calc(26 * var(--u))}
+  .ct-tm-card__sep{width:calc(44 * var(--u));margin:calc(26 * var(--u)) 0 calc(14 * var(--u))}
+}
+
+/* ========================================================
+   TABLET + MOBILE (<1100px)
+   ======================================================== */
+@media (max-width:1099.98px){
+  .ct-body{font-size:clamp(15px, 2.1vw, 19px)}
+
+  /* HERO 100vh */
+  .ct-hero{
+    position:relative;overflow:hidden;background:#ebe7e1;
+    height:100vh;height:100svh;min-height:560px;
+    display:flex;flex-direction:column;
+    padding:clamp(28px,6vh,72px) clamp(20px,6vw,64px) clamp(20px,4vh,44px);
+  }
+  .ct-slides--blur{filter:blur(16px);transform:scale(1.08)}
+  .ct-slides--sharp{display:none}
+  .ct-hero__stage{position:relative;flex:1;min-height:0;display:flex;flex-direction:column;align-items:center;width:100%}
+  .ct-hero__text{position:relative;display:flex;flex-direction:column;align-items:flex-start;width:100%;max-width:560px;order:1}
+  .ct-kicker{font-size:clamp(24px,min(6vw,4vh),48px);line-height:1.3;font-weight:500;color:var(--green)}
+  .ct-title{font-size:clamp(56px,min(17vw,10.5vh),140px);line-height:.67;font-weight:900;color:var(--dark);display:block}
+  .ct-title--1{margin-top:.14em}
+  .ct-title--2,.ct-title--3{margin-top:-.04em}
+  .ct-hero__lead{color:#fff;margin-top:.9em;text-shadow:0 1px 10px rgba(0,0,0,.14)}
+  .ct-tagline{color:#fff;font-weight:700;margin-top:.5em;text-shadow:0 1px 10px rgba(0,0,0,.14)}
+  .ct-scroll{display:none}
+  .ct-hero__frame{position:relative;order:2;flex:1 1 auto;min-height:170px;width:100%;max-width:560px;margin-top:clamp(16px,3vh,32px);overflow:hidden}
+  .ct-slides--frame{display:block}
+  .ct-welcome{position:absolute;top:18px;right:18px;direction:ltr;color:#fff;font-size:12px;letter-spacing:.4em;white-space:nowrap}
+  .ct-credit{position:absolute;bottom:16px;left:0;right:0;text-align:center;direction:ltr;color:#fff;font-size:clamp(11px,2.2vw,16px);letter-spacing:.14em;white-space:nowrap}
+  .ct-counter{position:absolute;top:18px;left:18px;font-size:12px;letter-spacing:.2em;gap:10px}
+  .ct-counter__bar{width:44px}
+
+  /* BALANCE — שטוח ומסודר מחדש */
+  .ct-balance{display:flex;flex-direction:column;padding:clamp(56px,10vw,96px) clamp(20px,6vw,64px) 0;gap:clamp(28px,5vw,44px);max-width:760px;margin-inline:auto}
+  .ct-col-a,.ct-col-b,.ct-col-c{display:contents}
+  .ct-d{display:none}
+  .ct-big{order:1;font-size:clamp(64px,15vw,130px);line-height:.9;font-weight:900;color:var(--green);direction:ltr;text-align:left}
+  .ct-intro{order:2}
+  .ct-img-bedroom{order:3;width:100%;aspect-ratio:561/316}
+  .ct-how{order:4}
+  .ct-img-living{order:5;width:100%;aspect-ratio:590/354}
+  .ct-design{order:6}
+
+  .ct-wide{position:relative;margin:clamp(40px,7vw,64px) auto 0;width:calc(100% - 2 * clamp(20px,6vw,64px));max-width:760px;min-height:clamp(320px,60vw,420px);display:flex;align-items:center;overflow:hidden}
+  .ct-wide__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:75% 50%}
+  .ct-wide__glass{position:absolute;top:0;bottom:0;right:0;width:68%;overflow:hidden}
+  .ct-wide__glass img{position:absolute;top:0;right:0;height:100%;width:calc(100% / .68);object-fit:cover;object-position:75% 50%;filter:blur(14px);transform:scale(1.08)}
+  .ct-wide__quote{position:relative;width:60%;margin-right:4%;padding:28px 0;color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.15)}
+
+  .ct-bottom{display:flex;flex-direction:column;gap:clamp(28px,5vw,40px);padding:clamp(40px,7vw,64px) clamp(20px,6vw,64px) clamp(64px,10vw,110px);max-width:760px;margin-inline:auto}
+  .ct-onsite{order:1}
+  .ct-card{order:2;position:relative;min-height:clamp(320px,70vw,440px);display:flex;align-items:center}
+  .ct-card__img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .ct-card__shade{position:absolute;inset:0;background:rgba(39,39,39,.8);mix-blend-mode:multiply}
+  .ct-card__quote{position:relative;padding:32px clamp(24px,7vw,48px);color:#fffbfb}
+  .ct-gold{order:3;width:clamp(120px,30vw,217px);aspect-ratio:217/211;align-self:flex-start}
+
+  .ct-steps{padding:0 clamp(20px,6vw,64px) clamp(64px,10vw,110px);max-width:860px;margin-inline:auto}
+  .ct-steps__big{font-size:clamp(64px,15vw,130px);line-height:.9;margin-bottom:12px}
+  .ct-step{padding:30px 0 clamp(128px,32vw,200px)}
+  .ct-step__label{right:0;bottom:20px;font-size:11px;letter-spacing:.5em}
+  .ct-step__numwrap{left:2px;bottom:calc(clamp(150px,36vw,230px) * -.33)}
+  .ct-step__num{font-size:clamp(150px,36vw,230px)}
+  .ct-step__text{position:relative;max-width:520px;margin-left:auto;margin-right:0}
+  .ct-step__title{font-size:clamp(20px,4.6vw,26px)}
+  .ct-step__sep{width:36px;margin-bottom:14px}
+
+  .ct-ctas{margin-top:44px;flex-direction:column;gap:14px}
+  .ct-btn{width:100%;padding:22px 26px;font-size:clamp(17px,4.4vw,22px);gap:20px}
+  .ct-btn__arrow{width:34px}
+
+  .ct-nums{padding:0 clamp(20px,6vw,64px) clamp(64px,10vw,110px);max-width:860px;margin-inline:auto}
+  .ct-nums__big{font-size:clamp(56px,13vw,130px);line-height:.9;margin-bottom:28px}
+  .ct-nums__grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ct-stat{padding:28px 14px 30px}
+  .ct-stat:nth-child(odd){padding-right:0}
+  .ct-stat__line{top:0;left:0;right:0;height:1px}
+  .ct-stat__num{font-size:clamp(70px,20vw,150px)}
+  .ct-stat__sep{width:34px;margin:18px 0 12px}
+  .ct-stat__label{font-size:clamp(15px,3.9vw,19px)}
+
+  .ct-man{padding:0 clamp(20px,6vw,64px) clamp(70px,12vw,120px);max-width:860px;margin-inline:auto}
+  .ct-man__eyebrow{font-size:11px;letter-spacing:.5em;margin-bottom:20px}
+  .ct-man__text{font-size:clamp(26px,6.6vw,46px)}
+  .ct-man__pic{margin-top:44px} .ct-man__pic img{width:min(70%,340px)}
+  .ct-man__fig--1 .ct-man__img{aspect-ratio:470/520}
+  .ct-man__fig--2{width:72%;align-self:flex-end} .ct-man__fig--2 .ct-man__img{aspect-ratio:400/470}
+  .ct-man__fig--3{width:86%} .ct-man__fig--3 .ct-man__img{aspect-ratio:520/380}
+  .ct-man__fig figcaption{margin-top:14px;gap:12px}
+  .ct-man__no,.ct-man__en{font-size:11px;letter-spacing:.35em}
+  .ct-man__he{font-size:16px}
+
+  .ct-projs{padding:0 clamp(20px,6vw,64px) clamp(70px,12vw,120px);max-width:860px;margin-inline:auto}
+  .ct-projs__grid,.ct-projs__col{display:contents}
+  .ct-projs__grid{display:flex;flex-direction:column;gap:40px}
+  .ct-proj--1{order:1} .ct-proj--2{order:2;width:78%;align-self:flex-end} .ct-proj--3{order:3;width:84%} .ct-proj--4{order:4}
+  .ct-proj--1 .ct-proj__img{aspect-ratio:16/10} .ct-proj--2 .ct-proj__img{aspect-ratio:3/4} .ct-proj--3 .ct-proj__img{aspect-ratio:4/5} .ct-proj--4 .ct-proj__img{aspect-ratio:16/10}
+  .ct-proj__cap{margin-top:14px;gap:12px}
+  .ct-proj__no{font-size:11px;letter-spacing:.3em}
+  .ct-proj__name{font-size:clamp(18px,4.8vw,24px)}
+  .ct-projs .ct-proj__go{display:none}
+  .ct-projs .ct-projs__head{padding:0}
+  .ct-projs__more{margin-top:44px}
+
+  .ct-xp{padding:0 clamp(20px,6vw,64px) clamp(70px,12vw,120px);max-width:860px;margin-inline:auto}
+  .ct-xp__big{font-size:clamp(50px,12.5vw,120px);line-height:.9}
+  .ct-mq{margin:30px calc(-1 * clamp(20px,6vw,64px)) 36px;padding:14px 0}
+  .ct-mq__item{font-size:clamp(34px,9vw,60px);-webkit-text-stroke-width:1px}
+  .ct-mq__dot{width:9px;height:9px;margin:0 22px}
+  .ct-xp__panel{display:none}
+  .ct-xp__btn{padding:22px 0 10px;gap:16px;pointer-events:none}
+  .ct-xp__no{font-size:12px;letter-spacing:.3em}
+  .ct-xp__name{font-size:clamp(20px,5vw,26px)}
+  .ct-xp__bar{display:none}
+  .ct-xp__q{display:block;padding:0 0 24px;color:var(--text)}
+  .ct-xp__q .ct-key{background-size:100% max(2px,.055em)!important}
+  .ct-xp__more{margin-top:36px}
+  .ct-xp__more .ct-btn{width:100%;padding:22px 26px;font-size:clamp(17px,4.4vw,22px);gap:20px}
+  .ct-xp__more .ct-btn__arrow{width:34px}
+
+  .ct-blog{padding:0 clamp(20px,6vw,64px) clamp(70px,12vw,120px);max-width:860px;margin-inline:auto}
+  .ct-blog .ct-projs__head{padding:0}
+  .ct-post__link{grid-template-columns:88px minmax(0,1fr);grid-template-areas:"thumb title" "thumb cat";column-gap:16px;row-gap:6px;padding:22px 0;align-items:start}
+  .ct-post__no{display:none}
+  .ct-post__thumbwrap{grid-area:thumb;width:88px;height:88px}
+  .ct-post__title{grid-area:title;font-size:clamp(17px,4.4vw,22px)}
+  .ct-post__cat{grid-area:cat;font-size:13px}
+  .ct-post__go{display:none!important}
+
+  .ct-cta2{padding:0 0 clamp(64px,10vw,110px);max-width:860px;margin-inline:auto}
+  .ct-cta2__inner{padding:56px clamp(22px,6vw,48px) 150px}
+  .ct-cta2__eyebrow{font-size:11px;letter-spacing:.45em;margin-bottom:18px}
+  .ct-cta2__title{font-size:clamp(38px,10vw,64px)}
+  .ct-cta2__sub{margin-top:18px}
+  .ct-cta2__btns{margin-top:32px;flex-direction:column;gap:12px}
+  .ct-cta2__btns .ct-btn{width:100%;padding:20px 24px;font-size:clamp(16px,4.3vw,20px);gap:18px}
+  .ct-cta2__btns .ct-btn__arrow{width:30px}
+  .ct-badge{left:22px;bottom:22px;width:110px;height:110px}
+  .ct-badge__ring text{font-size:17px}
+  .ct-badge__arrow{width:30px}
+  .ct-foot{padding:0 clamp(20px,6vw,64px);max-width:860px;margin-inline:auto}
+  .ct-foot__top{grid-template-columns:1fr 1fr;gap:36px 20px;padding:56px 0 40px}
+  .ct-foot__brand{grid-column:1 / -1}
+  .ct-foot__word{font-size:38px;letter-spacing:.28em}
+  .ct-foot__tag{font-size:13px}
+  .ct-foot__about{margin-top:16px}
+  .ct-foot__giant{font-size:17.2vw}
+  .ct-foot__logobar{padding:10px 0 22px}
+  .ct-foot__logoimg{width:min(78%,360px)}
+  .ct-foot__bar{flex-direction:column;align-items:flex-start;gap:10px}
+
+  .ct-cta{padding:0 0 clamp(64px,10vw,110px);max-width:860px;margin-inline:auto}
+  .ct-cta__inner{display:flex;flex-direction:column;gap:36px;padding:48px clamp(20px,6vw,48px)}
+  .ct-cta__eyebrow{font-size:11px;letter-spacing:.5em;margin-bottom:16px}
+  .ct-cta__title{font-size:clamp(32px,8vw,52px);margin-bottom:20px}
+  .ct-cta__text .ct-body + .ct-body{margin-top:10px}
+  .ct-cta__lead{margin-top:26px !important}
+  .ct-cta__lead svg{width:32px;transform:rotate(-90deg)}
+  .ct-form-wrap{width:100%;padding:34px 24px 30px}
+  .ct-field{margin-bottom:20px}
+  .ct-field input,.ct-field textarea{font-size:16px;padding:24px 0 9px}
+  .ct-field label{font-size:16px;top:24px}
+  .ct-choice{margin:4px 0 24px}
+  .ct-choice span{padding:11px 20px;font-size:15px}
+  .ct-form .ct-btn{width:100%;margin-top:10px}
+
+  .ct-tm{padding:0 0 clamp(64px,10vw,110px);max-width:860px;margin-inline:auto}
+  .ct-tm__head{display:flex;flex-direction:column;align-items:flex-start;gap:6px;padding:0 clamp(20px,6vw,64px);margin-bottom:clamp(24px,5vw,40px)}
+  .ct-tm__kicker{font-size:clamp(14px,3.6vw,20px);letter-spacing:.45em;line-height:1.3;font-weight:500;color:var(--green);order:1}
+  .ct-tm__big{font-size:clamp(64px,15vw,130px);line-height:.9;font-weight:900;color:var(--green);direction:ltr;text-align:left;order:2;align-self:flex-end}
+  .ct-tm__track{gap:14px;padding:36px 9%;scroll-padding-inline:9%}
+  .ct-tm__track::after{flex:0 0 1px}
+  .ct-tm-card{flex:0 0 82%;min-height:400px;padding:30px 26px 28px}
+  .ct-tm__ctrl{margin:18px clamp(20px,6vw,64px) 0;gap:14px}
+  .ct-tm__arrow{width:52px;height:44px}
+  .ct-tm__arrow svg{width:26px}
+  .ct-tm__count{font-size:11px;letter-spacing:.3em}
+  .ct-tm-card__img{inset:0;width:100%;height:100%;object-position:50% 30%}
+  .ct-tm-card__num{font-size:12px;letter-spacing:.4em}
+  .ct-tm-card__mark{font-size:110px;height:52px;margin-top:18px}
+  .ct-tm-card__sep{width:36px;margin:20px 0 12px}
+}
+
+/* ---------- רכיבים משותפים ---------- */
+.ct-wide__glass::after{content:"";position:absolute;inset:0;background:rgba(250,250,250,.2)}
+.ct-media{position:relative;overflow:hidden}
+.ct-media__inner{position:absolute;left:0;right:0;top:-8%;height:116%;will-change:transform;transform:translate3d(0,var(--py,0px),0)}
+.ct-media img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.ct-media:hover img{transform:scale(1.05)}
+.ct-gold{position:relative;overflow:hidden;transform-style:preserve-3d}
+.ct-gold img{width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply;opacity:.8}
+.ct-gold::after{ /* ברק זהב חולף */
+  content:"";position:absolute;inset:-40%;pointer-events:none;
+  background:linear-gradient(115deg,transparent 40%,rgba(255,244,214,.55) 50%,transparent 60%);
+  transform:translateX(-70%);animation:ct-shine 5.5s var(--ease-io) infinite 2s;
+}
+@keyframes ct-shine{0%{transform:translateX(-70%)}45%,100%{transform:translateX(70%)}}
+.ct-card{transform-style:preserve-3d}
+.ct-card__img{transition:transform 1.2s var(--ease)}
+.ct-card:hover .ct-card__img{transform:scale(1.06)}
+.ct-split .w{display:inline-block;white-space:nowrap}
+.ct-split .ch{display:inline-block}
+
+/* ---------- איך זה עובד (משותף) ---------- */
+.ct-steps__big{font-weight:900;color:var(--green);direction:ltr;text-align:left}
+.ct-steps__list{list-style:none}
+.ct-step{position:relative;direction:ltr}
+.ct-step__numclip{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.ct-step__img{display:none}
+.ct-step__label{position:absolute;direction:ltr;color:var(--green);font-weight:500;z-index:1}
+.ct-step__numwrap{position:absolute;line-height:1;transform:translate3d(var(--px,0px),0,0);will-change:transform}
+.ct-step__num{
+  position:relative;display:block;font-weight:900;line-height:1;direction:ltr;
+  background:linear-gradient(180deg,var(--green) 0%,rgba(121,147,141,.55) 45%,rgba(121,147,141,.06) 78%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.ct-step__num--gray{background-image:linear-gradient(180deg,var(--gray) 0%,rgba(91,91,91,.5) 45%,rgba(91,91,91,.05) 78%)}
+.ct-step__num::after{
+  content:attr(data-n);position:absolute;inset:0;
+  background:linear-gradient(180deg,#d9b56a 0%,rgba(184,145,63,.6) 45%,rgba(184,145,63,.06) 78%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  opacity:0;transition:opacity .6s var(--ease);
+}
+.ct-step__text{direction:rtl;text-align:right;z-index:1}
+.ct-step__sep{display:block;height:1px;background:var(--gold);margin-right:0;margin-left:auto;transform-origin:right;transition:transform .6s var(--ease)}
+.ct-step__title{font-weight:700;color:var(--dark);line-height:1.15;margin-bottom:.45em;transition:color .4s ease}
+.ct-step__text p{color:var(--text)}
+.ct-step__line{position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--line);z-index:2}
+.ct-step__line::after{content:"";position:absolute;inset:0;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .9s var(--ease-io)}
+.ct-vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (hover:hover) and (pointer:fine) and (min-width:1100px){
+  .ct-step:hover,.ct-post:hover{z-index:5}
+  .ct-step__img{display:block;position:absolute;left:0;top:0;width:calc(300 * var(--u));height:calc(380 * var(--u));pointer-events:none;z-index:4;will-change:transform}
+  .ct-step__imgin{width:100%;height:100%;overflow:hidden;opacity:0;transform:scale(.35);transition:opacity .45s var(--ease),transform .7s var(--ease);box-shadow:0 30px 60px -20px rgba(0,0,0,.35)}
+  .ct-step__imgin img{width:100%;height:100%;object-fit:cover;transform:scale(1.6);transition:transform 1.1s var(--ease)}
+  .ct-step__img.is-show .ct-step__imgin{opacity:1;transform:scale(1)}
+  .ct-step__img.is-show .ct-step__imgin img{transform:scale(1)}
+}
+@media (hover:hover){
+  .ct-step:hover .ct-step__num::after{opacity:1}
+  .ct-step:hover .ct-step__line::after{transform:scaleX(1)}
+  .ct-step:hover .ct-step__sep{transform:scaleX(2.2)}
+  .ct-step:hover .ct-step__title{color:var(--green)}
+}
+
+/* ---------- כפתורים ---------- */
+.ct-ctas{display:flex;direction:rtl;justify-content:flex-start}
+.ct-btn{
+  position:relative;display:inline-flex;align-items:center;justify-content:space-between;
+  font-family:var(--font);font-weight:700;color:var(--dark);text-decoration:none;
+  border:1px solid var(--line);overflow:hidden;isolation:isolate;
+  transition:color .5s var(--ease),border-color .5s var(--ease);
+}
+.ct-btn::before{ /* מילוי שנמרח מימין */
+  content:"";position:absolute;inset:0;z-index:-1;background:var(--green);
+  transform:scaleX(0);transform-origin:right;transition:transform .7s var(--ease-io);
+}
+.ct-btn::after{ /* קו זהב תחתון */
+  content:"";position:absolute;right:0;left:0;bottom:-1px;height:2px;background:var(--gold);
+  transform:scaleX(0);transform-origin:left;transition:transform .7s var(--ease-io) .1s;
+}
+.ct-btn__label{position:relative;display:block;overflow:hidden;line-height:1.3}
+.ct-btn__label::after{content:"";}
+.ct-btn__arrow{flex:none;height:auto;color:var(--green);transition:transform .6s var(--ease),color .5s var(--ease)}
+.ct-btn:hover,.ct-btn:focus-visible{color:#fff;border-color:var(--green)}
+.ct-btn:hover::before,.ct-btn:focus-visible::before{transform:scaleX(1)}
+.ct-btn:hover::after,.ct-btn:focus-visible::after{transform:scaleX(1)}
+.ct-btn:hover .ct-btn__arrow,.ct-btn:focus-visible .ct-btn__arrow{transform:translateX(-10px);color:#fff}
+.ct-btn:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.ct-btn:active{transform:scale(.98)}
+
+/* ---------- במספרים (משותף) ---------- */
+.ct-nums__big{font-weight:900;color:var(--green);direction:ltr;text-align:left}
+.ct-nums__grid{display:grid;direction:rtl;border-top:1px solid var(--line)}
+.ct-stat{position:relative}
+.ct-stat__line{position:absolute;background:var(--line);transform-origin:top}
+.ct-stat__num{
+  direction:ltr;text-align:right;font-weight:900;line-height:.9;white-space:nowrap;color:var(--green);
+  transition:transform .7s var(--ease),color .5s ease;
+}
+.ct-stat__num--gray{color:var(--gray)}
+.ct-stat__pre,.ct-stat__suf{font-size:.42em;vertical-align:.95em;margin:0 .12em;color:var(--gold)}
+.ct-stat__val{display:inline-block;font-variant-numeric:tabular-nums}
+.ct-stat__sep{display:block;height:1px;background:var(--gold);transform-origin:right;transition:transform .6s var(--ease)}
+.ct-stat__label{font-weight:700;color:var(--dark);text-align:right;line-height:1.25}
+@media (hover:hover){
+  .ct-stat:hover .ct-stat__num{transform:translateY(-8px)}
+  .ct-stat:hover .ct-stat__val{color:var(--gold);transition:color .5s ease}
+  .ct-stat:hover .ct-stat__sep{transform:scaleX(2.4)}
+}
+
+/* ---------- מניפסט (משותף) ---------- */
+.ct-man__eyebrow{direction:ltr;text-align:right;color:var(--green);font-weight:500}
+.ct-man__text{font-weight:500;color:var(--dark);line-height:1.3;text-align:right}
+.ct-key{font-weight:900;background:linear-gradient(var(--gold),var(--gold)) right 0 bottom .04em/100% max(2px,.055em) no-repeat;-webkit-box-decoration-break:clone;box-decoration-break:clone;transition:background-size 1.1s var(--ease-io)}
+.ct-man__result{font-weight:900;color:var(--green)}
+.ct-man__pic{display:flex;justify-content:center}
+.ct-man__pic img{height:auto}
+.ct-man__fig{flex:none}
+.ct-man__fig figcaption{display:flex;align-items:baseline;direction:rtl;flex-wrap:wrap}
+.ct-man__no{color:var(--gold);font-weight:700;direction:ltr}
+.ct-man__en{color:var(--green);font-weight:500;direction:ltr}
+.ct-man__he{font-weight:700;color:var(--dark);margin-right:auto}
+
+/* ---------- פרויקטים (משותף) ---------- */
+.ct-projs__grid{direction:rtl}
+.ct-proj{display:block;text-decoration:none;color:inherit}
+.ct-proj__img{position:relative}
+.ct-proj__img::before{content:"";position:absolute;inset:0;z-index:2;background:rgba(39,39,39,0);transition:background .7s var(--ease);pointer-events:none}
+.ct-proj:hover .ct-proj__img::before{background:rgba(39,39,39,.18)}
+.ct-proj__cap{display:flex;align-items:baseline;direction:rtl;border-bottom:1px solid var(--line);padding-bottom:.8em;position:relative}
+.ct-proj__cap::after{content:"";position:absolute;right:0;left:0;bottom:-1px;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .8s var(--ease-io)}
+.ct-proj:hover .ct-proj__cap::after{transform:scaleX(1)}
+.ct-proj__no{color:var(--gold);font-weight:700;direction:ltr}
+.ct-proj__name{font-weight:700;color:var(--dark);transition:color .4s ease}
+.ct-proj:hover .ct-proj__name{color:var(--green)}
+.ct-proj__go{margin-right:auto;display:flex;align-items:center;direction:ltr;flex-direction:row-reverse;color:var(--green);font-weight:500;opacity:0;transform:translateX(14px);transition:opacity .5s var(--ease),transform .6s var(--ease)}
+.ct-proj__go svg{height:auto}
+.ct-proj:hover .ct-proj__go,.ct-proj:focus-visible .ct-proj__go{opacity:1;transform:none}
+.ct-proj:focus-visible{outline:2px solid var(--gold);outline-offset:6px}
+
+/* ---------- חוויית לקוחות (משותף) ---------- */
+.ct-xp__big{font-weight:900;color:var(--green);direction:ltr;text-align:left}
+.ct-mq{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);direction:ltr}
+.ct-mq__track{display:flex;width:max-content;animation:ct-mq 48s linear infinite}
+.ct-mq:hover .ct-mq__track{animation-play-state:paused}
+.ct-mq__set{display:flex;align-items:center;flex:none;direction:rtl}
+.ct-mq__item{font-weight:900;white-space:nowrap;color:transparent;-webkit-text-stroke-color:var(--green);-webkit-text-stroke-style:solid;line-height:1.15;transition:color .4s ease}
+.ct-mq__item--fill{color:var(--gray);-webkit-text-stroke-color:transparent}
+.ct-mq__item:hover{color:var(--gold);-webkit-text-stroke-color:var(--gold)}
+.ct-mq__dot{flex:none;background:var(--gold);transform:rotate(45deg)}
+@keyframes ct-mq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.ct-xp__pane{direction:rtl}
+.ct-xp__list{list-style:none;border-top:1px solid var(--line)}
+.ct-xp__row{border-bottom:1px solid var(--line);position:relative}
+.ct-xp__btn{display:flex;align-items:baseline;width:100%;background:none;border:0;cursor:pointer;font-family:var(--font);text-align:right;direction:rtl;color:var(--dark);position:static}
+.ct-xp__no{color:var(--green);font-weight:500;direction:ltr;transition:color .4s ease}
+.ct-xp__name{font-weight:700;transition:color .4s ease,transform .6s var(--ease)}
+.ct-xp__bar{position:absolute;right:0;left:0;bottom:-1px;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:right}
+.ct-xp__row:hover .ct-xp__name{transform:translateX(-8px)}
+.ct-xp__row.is-active .ct-xp__name{color:var(--green)}
+.ct-xp__row.is-active .ct-xp__no{color:var(--gold)}
+.ct-xp__row.is-active .ct-xp__bar{animation:ct-fill-r 7s linear forwards}
+.ct-xp__pane.is-paused .ct-xp__row.is-active .ct-xp__bar{animation-play-state:paused}
+@keyframes ct-fill-r{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+.ct-xp__btn:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.ct-xp__panel{position:relative;overflow:hidden;overflow:clip}
+.ct-xp__bgs{position:absolute;inset:0}
+.ct-xp__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(14px);transform:scale(1.12);opacity:0;transition:opacity 1.2s ease,transform 6s ease}
+.ct-xp__bg.is-active{opacity:1;transform:scale(1.06)}
+.ct-xp__panel .ct-frame-line{z-index:2}
+.ct-xp__content{position:relative;z-index:1;display:flex;flex-direction:column;align-items:stretch;height:100%;justify-content:center;transition:opacity .35s ease,transform .5s var(--ease)}
+.ct-xp__content.is-out{opacity:0;transform:translateY(14px)}
+.ct-xp__label{direction:ltr;text-align:right;color:var(--green);font-weight:500}
+.ct-xp__quote{font-weight:500;line-height:1.35;color:var(--dark);text-align:right}
+.ct-xp__quote .ct-key{background-size:100% max(2px,.055em)}
+.ct-xp__who{font-weight:700;color:var(--dark);text-align:right}
+.ct-xp__more{display:flex;direction:rtl}
+
+/* ---------- בלוג (משותף) ---------- */
+.ct-blog__gold{color:var(--gold)}
+.ct-blog__list{list-style:none;border-top:1px solid var(--line)}
+.ct-post{position:relative;border-bottom:1px solid var(--line)}
+.ct-post::after{content:"";position:absolute;right:0;left:0;bottom:-1px;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .9s var(--ease-io)}
+.ct-post:hover::after{transform:scaleX(1)}
+.ct-post__link{display:grid;align-items:center;direction:rtl;text-decoration:none;color:inherit;position:relative;z-index:1}
+.ct-post__link:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.ct-post__no{color:var(--gold);font-weight:700;direction:ltr;text-align:right}
+.ct-post__thumbwrap{display:block;overflow:hidden;position:relative}
+.ct-post__thumb{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease),filter .6s ease}
+.ct-post:hover .ct-post__thumb{transform:scale(1.08)}
+.ct-post__title{font-weight:700;color:var(--dark);line-height:1.2;transition:color .4s ease,transform .7s var(--ease)}
+.ct-post__cat{color:var(--green);font-weight:500}
+.ct-post__go{display:flex;align-items:center;justify-content:center;border:1px solid var(--line);color:var(--green);position:relative;overflow:hidden;isolation:isolate;transition:color .45s var(--ease),border-color .45s var(--ease)}
+.ct-post__go::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--green);transform:scaleX(0);transform-origin:right;transition:transform .55s var(--ease-io)}
+.ct-post__go svg{height:auto;transition:transform .45s var(--ease)}
+.ct-post:hover .ct-post__title{color:var(--green);transform:translateX(-14px)}
+.ct-post:hover .ct-post__go{color:#fff;border-color:var(--green)}
+.ct-post:hover .ct-post__go::before{transform:scaleX(1)}
+.ct-post:hover .ct-post__go svg{transform:translateX(-5px)}
+
+/* ---------- CTA 2 (משותף) ---------- */
+.ct-cta2__block{position:relative;overflow:hidden;overflow:clip}
+.ct-cta2__bg{filter:none!important}
+.ct-cta2__shade{position:absolute;inset:0;background:linear-gradient(270deg,rgba(39,39,39,.86) 0%,rgba(39,39,39,.7) 45%,rgba(39,39,39,.35) 100%);mix-blend-mode:multiply}
+.ct-cta2__frame{inset:calc(var(--u,1px) * 28);width:auto;height:auto;z-index:1}
+.ct-cta2__frame rect{stroke:rgba(255,255,255,.35);stroke-dasharray:none!important}
+.ct-cta2__inner{position:relative;z-index:2;direction:rtl;color:#fff}
+.ct-cta2__eyebrow{direction:ltr;text-align:right;color:#e2c27f;font-weight:500}
+.ct-cta2__title{font-weight:900;line-height:1.02;color:#fff}
+.ct-cta2__title span{color:#e2c27f}
+.ct-cta2__sub{color:rgba(255,255,255,.88)}
+.ct-cta2__btns{display:flex;flex-wrap:wrap}
+.ct-btn--light{color:var(--dark);background:#fff;border-color:#fff}
+.ct-btn--light::before{background:var(--green)}
+.ct-btn--light:hover{color:#fff;border-color:var(--green)}
+.ct-btn--ghost{color:#fff;border-color:rgba(255,255,255,.5)}
+.ct-btn--ghost .ct-btn__arrow{color:#fff}
+.ct-btn--ghost::before{background:#fff}
+.ct-btn--ghost:hover{color:var(--dark);border-color:#fff}
+.ct-btn--ghost:hover .ct-btn__arrow{color:var(--dark)}
+.ct-badge{position:absolute;z-index:3;display:flex;align-items:center;justify-content:center;color:#fff;border-radius:50%;text-decoration:none;transition:background .5s var(--ease),color .5s}
+.ct-badge__ring{position:absolute;inset:0;width:100%;height:100%;animation:ct-spin 16s linear infinite;overflow:visible}
+.ct-badge__ring text{fill:currentColor;font-family:var(--font);font-weight:500;direction:ltr}
+.ct-badge__arrow{height:auto;transform:rotate(-45deg);transition:transform .6s var(--ease)}
+.ct-badge:hover{background:var(--gold)}
+.ct-badge:hover .ct-badge__arrow{transform:rotate(0deg)}
+.ct-badge:hover .ct-badge__ring{animation-duration:6s}
+@keyframes ct-spin{to{transform:rotate(360deg)}}
+
+/* ---------- פוטר (משותף) ---------- */
+.ct-foot{direction:rtl;color:var(--text);border-top:1px solid var(--line)}
+.ct-foot__top{display:grid;align-items:start}
+.ct-foot__logo{display:inline-flex;flex-direction:column;align-items:flex-start;text-decoration:none;color:var(--dark)}
+.ct-foot__word{direction:ltr;font-weight:500;line-height:1}
+.ct-foot__tag{color:var(--green);margin-top:8px;font-weight:500}
+.ct-foot__about{color:#5f6461;font-size:max(14px,min(1.05vw,18px));line-height:1.55}
+.ct-foot__h{font-weight:900;color:var(--green);font-size:max(13px,min(.85vw,15px));letter-spacing:.08em;margin-bottom:18px;position:relative;padding-bottom:12px}
+.ct-foot__h::after{content:"";position:absolute;right:0;bottom:0;width:30px;height:1px;background:var(--gold)}
+.ct-foot__col{display:flex;flex-direction:column;align-items:flex-start;gap:12px}
+.ct-foot__col a,.ct-foot__links a{position:relative;color:var(--dark);text-decoration:none;font-size:max(15px,min(1.05vw,18px));transition:color .35s ease}
+.ct-foot__col a::after,.ct-foot__links a::after{content:"";position:absolute;right:0;left:0;bottom:-3px;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .5s var(--ease)}
+.ct-foot__col a:hover,.ct-foot__links a:hover{color:var(--green)}
+.ct-foot__col a:hover::after,.ct-foot__links a:hover::after{transform:scaleX(1);transform-origin:left}
+.ct-foot__ph{direction:ltr;font-weight:700}
+.ct-foot__social{display:flex;gap:10px;margin-top:8px}
+.ct-foot__social a{width:42px;height:42px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);color:var(--green);transition:background .4s ease,color .4s ease,border-color .4s}
+.ct-foot__social a::after{display:none}
+.ct-foot__social a:hover{background:var(--green);color:#fff;border-color:var(--green)}
+.ct-foot__social svg{width:20px;height:20px}
+.ct-foot__logobar{display:flex;direction:ltr;justify-content:flex-start}
+.ct-foot__logoimg{height:auto}
+.ct-foot__logobar:not(.is-missing) .ct-foot__giant{display:none}
+.ct-foot__logobar.is-missing{justify-content:center}
+.ct-foot__giant{direction:ltr;text-align:center;font-weight:900;line-height:.8;white-space:nowrap;color:transparent;overflow:hidden;padding-top:.06em;user-select:none;
+  background:linear-gradient(90deg,var(--green),var(--gold),var(--green)) 0 0/200% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;opacity:.16;transition:opacity .8s ease}
+.ct-foot__giant:hover{opacity:.9;animation:ct-sheen 4s linear infinite}
+@keyframes ct-sheen{to{background-position:-200% 0}}
+.ct-foot__bar{display:flex;align-items:center;justify-content:space-between;gap:24px;border-top:1px solid var(--line);padding:22px 0 30px;font-size:13px;color:#7c817e}
+.ct-foot__links{display:flex;gap:22px}
+.ct-foot__links a{font-size:13px}
+.ct-foot__up{width:46px;height:46px;flex:none;display:flex;align-items:center;justify-content:center;background:none;border:1px solid var(--line);color:var(--green);cursor:pointer;transition:background .4s,color .4s,border-color .4s}
+.ct-foot__up svg{width:10px;height:26px;transition:transform .5s var(--ease)}
+.ct-foot__up:hover{background:var(--green);color:#fff;border-color:var(--green)}
+.ct-foot__up:hover svg{transform:translateY(-4px)}
+
+/* ---------- CTA + טופס (משותף) ---------- */
+.ct-cta__block{position:relative;overflow:hidden;overflow:clip}
+.ct-cta__glass{background:rgba(250,250,250,.55)!important}
+.ct-cta__inner{position:relative;z-index:1;direction:rtl}
+.ct-cta__eyebrow{direction:ltr;text-align:right;color:var(--green);font-weight:500}
+.ct-cta__title{font-weight:900;color:var(--dark);line-height:1.08}
+.ct-cta__title span{color:var(--green)}
+.ct-cta__text .ct-body{color:var(--text)}
+.ct-cta__lead{display:flex;align-items:center;gap:14px;font-weight:700;color:var(--green)!important}
+.ct-cta__lead svg{flex:none;height:auto;animation:ct-nudge 1.8s var(--ease-io) infinite}
+@keyframes ct-nudge{0%,100%{translate:0 0}50%{translate:-10px 0}}
+.ct-form-wrap{position:relative;background:rgba(255,255,255,.92);flex:none}
+.ct-form-wrap .ct-frame-line rect{stroke:var(--line)}
+.ct-form{position:relative}
+.ct-field{position:relative}
+.ct-field input,.ct-field textarea{
+  display:block;width:100%;border:0;border-bottom:1px solid var(--line);border-radius:0;background:transparent;
+  font-family:var(--font);color:var(--text);direction:rtl;text-align:right;outline:none;resize:vertical;
+  transition:border-color .4s ease;
+}
+.ct-field textarea{min-height:5.2em;resize:none}
+.ct-field::after{content:"";position:absolute;right:0;left:0;bottom:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:right;transition:transform .6s var(--ease)}
+.ct-field:focus-within::after{transform:scaleX(1)}
+.ct-field textarea + label + .ct-field__err, .ct-field textarea ~ *{ }
+.ct-field label{position:absolute;right:0;color:#8a8f8c;pointer-events:none;transform-origin:right top;transition:transform .45s var(--ease),color .45s ease}
+.ct-field input:focus + label,.ct-field input:not(:placeholder-shown) + label,
+.ct-field textarea:focus + label,.ct-field textarea:not(:placeholder-shown) + label{transform:translateY(-1.35em) scale(.72);color:var(--green)}
+.ct-field__err{display:block;height:0;overflow:hidden;font-size:13px;color:#a8573e;transition:height .3s ease,margin .3s ease}
+.ct-field.is-error input{border-bottom-color:#a8573e}
+.ct-field.is-error .ct-field__err{height:1.4em;margin-top:6px}
+.ct-choice{border:0;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+.ct-choice legend{float:right;width:100%;color:#8a8f8c;font-size:14px;margin-bottom:10px}
+.ct-choice label{cursor:pointer;position:relative}
+.ct-choice input{position:absolute;opacity:0;pointer-events:none}
+.ct-choice span{display:block;border:1px solid var(--line);color:var(--dark);font-weight:500;transition:background .4s var(--ease),color .4s,border-color .4s}
+.ct-choice label:hover span{border-color:var(--green)}
+.ct-choice input:checked + span{background:var(--green);border-color:var(--green);color:#fff}
+.ct-choice input:focus-visible + span{outline:2px solid var(--gold);outline-offset:3px}
+.ct-btn--solid{color:#fff;background:var(--green);border-color:var(--green);cursor:pointer}
+.ct-btn--solid::before{background:var(--dark)}
+.ct-btn--solid .ct-btn__arrow{color:#fff}
+.ct-btn--solid:hover{border-color:var(--dark)}
+.ct-btn.is-loading{pointer-events:none;opacity:.7}
+.ct-form__note{margin-top:14px;font-size:13px;color:#8a8f8c;text-align:center}
+.ct-form__done{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:inherit;opacity:0;visibility:hidden;transition:opacity .8s var(--ease) .3s,visibility 0s .3s}
+.ct-form__done .ct-tm-card__mark{font-size:120px;height:56px;margin-bottom:16px}
+.ct-form__done-title{font-weight:900;font-size:clamp(26px,2.3vw,40px);color:var(--dark);margin-bottom:8px}
+.ct-form-wrap.is-sent .ct-form{opacity:0;visibility:hidden;transition:opacity .4s ease,visibility 0s .4s}
+.ct-form-wrap.is-sent .ct-form__done{opacity:1;visibility:visible;transition:opacity .8s var(--ease) .3s}
+
+/* ---------- המלצות (משותף) ---------- */
+.ct-tm__block{position:relative;overflow:hidden;overflow:clip}
+.ct-tm__bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 55%;filter:blur(14px);transform:scale(1.06)}
+.ct-tm__block > .ct-hero__glass{z-index:0}
+.ct-tm__track{position:relative;z-index:1;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;cursor:grab;outline:none}
+.ct-tm__track::-webkit-scrollbar{display:none}
+.ct-tm__track::after{content:""}
+.ct-tm__track.is-drag{scroll-snap-type:none;cursor:grabbing;user-select:none}
+.ct-tm__track.is-drag .ct-tm-card{pointer-events:none}
+.ct-tm-card{scroll-snap-align:start}
+.ct-tm__ctrl{display:flex;align-items:center;direction:rtl}
+.ct-tm__arrow{flex:none;display:flex;align-items:center;justify-content:center;background:none;border:1px solid var(--line);color:var(--green);cursor:pointer;position:relative;overflow:hidden;isolation:isolate;transition:color .45s var(--ease),border-color .45s var(--ease),opacity .3s}
+.ct-tm__arrow::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--green);transform:scaleY(0);transform-origin:bottom;transition:transform .5s var(--ease-io)}
+.ct-tm__arrow:hover{color:#fff;border-color:var(--green)}
+.ct-tm__arrow:hover::before{transform:scaleY(1)}
+.ct-tm__arrow:disabled{opacity:.35;pointer-events:none}
+.ct-tm__arrow svg{height:auto;transition:transform .45s var(--ease)}
+.ct-tm__arrow[data-dir="next"]:hover svg{transform:translateX(-5px)}
+.ct-tm__arrow[data-dir="prev"]:hover svg{transform:translateX(5px)}
+.ct-tm__progress{flex:1;height:1px;background:var(--line);position:relative;overflow:hidden}
+.ct-tm__progress-fill{position:absolute;inset:0;background:var(--green);transform-origin:right;transform:scaleX(var(--tp,.25));transition:transform .25s linear}
+.ct-tm__count{direction:ltr;color:var(--green);font-weight:500;white-space:nowrap}
+.ct-tm-card{position:relative;overflow:hidden;color:#fff;display:flex;flex-direction:column;transition:transform .7s var(--ease)}
+.ct-tm-card__img{position:absolute;max-width:none;object-fit:cover;object-position:50% 55%;transition:transform 1.2s var(--ease)}
+.ct-tm-card__shade{position:absolute;inset:0;background:rgba(39,39,39,.72);mix-blend-mode:multiply;transition:background .7s var(--ease)}
+.ct-tm-card > *:not(.ct-tm-card__img):not(.ct-tm-card__shade):not(.ct-frame-line){position:relative}
+.ct-tm-card__num{direction:ltr;text-align:right;font-weight:400;opacity:.85}
+.ct-tm-card__mark{display:block;font-weight:900;color:var(--gold);line-height:1;overflow:visible;direction:ltr;text-align:right}
+.ct-tm-card .ct-quote{text-align:right;flex:1}
+.ct-tm-card__sep{display:block;height:1px;background:var(--gold);transform-origin:right;transition:transform .7s var(--ease)}
+.ct-tm-card__name{font-weight:700;text-align:right}
+.ct-tm-card .hl{color:#e2c27f;font-weight:700}
+.ct-tm-card:hover{transform:translateY(-10px)}
+.ct-tm-card:hover .ct-tm-card__shade{background:rgba(39,39,39,.58)}
+.ct-tm-card:hover .ct-tm-card__img{transform:scale(1.05)}
+.ct-tm-card:hover .ct-tm-card__sep{transform:scaleX(2.2)}
+.ct-tm-card:hover .ct-frame-line rect{stroke:var(--gold)}
+.ct-frame-line rect{transition:stroke .5s ease}
+
+/* חץ גלילה */
+.ct-scroll{flex-direction:column;align-items:center;gap:10px;color:#fff;font-size:12px;letter-spacing:.3em;direction:ltr}
+.ct-scroll i{display:block;width:1px;height:56px;background:rgba(255,255,255,.35);position:relative;overflow:hidden}
+.ct-scroll i::after{content:"";position:absolute;left:0;top:-50%;width:100%;height:50%;background:#fff;animation:ct-drop 2s var(--ease-io) infinite}
+@keyframes ct-drop{to{top:100%}}
+
+/* פס התקדמות גלילה + סמן */
+.ct-progressbar{position:fixed;top:0;left:0;right:0;height:2px;background:var(--green);transform-origin:right;transform:scaleX(var(--sp,0));z-index:90;pointer-events:none}
+.ct-cursor,.ct-cursor-ring{display:none}
+
+/* ========================================================
+   אנימציות — פעילות רק תחת .ct-motion
+   ======================================================== */
+.ct-loader{display:none}
+.ct-motion .ct-loader{
+  display:flex;position:fixed;inset:0;z-index:100;background:#f3f0eb;
+  flex-direction:column;align-items:center;justify-content:center;gap:22px;
+  clip-path:inset(0 0 0 0);transition:clip-path 1.1s var(--ease-io) .15s;
+}
+.ct-loader__word{direction:ltr;font-weight:500;color:var(--green);font-size:clamp(14px,1.4vw,20px);letter-spacing:.6em;padding-left:.6em}
+.ct-loader__line{width:min(220px,40vw);height:1px;background:rgba(121,147,141,.25);overflow:hidden;position:relative}
+.ct-loader__line::after{content:"";position:absolute;inset:0;background:var(--green);transform-origin:left;transform:scaleX(0);animation:ct-load 1.4s var(--ease) forwards}
+@keyframes ct-load{to{transform:scaleX(1)}}
+.ct-motion .is-loaded .ct-loader{clip-path:inset(0 0 100% 0)}
+
+/* כניסת מסך הפתיחה */
+.ct-motion .ct-hero .ct-slides{opacity:0;transition:opacity 1.6s ease .5s}
+.ct-motion .is-loaded .ct-hero .ct-slides{opacity:1}
+.ct-motion .ct-frame-line rect{stroke-dashoffset:1;transition:stroke-dashoffset 2.2s var(--ease-io) 1s}
+.ct-motion .is-loaded .ct-frame-line rect{stroke-dashoffset:0}
+.ct-rise{display:inline-block}
+.ct-motion .ct-rise{opacity:0;transform:translateY(45%) skewY(7deg);filter:blur(12px);transition:opacity 1.2s var(--ease),transform 1.4s var(--ease),filter 1.2s var(--ease);transition-delay:var(--d,1s)}
+.ct-motion .is-loaded .ct-rise{opacity:1;transform:none;filter:blur(0)}
+.ct-motion [data-intro]{opacity:0;transform:translateY(22px);transition:opacity 1.1s var(--ease),transform 1.2s var(--ease);transition-delay:var(--d,1.4s)}
+.ct-motion .is-loaded [data-intro]{opacity:1;transform:none}
+.ct-hero__text{will-change:transform,opacity}
+
+/* כניסות בגלילה */
+.ct-motion [data-reveal="fade"] > *{opacity:0;transform:translateY(34px);transition:opacity 1s var(--ease),transform 1.2s var(--ease);transition-delay:calc(var(--base,0s) + var(--i,0) * 110ms)}
+.ct-motion [data-reveal="fade"].is-in > *{opacity:1;transform:none}
+
+.ct-motion .ct-media::after,.ct-motion .ct-card::after,.ct-motion .ct-wide::after{
+  content:"";position:absolute;inset:-1px;background:#fff;z-index:3;pointer-events:none;
+  transform-origin:top;transition:transform 1.5s var(--ease-io)}
+.ct-motion .ct-media.is-in::after,.ct-motion .ct-card.is-in::after{transform:scaleY(0)}
+.ct-motion .ct-media img,.ct-motion .ct-card__img{transform:scale(1.35);transition:transform 2s var(--ease)}
+.ct-motion .ct-media.is-in img,.ct-motion .ct-card.is-in .ct-card__img{transform:scale(1)}
+.ct-motion .ct-media.is-done img,.ct-motion .ct-card.is-done .ct-card__img{transition:transform 1s var(--ease)}
+.ct-motion .ct-media.is-done:hover img{transform:scale(1.05)}
+.ct-motion .ct-card.is-done:hover .ct-card__img{transform:scale(1.06)}
+
+.ct-motion .ct-wide::after{transform-origin:left;transition-duration:1.6s}
+.ct-motion .ct-wide.is-in::after{transform:scaleX(0)}
+.ct-motion .ct-wide__img{transform:scale(1.2);transition:transform 2.4s var(--ease)}
+.ct-motion .ct-wide.is-in .ct-wide__img{transform:scale(1)}
+.ct-motion .ct-wide__glass{clip-path:inset(0 100% 0 0);transition:clip-path 1.4s var(--ease-io) .9s}
+.ct-motion .ct-wide.is-in .ct-wide__glass{clip-path:inset(0 0 0 0)}
+
+.ct-motion .ct-gold{opacity:0;transform:scale(.8) rotate(-4deg);transition:opacity 1.2s var(--ease),transform 1.4s var(--ease)}
+.ct-motion .ct-gold.is-in{opacity:1;transform:none}
+.ct-motion .ct-gold.is-done{transition:transform .5s var(--ease)}
+
+.ct-motion .ct-split .ch{opacity:0;transform:translateY(60%) rotate(8deg);transition:opacity .9s var(--ease),transform 1.1s var(--ease);transition-delay:calc(var(--i,0) * 45ms)}
+.ct-motion .ct-split.is-in .ch{opacity:1;transform:none}
+.ct-split.is-done .ch{transition:transform .55s cubic-bezier(.3,1.7,.5,1),color .35s ease;transition-delay:0s}
+.ct-split.is-done .ch:hover{transform:translateY(-12%);color:var(--gold)}
+
+.ct-motion .ct-tm__block::after{content:"";position:absolute;inset:-1px;background:#fff;z-index:3;pointer-events:none;transform-origin:right;transition:transform 1.6s var(--ease-io)}
+.ct-motion .ct-tm__block.is-in::after{transform:scaleX(0)}
+.ct-motion .ct-tm__bg{transform:scale(1.25);transition:transform 2.4s var(--ease)}
+.ct-motion .ct-tm__block.is-in .ct-tm__bg{transform:scale(1.06)}
+.ct-motion .ct-tm-card{opacity:0;transform:translateY(70px)}
+.ct-motion .ct-tm__block.is-in .ct-tm-card{opacity:1;transform:none;transition:opacity 1.1s var(--ease) calc(1s + var(--i,0) * 160ms),transform 1.3s var(--ease) calc(1s + var(--i,0) * 160ms)}
+.ct-motion .ct-tm__block.is-done .ct-tm-card{transition:transform .7s var(--ease)}
+.ct-motion .ct-tm__block.is-done .ct-tm-card:hover{transform:translateY(-10px)}
+.ct-motion .ct-tm-card .ct-frame-line rect{stroke-dashoffset:1;transition:stroke-dashoffset 1.8s var(--ease-io) calc(1.5s + var(--i,0) * 160ms),stroke .5s ease}
+.ct-motion .ct-tm__block.is-in .ct-tm-card .ct-frame-line rect{stroke-dashoffset:0}
+.ct-motion .ct-tm__kicker{opacity:0;transform:translateY(24px);transition:opacity 1s var(--ease),transform 1.2s var(--ease)}
+.ct-motion .ct-tm__kicker.is-in{opacity:1;transform:none}
+
+.ct-motion .ct-step__line{transform:scaleX(0);transform-origin:left;transition:transform 1.4s var(--ease-io)}
+.ct-motion .ct-step.is-in .ct-step__line{transform:none}
+.ct-motion .ct-step__num{transform:translateY(75%);transition:transform 1.5s var(--ease) .35s}
+.ct-motion .ct-step.is-in .ct-step__num{transform:none}
+.ct-motion .ct-step__label{opacity:0;transform:translateY(12px);transition:opacity .9s var(--ease) .7s,transform 1s var(--ease) .7s}
+.ct-motion .ct-step.is-in .ct-step__label{opacity:1;transform:none}
+.ct-motion .ct-step__text > *{opacity:0;transform:translateY(26px);transition:opacity 1s var(--ease),transform 1.2s var(--ease)}
+.ct-motion .ct-step.is-in .ct-step__text > *{opacity:1;transform:none}
+.ct-motion .ct-step.is-in .ct-step__sep{transition-delay:.55s}
+.ct-motion .ct-step.is-in .ct-step__title{transition-delay:.65s}
+.ct-motion .ct-step.is-in .ct-step__text p{transition-delay:.78s}
+.ct-motion .ct-step.is-done .ct-step__text > *{transition-delay:0s}
+.ct-motion .ct-step.is-done .ct-step__sep{transition:transform .6s var(--ease)}
+
+.ct-motion .ct-stat__line{transform:scaleY(0);transition:transform 1.4s var(--ease-io) calc(var(--i) * 140ms)}
+.ct-motion .ct-stat.is-in .ct-stat__line{transform:none}
+@media (max-width:1099.98px){.ct-motion .ct-stat__line{transform:scaleX(0);transform-origin:right}}
+.ct-motion .ct-stat__num{opacity:0;transform:translateY(40px);transition:opacity 1s var(--ease) calc(var(--i) * 140ms),transform 1.2s var(--ease) calc(var(--i) * 140ms),color .5s ease}
+.ct-motion .ct-stat.is-in .ct-stat__num{opacity:1;transform:none}
+.ct-motion .ct-stat.is-done .ct-stat__num{transition:transform .7s var(--ease),color .5s ease}
+.ct-motion .ct-stat.is-done:hover .ct-stat__num{transform:translateY(-8px)}
+.ct-motion .ct-stat__sep{transform:scaleX(0);transition:transform .9s var(--ease) calc(.6s + var(--i) * 140ms)}
+.ct-motion .ct-stat.is-in .ct-stat__sep{transform:none}
+.ct-motion .ct-stat.is-done .ct-stat__sep{transition:transform .6s var(--ease)}
+.ct-motion .ct-stat__label{opacity:0;transform:translateY(20px);transition:opacity 1s var(--ease) calc(.75s + var(--i) * 140ms),transform 1.1s var(--ease) calc(.75s + var(--i) * 140ms)}
+.ct-motion .ct-stat.is-in .ct-stat__label{opacity:1;transform:none}
+
+.ct-motion .ct-form-wrap{opacity:0;transform:translateY(60px);transition:opacity 1.1s var(--ease) 1s,transform 1.3s var(--ease) 1s}
+.ct-motion .ct-cta__block.is-in .ct-form-wrap{opacity:1;transform:none}
+.ct-motion .ct-form-wrap .ct-frame-line rect{stroke-dashoffset:1;transition:stroke-dashoffset 2s var(--ease-io) 1.6s}
+.ct-motion .ct-cta__block.is-in .ct-form-wrap .ct-frame-line rect{stroke-dashoffset:0}
+.ct-motion .ct-cta__block::after{content:"";position:absolute;inset:-1px;background:#fff;z-index:3;pointer-events:none;transform-origin:left;transition:transform 1.6s var(--ease-io)}
+.ct-motion .ct-cta__block.is-in::after{transform:scaleX(0)}
+.ct-motion .ct-cta__block.is-in .ct-tm__bg{transform:scale(1.06)}
+
+.ct-motion .ct-man .wd{color:#d4d9d6;transition:color .45s ease}
+.ct-motion .ct-man .wd.is-lit{color:var(--dark)}
+.ct-motion .ct-man__result .wd.is-lit{color:var(--green)}
+.ct-motion .ct-key{background-size:0% max(2px,.055em)}
+.ct-motion .ct-key.is-lit{background-size:100% max(2px,.055em)}
+.ct-motion .ct-man__eyebrow{opacity:0;transform:translateY(16px);transition:opacity 1s var(--ease),transform 1.1s var(--ease)}
+.ct-motion .ct-man__eyebrow.is-in{opacity:1;transform:none}
+.ct-motion .ct-man__fig figcaption{opacity:0;transform:translateY(18px);transition:opacity 1s var(--ease) .9s,transform 1.1s var(--ease) .9s}
+.ct-motion .ct-man__fig:has(.is-in) figcaption{opacity:1;transform:none}
+
+.ct-motion .ct-xp__pane .ct-frame-line rect{stroke-dashoffset:1;transition:stroke-dashoffset 2s var(--ease-io) .8s}
+.ct-motion .ct-xp__pane.is-in .ct-frame-line rect{stroke-dashoffset:0}
+.ct-motion .ct-xp__quote .ct-key{background-size:0% max(2px,.055em)}
+.ct-motion .ct-xp__content.is-lit .ct-xp__quote .ct-key{background-size:100% max(2px,.055em)}
+.ct-motion .ct-xp__q .ct-key{background-size:100% max(2px,.055em)}
+
+.ct-motion .ct-cta2__block::after{content:"";position:absolute;inset:-1px;background:#fff;z-index:4;pointer-events:none;transform-origin:left;transition:transform 1.6s var(--ease-io)}
+.ct-motion .ct-cta2__block.is-in::after{transform:scaleX(0)}
+.ct-motion .ct-cta2__block.is-in .ct-tm__bg{transform:scale(1.06)}
+.ct-motion .ct-cta2__frame rect{stroke-dashoffset:1;transition:stroke-dashoffset 2.2s var(--ease-io) 1.2s}
+.ct-motion .ct-cta2__block.is-in .ct-cta2__frame rect{stroke-dashoffset:0}
+.ct-motion .ct-badge{opacity:0;transform:scale(.4) rotate(-90deg);transition:opacity 1s var(--ease) 1.4s,transform 1.4s var(--ease) 1.4s,background .5s var(--ease)}
+.ct-motion .ct-cta2__block.is-in .ct-badge{opacity:1;transform:none}
+
+/* סמן מותאם — רק במחשב עם עכבר */
+@media (hover:hover) and (pointer:fine) and (min-width:1100px){
+  .ct-motion .ct-cursor,.ct-motion .ct-cursor-ring{display:block;position:fixed;left:0;top:0;pointer-events:none;z-index:99;mix-blend-mode:difference;border-radius:50%}
+  .ct-cursor{width:6px;height:6px;margin:-3px 0 0 -3px;background:#fff}
+  .ct-cursor-ring{width:40px;height:40px;margin:-20px 0 0 -20px;border:1px solid #fff;transition:width .45s var(--ease),height .45s var(--ease),margin .45s var(--ease),background .45s var(--ease)}
+  .ct-cursor-ring.is-hover{width:90px;height:90px;margin:-45px 0 0 -45px;background:#fff}
+  .ct-cursor-ring::after{content:attr(data-label);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--font);font-weight:700;font-size:14px;color:#fff;opacity:0;transition:opacity .3s ease}
+  .ct-cursor-ring.is-view{width:116px;height:116px;margin:-58px 0 0 -58px;background:var(--green);border-color:var(--green);mix-blend-mode:normal}
+  .ct-cursor-ring.is-view::after{opacity:1;transition-delay:.15s}
+  .ct-cursor-ring.is-hidden,.ct-cursor.is-hidden{opacity:0}
+}
+@media (prefers-reduced-motion:reduce){
+  .ct-slide{transition:opacity 1.2s ease!important;transform:none!important}
+  .ct-grain,.ct-gold::after,.ct-scroll i::after{animation:none}
+}
+</style>
+</head>
+<body style="margin:0">
+
+<main class="ct-page" id="ct-page">
+
+  <div class="ct-loader" aria-hidden="true">
+    <span class="ct-loader__word">CHAYA TALER</span>
+    <span class="ct-loader__line"></span>
+  </div>
+  <div class="ct-progressbar" aria-hidden="true"></div>
+  <div class="ct-cursor" aria-hidden="true"></div>
+  <div class="ct-cursor-ring" aria-hidden="true"></div>
+
+  <!-- ===== HERO ===== -->
+  <section class="ct-hero" id="top" aria-label="פתיחה">
+    <!-- שכבה מטושטשת (מתחת לזכוכית) -->
+    <div class="ct-slides ct-slides--blur" aria-hidden="true">
+      <img class="ct-slide" src="images/hero-kitchen.jpg" alt="">
+      <img class="ct-slide" src="images/hero-living.jpg" alt="" style="object-position:62% 50%">
+      <img class="ct-slide" src="images/hero-kitchen-2.jpg" alt="" style="object-position:50% 52%">
+    </div>
+    <div class="ct-hero__glass" aria-hidden="true"></div>
+    <div class="ct-grain" aria-hidden="true"></div>
+    <!-- שכבה חדה, נחתכת לגבולות המסגרת (דסקטופ) -->
+    <div class="ct-slides ct-slides--sharp" aria-hidden="true">
+      <img class="ct-slide" src="images/hero-kitchen.jpg" alt="מטבח בעיצוב חיה טאלר">
+      <img class="ct-slide" src="images/hero-living.jpg" alt="" style="object-position:62% 50%">
+      <img class="ct-slide" src="images/hero-kitchen-2.jpg" alt="" style="object-position:50% 52%">
+    </div>
+
+    <div class="ct-hero__stage">
+      <div class="ct-hero__frame">
+        <div class="ct-slides ct-slides--frame" aria-hidden="true">
+          <img class="ct-slide" src="images/hero-kitchen.jpg" alt="" style="object-position:74% 50%">
+          <img class="ct-slide" src="images/hero-living.jpg" alt="" style="object-position:70% 50%">
+          <img class="ct-slide" src="images/hero-kitchen-2.jpg" alt="" style="object-position:60% 55%">
+        </div>
+        <svg class="ct-frame-line" preserveAspectRatio="none" viewBox="0 0 100 100" aria-hidden="true"><rect x="0" y="0" width="100" height="100" pathLength="1" vector-effect="non-scaling-stroke"/></svg>
+        <p class="ct-welcome" data-intro style="--d:1.9s">WELCOME HOME</p>
+        <div class="ct-counter" data-intro style="--d:2.1s" aria-hidden="true"><span class="ct-counter__cur">01</span><span class="ct-counter__bar"><span class="ct-counter__fill"></span></span><span>03</span></div>
+        <p class="ct-credit" data-intro style="--d:2.2s">Architecture and Design by Chaya Taler</p>
+      </div>
+
+      <div class="ct-hero__text">
+        <p class="ct-kicker" data-intro style="--d:1.05s">להתפנק כל יום מחדש</p>
+        <h1 style="display:contents">
+          <span class="ct-title ct-title--1"><span class="ct-rise" style="--d:1.2s">בבית</span></span>
+          <span class="ct-title ct-title--2"><span class="ct-rise" style="--d:1.34s">עוצר</span></span>
+          <span class="ct-title ct-title--3"><span class="ct-rise" style="--d:1.48s">נשימה</span></span>
+        </h1>
+        <div class="ct-hero__lead ct-body" data-intro style="--d:1.75s">
+          <p>הגעתם הביתה מעוד יום עבודה?</p>
+          <p>מגיע לכם להרגיש מה קורה כשטעם ועיצוב מהפנט נפגשים בתכנון ארכיטקטוני מדויק ופיקוח בשטח.</p>
+        </div>
+        <p class="ct-tagline ct-body" data-intro style="--d:1.9s">בתים עוצרים נשימה</p>
+        <div class="ct-scroll" data-intro style="--d:2.4s" aria-hidden="true"><span>SCROLL</span><i></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== THE PERFECT BALANCE ===== -->
+  <section class="ct-balance" id="about">
+    <div class="ct-col-a">
+      <div class="ct-media ct-img-bedroom" data-reveal="media">
+        <div class="ct-media__inner" data-parallax="1"><img src="images/bedroom.jpg" alt="חדר שינה בעיצוב חיה טאלר" loading="lazy"></div>
+      </div>
+      <div class="ct-how ct-txt ct-body" data-reveal="fade">
+        <p><b>איך זה קורה?</b></p>
+        <p>הרבה לפני העיצוב. אתם יושבים איתנו להבנת הצרכים, החלומות, וההרגלים המיוחדים רק לכם. משם ממשיכים לתכנון מדויק ברמת פיקוח בניה, עוד לפני הבניה, כולל: חלוקת השטח בצורה חכמה ואיכותית עם חשיבה קדימה, ראש גדול לטווח הרחוק. מערכות מיזוג, חשמל, שקעים, חימום תת רצפתי, הכל נלקח בחשבון! סטנדרט שהקבלנים בשטח משתמשים בהן כמודל לחיקוי.</p>
+      </div>
+    </div>
+
+    <div class="ct-col-b">
+      <h2 class="ct-big ct-split" data-reveal="split" aria-label="The Perfect Balance">THE<br><span style="color:var(--gray)">PERF<br class="ct-d">ECT</span><br>BALA<br class="ct-d">NCE</h2>
+      <div class="ct-design ct-txt ct-body" data-reveal="fade">
+        <p><b>רק אחר כך מגיע שלב העיצוב והאסתטיקה בו אתם מקבלים:</b></p>
+        <p>שפה עיצובית עשירה ועכשווית שיוצרת בית מלא אופי, אור ואווירה.</p>
+      </div>
+    </div>
+
+    <div class="ct-col-c">
+      <div class="ct-intro ct-txt ct-body" data-reveal="fade">
+        <p><b>לפני שיפוץ או בניה ומבינים בעיצוב?</b></p>
+        <p>יפה. אבל מסתבר שאתם רוצים גם בית עם חומרים טובים, תכנון פרקטי ונוחות מקסימלית רוב המשפצים חושבים שצריך לבחור ביופי או בפרקטיקה. 98% ממשרדי האדריכלות ועיצוב הפנים מתמחים בעיצוב או בתכנון? אנחנו מאמינים שהשילוב השלם ביניהם הוא המנצח.</p>
+      </div>
+      <div class="ct-media ct-img-living" data-reveal="media">
+        <div class="ct-media__inner" data-parallax="1"><img src="images/living-room.jpg" alt="סלון בעיצוב חיה טאלר" loading="lazy"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WIDE IMAGE + TESTIMONIAL ===== -->
+  <section class="ct-wide" data-reveal="wide" data-hover>
+    <img class="ct-wide__img" src="images/wide-room.jpg" alt="פרויקט בעיצוב חיה טאלר" loading="lazy">
+    <div class="ct-wide__glass" aria-hidden="true"><img src="images/wide-room.jpg" alt="" loading="lazy"></div>
+    <blockquote class="ct-wide__quote ct-quote ct-body" data-reveal="fade" style="--base:1.2s">
+      <p>"מלבד העברה של תשלומים לא עשיתי כלום!</p>
+      <p>באת לפקח, לראות, להעיר, להאיר, לשפר, לתקן, לקבל, לעשות - ואני הרגשתי מפונקת לגמרי…"</p>
+      <p><b>בת שבע בורנשטיין</b></p>
+    </blockquote>
+  </section>
+
+  <!-- ===== BOTTOM ROW ===== -->
+  <section class="ct-bottom">
+    <div class="ct-card" data-reveal="media" data-tilt>
+      <img class="ct-card__img" src="images/wide-room.jpg" alt="" aria-hidden="true" loading="lazy">
+      <div class="ct-card__shade" aria-hidden="true"></div>
+      <blockquote class="ct-card__quote ct-quote ct-body" data-reveal="fade" style="--base:.7s">
+        <p>"חוויה עיצובית מכוכב אחר!</p>
+        <p>חיה נכנסה באופן מוחלט לנעליים שלנו,הובילה אותנו בחן, בנתה בכשרון והביאה לתוצאה לא פחות ממדהימה!!!"</p>
+        <p><b>משפחת שורין</b></p>
+      </blockquote>
+    </div>
+
+    <div class="ct-gold" data-reveal="gold" data-tilt aria-hidden="true"><img src="images/gold-texture.jpg" alt="" loading="lazy"></div>
+
+    <div class="ct-onsite ct-txt ct-body" data-reveal="fade">
+      <p><b>סיימנו את התוכניות המפורטות והעיצוב המושלם על השרטוט? זה רק ההתחלה:) עוד לא נפרדנו!</b></p>
+      <p>נוכחות מלאה בשטח: מעורבות אישית בכל שלבי הביצוע, שליטה מוחלטת באיכות החומרים והגימור שמונעת טעויות ביצוע יקרות עוגמות נפש ועשרות אלפי שקלים.</p>
+      <p>ולווי מלא מהסקיצה הראשונית, דרך בחירת חומרי הבנייה, הקניות והליווי בשטח ועד לבית המושלם והשלם.</p>
+      <p>גם אם אתם אוהבים יופי, מגיע לכם לא להתפשר על התכנון הטוב ביותר שהוא הבסיס לבית שעובד כל יום בשבילכם.</p>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section class="ct-projs" id="projects" aria-label="פרויקטים נבחרים">
+    <div class="ct-tm__head ct-projs__head">
+      <h2 class="ct-tm__big ct-split" data-reveal="split" aria-label="Selected projects">SELECTED<br><span style="color:var(--gray)">PROJECTS</span></h2>
+      <p class="ct-tm__kicker" data-reveal="kicker">פרויקטים נבחרים</p>
+    </div>
+    <div class="ct-projs__grid">
+      <div class="ct-projs__col ct-projs__col--a">
+        <a class="ct-proj ct-proj--1" href="#project-1" data-view>
+          <div class="ct-media ct-proj__img" data-reveal="media">
+            <div class="ct-media__inner" data-parallax="1"><img src="images/proj-1.jpg" alt="עיצוב על זמני" loading="lazy" style="object-position:50% 50%"></div>
+          </div>
+          <div class="ct-proj__cap"><span class="ct-proj__no">01</span><span class="ct-proj__name">עיצוב על זמני</span><span class="ct-proj__go" aria-hidden="true">VIEW PROJECT<svg viewBox="0 0 40 16"><path d="M40 8H2M9 1L2 8l7 7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span></div>
+        </a>
+        <a class="ct-proj ct-proj--3" href="#project-3" data-view>
+          <div class="ct-media ct-proj__img" data-reveal="media">
+            <div class="ct-media__inner" data-parallax="1.3"><img src="images/proj-3.jpg" alt="מי קבע שמטרים" loading="lazy" style="object-position:50% 45%"></div>
+          </div>
+          <div class="ct-proj__cap"><span class="ct-proj__no">03</span><span class="ct-proj__name">מי קבע שמטרים</span><span class="ct-proj__go" aria-hidden="true">VIEW PROJECT<svg viewBox="0 0 40 16"><path d="M40 8H2M9 1L2 8l7 7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span></div>
+        </a>
+      </div>
+      <div class="ct-projs__col ct-projs__col--b">
+        <a class="ct-proj ct-proj--2" href="#project-2" data-view>
+          <div class="ct-media ct-proj__img" data-reveal="media">
+            <div class="ct-media__inner" data-parallax="1.6"><img src="images/proj-2.jpg" alt="מטבח בקשת אגוז" loading="lazy" style="object-position:50% 40%"></div>
+          </div>
+          <div class="ct-proj__cap"><span class="ct-proj__no">02</span><span class="ct-proj__name">מטבח בקשת אגוז</span><span class="ct-proj__go" aria-hidden="true">VIEW PROJECT<svg viewBox="0 0 40 16"><path d="M40 8H2M9 1L2 8l7 7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span></div>
+        </a>
+        <a class="ct-proj ct-proj--4" href="#project-4" data-view>
+          <div class="ct-media ct-proj__img" data-reveal="media">
+            <div class="ct-media__inner" data-parallax="1.2"><img src="images/proj-4.jpg" alt="עיצוב לא שגר" loading="lazy" style="object-position:55% 50%"></div>
+          </div>
+          <div class="ct-proj__cap"><span class="ct-proj__no">04</span><span class="ct-proj__name">עיצוב לא שגר</span><span class="ct-proj__go" aria-hidden="true">VIEW PROJECT<svg viewBox="0 0 40 16"><path d="M40 8H2M9 1L2 8l7 7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span></div>
+        </a>
+      </div>
+    </div>
+    <div class="ct-xp__more ct-projs__more"><a class="ct-btn" href="#" data-magnetic><span class="ct-btn__label">לכל הפרויקטים</span><svg class="ct-btn__arrow" viewBox="0 0 40 16" aria-hidden="true"><path d="M40 8H2M9 1L2 8l7 7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a></div>
+  </section>
+
+  <!-- ===== TESTIMONIALS ===== -->
+  <section class="ct-tm" id="testimonials" aria-label="המלצות">
+    <div class="ct-tm__head">
+      <h2 class="ct-tm__big ct-split" data-reveal="split" aria-label="Kind Words">KIND<br><span style="color:var(--gray)">WORDS</span></h2>
+      <p class="ct-tm__kicker" data-reveal="kicker">מה אומרים עלינו</p>
+    </div>
+    <div class="ct-tm__block" data-reveal="tm">
+      <img class="ct-tm__bg" src="images/hero-kitchen-2.jpg" alt="" aria-hidden="true" loading="lazy">
+      <div class="ct-hero__glass" aria-hidden="true"></div>
+      <div class="ct-tm__track" data-lenis-prevent tabindex="0" aria-label="המלצות — אפשר לגלול לצדדים">
+        <figure class="ct-tm-card" style="--i:0">
+          <img class="ct-tm-card__img" src="images/hero-kitchen-2.jpg" alt="" aria-hidden="true" loading="lazy">
+          <div class="ct-tm-card__shade" aria-hidden="true"></div>
+          <svg class="ct-frame-line" preserveAspectRatio="none" viewBox="0 0 100 100" aria-hidden="true"><rect x="0" y="0" width="100" height="100" pathLength="1" vector-effect="non-scaling-stroke"/></svg>
+          <span class="ct-tm-card__num" aria-hidden="true">01 / 04</span>
+          <span class="ct-tm-card__mark" aria-hidden="true">&rdquo;</span>
+          <blockquote class="ct-quote ct-body"><p>מלבד העברה של תשלומים לא עשיתי כלום!</p><p>באת לפקח, לראות, להעיר, להאיר, לשפר, לתקן, לקבל, לעשות - ואני הרגשתי מפונקת לגמרי…</p></blockquote>
+          <span class="ct-tm-card__sep" aria-hidden="true"></span>
+          <figcaption class="ct-tm-card__name ct-body">בת שבע בורנשטיין</figcaption>
+        </figure>
+        <figure class="ct-tm-card" style="--i:1">
+          <img class="ct-tm-card__img" src="images/hero-kitchen-2.jpg" alt="" aria-hidden="true" loading="lazy">
+          <div class="ct-tm-card__shade" aria-hidden="true"></div>
+          <svg class="ct-frame-line" preserveAspectRatio="none" viewBox="0 0 100 100" aria-hidden="true"><rect x="0" y="0" width="100" height="100" pathLength="1" vector-effect="non-scaling-stroke"/></svg>
+          <span class="ct-tm-card__num" aria-hidden="true">02 / 04</span>
+          <span class="ct-tm-card__mark" aria-hidden="true">&rdquo;</span>
+          <blockquote class="ct-quote ct-body"><p>כולם הרחיבו ושיפצו, וטענו ללא יוצא מן הכלל ששלנו יצא כמה רמות מעל כולם</p><p>לסיכום ציפינו ל100% וקיבלנו <span class="hl">1000%</span></p></blockquote>
+          <span class="ct-tm-card__sep" aria-hidden="true"></span>
+          <figcaption class="ct-tm-card__name ct-body">משפחת קצנלבוגן</figcaption>
+        </figure>
+        <figure class="ct-tm-card" style="--i:2">
+          <img class="ct-tm-card__img" src="images/hero-kitchen-2.jpg" alt="" aria-hidden="true" loading="lazy">
+          <div class="ct-tm-card__shade" aria-hidden="true"></div>
+          <svg class="ct-frame-line" preserveAspectRatio="none" viewBox="0 0 100 100" aria-hidden="true"><rect x="0" y="0" width="100" height="100" pathLength="1" vector-effect="non-scaling-stroke"/></svg>
+          <span class="ct-tm-card__num" aria-hidden="true">03 / 04</span>
+          <span class="ct-tm-card__mark" aria-hidden="true">&rdquo;</span>
+          <blockquote class="ct-quote ct-body"><p>חוויה עיצובית מכוכב אחר!</p><p>חיה נכנסה באופן מוחלט לנעליים שלנו,</p><p>הובילה אותנו בחן, בנתה בכשרון והביאה לתוצאה לא פחות ממדהימה!!!</p></blockquote>
+          <span class="ct-tm-card__sep" aria-hidden="true"></span>
+          <figcaption class="ct-tm-card__name ct-body">משפחת שורין</figcaption>
+        </figure>
+        <figure class="ct-tm-card" style="--i:3">
+          <img class="ct-tm-card__img" src="images/hero-kitchen-2.jpg" alt="" aria-hidden="true" loading="lazy">
+          <div class="ct-tm-card__shade" aria-hidden="true"></div>
+          <svg class="ct-frame-line" preserveAspectRatio="none" viewBox="0 0 100 100" aria-hidden="true"><rect x="0" y="0" width="100" height="100" pathLength="1" vector-effect="non-scaling-stroke"/></svg>
+          <span class="ct-tm-card__num" aria-hidden="true">04 / 04</span>
+          <span class="ct-tm-card__mark" aria-hidden="true">&rdquo;</span>
+          <blockquote class="ct-quote ct-body"><p>היה לך באמת אכפת מההצלחה המושלמת של הפרויקט שלי, עם סבלנות בלי סוף והרגשה טובה.</p></blockquote>
+          <span class="ct-tm-card__sep" aria-hidden="true"></span>
+        </figure>
+      </div>
+    </div>
+    <div class="ct-tm__ctrl">
+      <button class="ct-tm__arrow" data-dir="prev" aria-label="להמלצה הקודמת"><svg viewBox="0 0 40 16" aria-hidden="true"><path d="M0 8h38M31 1l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+      <span class="ct-tm__progress" aria-hidden="true"><span class="ct-tm__progress-fill"></span></span>
+      <span class="ct-tm__count" aria-hidden="true"><span class="ct-tm__cur">01</span> / 04</span>
+      <button class="ct-tm__arrow" data-dir="next" aria-label="להמלצה הבאה"><svg viewBox="0 0 40 16" aria-hidden="true"><path d="M40 8H2M9 1L2 8l7 7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section class="ct-steps" id="process" aria-label="איך זה עובד">
+    <h2 class="ct-steps__big ct-split" data-reveal="split" aria-label="How it works">HOW IT<br><span style="color:var(--gray)">WORKS</span></h2>
+    <ol class="ct-steps__list">
+      <li class="ct-step" data-reveal="step" style="--i:0">
+        <span class="ct-step__label" aria-hidden="true">STEP</span>
+        <div class="ct-step__numclip" aria-hidden="true"><div class="ct-step__numwrap" data-px aria-hidden="true"><span class="ct-step__num" data-n="01">01</span></div></div>
+        <div class="ct-step__img" aria-hidden="true"><div class="ct-step__imgin"><img src="images/bedroom.jpg" alt="" loading="lazy"></div></div>
+        <div class="ct-step__text ct-body">
+          <span class="ct-step__sep" aria-hidden="true"></span>
+          <h3 class="ct-step__title"><span class="ct-vh">שלב 1: </span>הקשבה ואפיון</h3>
+          <p>צוללים לאורח החיים, לצרכים ולחלומות שלכם, ובונים קונספט תכנוני ועיצובי בלעדי ומותאם אישית.</p>
+        </div>
+        <span class="ct-step__line" aria-hidden="true"></span>
+      </li>
+      <li class="ct-step" data-reveal="step" style="--i:1">
+        <span class="ct-step__label" aria-hidden="true">STEP</span>
+        <div class="ct-step__numclip" aria-hidden="true"><div class="ct-step__numwrap" data-px aria-hidden="true"><span class="ct-step__num ct-step__num--gray" data-n="02">02</span></div></div>
+        <div class="ct-step__img" aria-hidden="true"><div class="ct-step__imgin"><img src="images/living-room.jpg" alt="" loading="lazy"></div></div>
+        <div class="ct-step__text ct-body">
+          <span class="ct-step__sep" aria-hidden="true"></span>
+          <h3 class="ct-step__title"><span class="ct-vh">שלב 2: </span>תכנון עומק</h3>
+          <p>מפצחים את התכנון, ומגיעים לתוכנית פרקטית המותאמת במדויק לאורח החיים שלכם.</p>
+        </div>
+        <span class="ct-step__line" aria-hidden="true"></span>
+      </li>
+      <li class="ct-step" data-reveal="step" style="--i:2">
+        <span class="ct-step__label" aria-hidden="true">STEP</span>
+        <div class="ct-step__numclip" aria-hidden="true"><div class="ct-step__numwrap" data-px aria-hidden="true"><span class="ct-step__num" data-n="03">03</span></div></div>
+        <div class="ct-step__img" aria-hidden="true"><div class="ct-step__imgin"><img src="images/wide-room.jpg" alt="" loading="lazy"></div></div>
+        <div class="ct-step__text ct-body">
+          <span class="ct-step__sep" aria-hidden="true"></span>
+          <h3 class="ct-step__title"><span class="ct-vh">שלב 3: </span>תוכניות ביצוע והדמיות מוחשיות</h3>
+          <p>מייצרים תוכניות עבודה קפדניות ומדויקות, הכוללות מערכות חשמל, מיזוג, אינסטלציה ועוד, לצד הדמיות ריאליסטיות שמראות לכם בדיוק איך הבית יראה בלי לקחת ריזיקות.</p>
+        </div>
+        <span class="ct-step__line" aria-hidden="true"></span>
+      </li>
+      <li class="ct-step" data-reveal="step" style="--i:3">
+        <span class="ct-step__label" aria-hidden="true">STEP</span>
+        <div class="ct-step__numclip" aria-hidden="true"><div class="ct-step__numwrap" data-px aria-hidden="true"><span class="ct-step__num ct-step__num--gray" data-n="04">04</span></div></div>
+        <div class="ct-step__img" aria-hidden="true"><div class="ct-step__imgin"><img src="images/hero-kitchen-2.jpg" alt="" loading="lazy"></div></div>
+        <div class="ct-step__text ct-body">
+          <span class="ct-step__sep" aria-hidden="true"></span>
+          <h3 class="ct-step__title"><span class="ct-vh">שלב 4: </span>בחירת חומרים וסטיילינג</h3>
+          <p>מבקרים את השטח ובוחרים ביחד קרמיקות, חיפויים, טקסטורות, התאורה והגימורים הקטנים שעושים את כל ההבדל.</p>
+        </div>
+        <span class="ct-step__line" aria-hidden="true"></span>
+      </li>
+      <li class="ct-step" data-reveal="step" style="--i:4">
+        <span class="ct-step__label" aria-hidden="true">STEP</span>
+        <div class="ct-step__numclip" aria-hidden="true"><div class="ct-step__numwrap" data-px aria-hidden="true"><span class="ct-step__num" data-n="05">05</span></div></div>
+        <div class="ct-step__img" aria-hidden="true"><div class="ct-step__imgin"><img src="images/hero-kitchen.jpg" alt="" loading="lazy"></div></div>
+        <div class="ct-step__text ct-body">
+          <span class="ct-step__sep" aria-hidden="true"></span>
+          <h3 class="ct-step__title"><span class="ct-vh">שלב 5: </span>נוכחות בשטח ופיקוח בהתאמה מלאה לתוכניות</h3>
+          <p>בודקים כל שקע וכל מזגן באחריות, כדי למנוע את הבעיות עוד לפני שהן נוצרו.</p>
+        </div>
+        <span class="ct-step__line" aria-hidden="true"></span>
+      </li>
+    </ol>
+    <div class="ct-ctas" data-reveal="fade">
+      <a class="ct-btn" href="#" data-magnetic><span class="ct-btn__label">לפרויקטים פרטיים</span><svg class="ct-btn__arrow" viewBox="0 0 40 16" aria-hidden="true"><path d="M40 8H2M9 1L2 8l7 7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a>
+      <a class="ct-btn" href="#" data-magnetic><span class="ct-btn__label">לפרויקטים עסקיים</span><svg class="ct-btn__arrow" viewBox="0 0 40 16" aria-hidden="true"><path d="M40 8H2M9 1L2 8l7 7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a>
+    </div>
+  </section>
+
+  <!-- ===== TALER IN NUMBERS ===== -->
+  <section class="ct-nums" aria-label="טאלר במספרים">
+    <h2 class="ct-nums__big ct-split" data-reveal="split" aria-label="Taler in numbers">TALER<br><span style="color:var(--gray)">IN NUMBERS</span></h2>
+    <div class="ct-nums__grid">
+      <div class="ct-stat" data-reveal="stat" style="--i:0">
+        <span class="ct-stat__line" aria-hidden="true"></span>
+        <p class="ct-stat__num" aria-label="+10"><span class="ct-stat__pre" aria-hidden="true">+</span><span class="ct-stat__val" data-count="10" aria-hidden="true">10</span><span class="ct-stat__suf" aria-hidden="true"></span></p>
+        <span class="ct-stat__sep" aria-hidden="true"></span>
+        <p class="ct-stat__label ct-body">שנות ניסיון והובלת פרויקטים</p>
+      </div>
+      <div class="ct-stat" data-reveal="stat" style="--i:1">
+        <span class="ct-stat__line" aria-hidden="true"></span>
+        <p class="ct-stat__num ct-stat__num--gray" aria-label="100%"><span class="ct-stat__pre" aria-hidden="true"></span><span class="ct-stat__val" data-count="100" aria-hidden="true">100</span><span class="ct-stat__suf" aria-hidden="true">%</span></p>
+        <span class="ct-stat__sep" aria-hidden="true"></span>
+        <p class="ct-stat__label ct-body">דיוק בתוכניות ובחומרי הבנייה</p>
+      </div>
+      <div class="ct-stat" data-reveal="stat" style="--i:2">
+        <span class="ct-stat__line" aria-hidden="true"></span>
+        <p class="ct-stat__num" aria-label="0"><span class="ct-stat__pre" aria-hidden="true"></span><span class="ct-stat__val" data-count="0" aria-hidden="true">0</span><span class="ct-stat__suf" aria-hidden="true"></span></p>
+        <span class="ct-stat__sep" aria-hidden="true"></span>
+        <p class="ct-stat__label ct-body">פשרות על איכות, יושר ושקט נפשי</p>
+      </div>
+      <div class="ct-stat" data-reveal="stat" style="--i:3">
+        <span class="ct-stat__line" aria-hidden="true"></span>
+        <p class="ct-stat__num ct-stat__num--gray" aria-label="200"><span class="ct-stat__pre" aria-hidden="true"></span><span class="ct-stat__val" data-count="200" aria-hidden="true">200</span><span class="ct-stat__suf" aria-hidden="true"></span></p>
+        <span class="ct-stat__sep" aria-hidden="true"></span>
+        <p class="ct-stat__label ct-body">פרויקטים עם אמירה</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT / CTA ===== -->
+  <section class="ct-cta" id="contact" aria-label="יצירת קשר">
+    <div class="ct-cta__block" data-reveal="tm">
+      <img class="ct-tm__bg ct-cta__bg" src="images/hero-kitchen.jpg" alt="" aria-hidden="true" loading="lazy">
+      <div class="ct-hero__glass ct-cta__glass" aria-hidden="true"></div>
+      <div class="ct-cta__inner">
+        <div class="ct-cta__text" data-reveal="fade">
+          <p class="ct-cta__eyebrow" aria-hidden="true">LET'S TALK</p>
+          <h2 class="ct-cta__title">מוכנים להפוך את הבית שלכם ליצירה <span>עוצרת נשימה?</span></h2>
+          <p class="ct-body">מגיע לכם להנות מתוצאה מושלמת ומגימור ללא פשרות. צרו עמנו קשר לתאום פגישת היכרות ותכנון.</p>
+          <p class="ct-body">הבית שלכם ראוי לגימור הטוב ביותר. מחומרי הגלם האיכותיים ביותר ועד לטפט האחרון.</p>
+          <p class="ct-cta__lead ct-body">מזמינה אתכם למלא את הטופס ואחזור אליכם בהקדם <svg viewBox="0 0 40 16" aria-hidden="true"><path d="M40 8H2M9 1L2 8l7 7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></p>
+        </div>
+
+        <div class="ct-form-wrap">
+          <svg class="ct-frame-line" preserveAspectRatio="none" viewBox="0 0 100 100" aria-hidden="true"><rect x="0" y="0" width="100" height="100" pathLength="1" vector-effect="non-scaling-stroke"/></svg>
+          <form class="ct-form" novalidate action="#" method="post">
+            <div class="ct-field"><input id="ct-name" name="name" type="text" placeholder=" " autocomplete="name" required><label for="ct-name">שם מלא *</label><span class="ct-field__err">נשמח לדעת איך לפנות אליכם</span></div>
+            <div class="ct-field"><input id="ct-phone" name="phone" type="tel" placeholder=" " autocomplete="tel" inputmode="tel" required pattern="[0-9+\-\s]{9,15}"><label for="ct-phone">טלפון *</label><span class="ct-field__err">נא להזין מספר טלפון תקין</span></div>
+            <div class="ct-field"><input id="ct-email" name="email" type="email" placeholder=" " autocomplete="email"><label for="ct-email">אימייל</label><span class="ct-field__err">כתובת האימייל לא תקינה</span></div>
+            <fieldset class="ct-choice">
+              <legend>סוג הפרויקט</legend>
+              <label><input type="radio" name="type" value="private" checked><span>פרויקט פרטי</span></label>
+              <label><input type="radio" name="type" value="business"><span>פרויקט עסקי</span></label>
+            </fieldset>
+            <div class="ct-field"><textarea id="ct-msg" name="message" rows="3" placeholder=" "></textarea><label for="ct-msg">ספרו לי בקצרה על הבית</label></div>
+            <button class="ct-btn ct-btn--solid" type="submit" data-magnetic><span class="ct-btn__label">שליחה</span><svg class="ct-btn__arrow" viewBox="0 0 40 16" aria-hidden="true"><path d="M40 8H2M9 1L2 8l7 7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+            <p class="ct-form__note">הפרטים נשמרים אצלנו בלבד ומשמשים רק לחזרה אליכם.</p>
+          </form>
+          <div class="ct-form__done" role="status" aria-live="polite">
+            <span class="ct-tm-card__mark" aria-hidden="true">&rdquo;</span>
+            <p class="ct-form__done-title">תודה, הפרטים התקבלו!</p>
+            <p class="ct-body">אחזור אליכם בהקדם לתיאום פגישת היכרות.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== MANIFESTO ===== -->
+  <section class="ct-man" aria-label="הסטנדרט של טאלר">
+    <p class="ct-man__eyebrow" data-reveal="kicker">THE TALER STANDARD</p>
+    <p class="ct-man__text" data-words>כש<span class="ct-key">אדריכלות מתקדמת</span>, <span class="ct-key">ניסיון של עשור</span> ו<span class="ct-key">חוש אסתטי נדיר</span> נפגשים בשטח מתקבלת תוצאה בסטנדרט העליון: <span class="ct-man__result">עיצוב עוצר נשימה, תכנון חכם ורמת ביצוע מושלמת.</span></p>
+    <!-- תמונה מתחת למשפט (מהעיצוב בפיגמה) — לשים את הקובץ ב-images/manifesto.png -->
+    <div class="ct-man__pic" data-reveal="fade"><img src="images/manifesto.png" alt="" onerror="this.parentNode.remove()"></div>
+  </section>
+
+  <!-- ===== CLIENTS EXPERIENCE ===== -->
+  <section class="ct-xp" aria-label="חוויית הלקוחות">
+    <h2 class="ct-xp__big ct-split" data-reveal="split" aria-label="Clients experience">CLIENTS<br><span style="color:var(--gray)">EXPERIENCE</span></h2>
+    <div class="ct-mq" aria-hidden="true"><div class="ct-mq__track"><div class="ct-mq__set"><span class="ct-mq__item">לקחה אחריות</span><span class="ct-mq__dot"></span><span class="ct-mq__item ct-mq__item--fill">תכננת בגאונות כל פרט</span><span class="ct-mq__dot"></span><span class="ct-mq__item">ניצול מקסימלי של השטח</span><span class="ct-mq__dot"></span><span class="ct-mq__item ct-mq__item--fill">ביצוע מושלם עד הפרט הכי קטן</span><span class="ct-mq__dot"></span><span class="ct-mq__item">פתרונות יצירתיים ומחוץ לקופסה</span><span class="ct-mq__dot"></span><span class="ct-mq__item ct-mq__item--fill">הקדשת מחשבה לכל פרט</span><span class="ct-mq__dot"></span><span class="ct-mq__item">ציפינו ל100% וקיבלנו 1000%</span><span class="ct-mq__dot"></span></div><div class="ct-mq__set"><span class="ct-mq__item">לקחה אחריות</span><span class="ct-mq__dot"></span><span class="ct-mq__item ct-mq__item--fill">תכננת בגאונות כל פרט</span><span class="ct-mq__dot"></span><span class="ct-mq__item">ניצול מקסימלי של השטח</span><span class="ct-mq__dot"></span><span class="ct-mq__item ct-mq__item--fill">ביצוע מושלם עד הפרט הכי קטן</span><span class="ct-mq__dot"></span><span class="ct-mq__item">פתרונות יצירתיים ומחוץ לקופסה</span><span class="ct-mq__dot"></span><span class="ct-mq__item ct-mq__item--fill">הקדשת מחשבה לכל פרט</span><span class="ct-mq__dot"></span><span class="ct-mq__item">ציפינו ל100% וקיבלנו 1000%</span><span class="ct-mq__dot"></span></div></div></div>
+    <div class="ct-xp__pane" data-reveal="fade">
+      <ol class="ct-xp__list">
+        <li class="ct-xp__row is-active" data-i="0">
+          <button class="ct-xp__btn" type="button" aria-controls="ct-xp-panel"><span class="ct-xp__no">01</span><span class="ct-xp__name">משפחת שורין</span><span class="ct-xp__bar" aria-hidden="true"></span></button>
+          <blockquote class="ct-xp__q ct-body"><p>חיה <span class="ct-key">לקחה אחריות</span>, המליצה ובררה עבורנו בכל נקודה מאתגרת שעלתה בתהליך, והובילה להצלחה ושביעות רצוננו.</p></blockquote>
+        </li>
+        <li class="ct-xp__row" data-i="1">
+          <button class="ct-xp__btn" type="button" aria-controls="ct-xp-panel"><span class="ct-xp__no">02</span><span class="ct-xp__name">משפחת בורק</span><span class="ct-xp__bar" aria-hidden="true"></span></button>
+          <blockquote class="ct-xp__q ct-body"><p>מצאת פתרונות יצירתיים ומחוץ לקופסה ו<span class="ct-key">תכננת בגאונות כל פרט</span> בדירה שהוכפלה כמעט פי שתיים.</p></blockquote>
+        </li>
+        <li class="ct-xp__row" data-i="2">
+          <button class="ct-xp__btn" type="button" aria-controls="ct-xp-panel"><span class="ct-xp__no">03</span><span class="ct-xp__name">משפחת הנדלר</span><span class="ct-xp__bar" aria-hidden="true"></span></button>
+          <blockquote class="ct-xp__q ct-body"><p>ראינו בית עם שטח לא גדול מידי, ויחד עם זאת הצלחת לעצב אותו <span class="ct-key">בצורה מרווחת ונעימה</span>, עם ניצול מקסימלי של הדירה.</p></blockquote>
+        </li>
+        <li class="ct-xp__row" data-i="3">
+          <button class="ct-xp__btn" type="button" aria-controls="ct-xp-panel"><span class="ct-xp__no">04</span><span class="ct-xp__name">משפחת קצנלבוגן</span><span class="ct-xp__bar" aria-hidden="true"></span></button>
+          <blockquote class="ct-xp__q ct-body"><p>מה שיצא הוא ניצול מקסימלי של השטח תוך <span class="ct-key">שימת לב לפרטים הקטנים ביותר</span> שאפילו לא חשבנו עליהם.</p></blockquote>
+        </li>
+        <li class="ct-xp__row" data-i="4">
+          <button class="ct-xp__btn" type="button" aria-controls="ct-xp-panel"><span class="ct-xp__no">05</span><span class="ct-xp__name">בת שבע בורנשטיין</span><span class="ct-xp__bar" aria-hidden="true"></span></button>
+          <blockquote class="ct-xp__q ct-body"><p>שנים עבדתי בתחום. עיצבתי, תכננתי, בחרתי חומרים, פיקחתי… המשרד שלי הוא <span class="ct-key">סיפור של הצלחה</span> שלך, גם בביצוע מושלם שדאגת לו עד הפרט הכי קטן.</p></blockquote>
+        </li>
+        <li class="ct-xp__row" data-i="5">
+          <button class="ct-xp__btn" type="button" aria-controls="ct-xp-panel"><span class="ct-xp__no">06</span><span class="ct-xp__name">חדוה</span><span class="ct-xp__bar" aria-hidden="true"></span></button>
+          <blockquote class="ct-xp__q ct-body"><p>כולם מתפעלים מאיך שניצלת כל פינה בצורה מקסימלית… ממש רואים <span class="ct-key">שהקדשת מחשבה לכל פרט</span>.</p></blockquote>
+        </li>
+      </ol>
+      <div class="ct-xp__panel" id="ct-xp-panel" aria-live="polite">
+        <div class="ct-xp__bgs" aria-hidden="true"><img class="ct-xp__bg is-active" src="images/hero-kitchen.jpg" alt="" loading="lazy" style="object-position:50% 50%"><img class="ct-xp__bg" src="images/living-room.jpg" alt="" loading="lazy" style="object-position:60% 50%"><img class="ct-xp__bg" src="images/bedroom.jpg" alt="" loading="lazy" style="object-position:50% 50%"><img class="ct-xp__bg" src="images/hero-kitchen-2.jpg" alt="" loading="lazy" style="object-position:50% 45%"><img class="ct-xp__bg" src="images/wide-room.jpg" alt="" loading="lazy" style="object-position:35% 50%"><img class="ct-xp__bg" src="images/hero-living.jpg" alt="" loading="lazy" style="object-position:70% 50%"></div>
+        <div class="ct-hero__glass ct-cta__glass" aria-hidden="true"></div>
+        <svg class="ct-frame-line" preserveAspectRatio="none" viewBox="0 0 100 100" aria-hidden="true"><rect x="0" y="0" width="100" height="100" pathLength="1" vector-effect="non-scaling-stroke"/></svg>
+        <div class="ct-xp__content">
+          <span class="ct-xp__label" aria-hidden="true">CLIENT <span class="ct-xp__cnum">01</span> / 06</span>
+          <span class="ct-tm-card__mark" aria-hidden="true">&rdquo;</span>
+          <blockquote class="ct-xp__quote"><p>חיה <span class="ct-key">לקחה אחריות</span>, המליצה ובררה עבורנו בכל נקודה מאתגרת שעלתה בתהליך, והובילה להצלחה ושביעות רצוננו.</p></blockquote>
+          <span class="ct-tm-card__sep" aria-hidden="true"></span>
+          <p class="ct-xp__who">משפחת שורין</p>
+        </div>
+      </div>
+    </div>
+    <div class="ct-xp__more"><a class="ct-btn" href="#" data-magnetic><span class="ct-btn__label">לכל ההמלצות</span><svg class="ct-btn__arrow" viewBox="0 0 40 16" aria-hidden="true"><path d="M40 8H2M9 1L2 8l7 7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a></div>
+  </section>
+
+  <!-- ===== BLOG ===== -->
+  <section class="ct-blog" id="blog" aria-label="מהבלוג">
+    <div class="ct-tm__head ct-projs__head">
+      <h2 class="ct-tm__big ct-split" data-reveal="split" aria-label="The journal">THE<br><span style="color:var(--gray)">JOURNAL</span></h2>
+      <p class="ct-tm__kicker" data-reveal="kicker">ידע ששווה <span class="ct-blog__gold">זהב</span></p>
+    </div>
+    <ol class="ct-blog__list" data-reveal="fade">
+        <li class="ct-post">
+          <a class="ct-post__link" href="#post-1">
+            <span class="ct-post__no">01</span>
+            <span class="ct-post__thumbwrap"><img class="ct-post__thumb" src="images/proj-1.jpg" alt="" loading="lazy"></span>
+            <span class="ct-post__title">עוד קצת על תאורת אווירה</span>
+            <span class="ct-post__cat">אדריכלות ועיצוב פנים</span>
+            <span class="ct-post__go"><span class="ct-vh">למאמר המלא</span><svg viewBox="0 0 40 16" aria-hidden="true"><path d="M40 8H2M9 1L2 8l7 7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>
+          </a>
+        </li>
+        <li class="ct-post">
+          <a class="ct-post__link" href="#post-2">
+            <span class="ct-post__no">02</span>
+            <span class="ct-post__thumbwrap"><img class="ct-post__thumb" src="images/hero-kitchen.jpg" alt="" loading="lazy"></span>
+            <span class="ct-post__title">תדליק אורות!</span>
+            <span class="ct-post__cat">אדריכלות ועיצוב פנים</span>
+            <span class="ct-post__go"><span class="ct-vh">למאמר המלא</span><svg viewBox="0 0 40 16" aria-hidden="true"><path d="M40 8H2M9 1L2 8l7 7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>
+          </a>
+        </li>
+        <li class="ct-post">
+          <a class="ct-post__link" href="#post-3">
+            <span class="ct-post__no">03</span>
+            <span class="ct-post__thumbwrap"><img class="ct-post__thumb" src="images/proj-3.jpg" alt="" loading="lazy"></span>
+            <span class="ct-post__title">10 נקודות קריטיות בתכנון שקעים ומתגים לדירה (ועוד רעיון שלא חשבתם עליו)</span>
+            <span class="ct-post__cat">אדריכלות ועיצוב פנים</span>
+            <span class="ct-post__go"><span class="ct-vh">למאמר המלא</span><svg viewBox="0 0 40 16" aria-hidden="true"><path d="M40 8H2M9 1L2 8l7 7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>
+          </a>
+        </li>
+    </ol>
+    <div class="ct-xp__more ct-projs__more"><a class="ct-btn" href="#" data-magnetic><span class="ct-btn__label">לכל המאמרים</span><svg class="ct-btn__arrow" viewBox="0 0 40 16" aria-hidden="true"><path d="M40 8H2M9 1L2 8l7 7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a></div>
+  </section>
+
+  <!-- ===== CTA 2 ===== -->
+  <section class="ct-cta2" aria-label="בואו נתחיל">
+    <div class="ct-cta2__block" data-reveal="tm">
+      <img class="ct-tm__bg ct-cta2__bg" src="images/wide-room.jpg" alt="" aria-hidden="true" loading="lazy">
+      <div class="ct-cta2__shade" aria-hidden="true"></div>
+      <svg class="ct-frame-line ct-cta2__frame" preserveAspectRatio="none" viewBox="0 0 100 100" aria-hidden="true"><rect x="0" y="0" width="100" height="100" pathLength="1" vector-effect="non-scaling-stroke"/></svg>
+      <div class="ct-cta2__inner" data-reveal="fade">
+        <p class="ct-cta2__eyebrow" aria-hidden="true">YOUR HOME, BREATHTAKING</p>
+        <h2 class="ct-cta2__title">הבית שלכם ראוי<br>לגימור <span>הטוב ביותר.</span></h2>
+        <p class="ct-body ct-cta2__sub">מחומרי הגלם האיכותיים ביותר ועד לטפט האחרון. בואו נתחיל בפגישת היכרות.</p>
+        <div class="ct-cta2__btns">
+          <a class="ct-btn ct-btn--light" href="#contact" data-magnetic><span class="ct-btn__label">לתיאום פגישת היכרות</span><svg class="ct-btn__arrow" viewBox="0 0 40 16" aria-hidden="true"><path d="M40 8H2M9 1L2 8l7 7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a>
+          <a class="ct-btn ct-btn--ghost" href="https://wa.me/972500000000" target="_blank" rel="noopener" data-magnetic><span class="ct-btn__label">שיחה בוואטסאפ</span><svg class="ct-btn__arrow" viewBox="0 0 40 16" aria-hidden="true"><path d="M40 8H2M9 1L2 8l7 7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a>
+        </div>
+      </div>
+      <a class="ct-badge" href="#contact" aria-label="ליצירת קשר" data-magnetic>
+        <svg class="ct-badge__ring" viewBox="0 0 200 200" aria-hidden="true"><defs><path id="ct-circ" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs><text><textPath href="#ct-circ" textLength="486" lengthAdjust="spacing">LET'S TALK • CHAYA TALER • </textPath></text></svg>
+        <svg class="ct-badge__arrow" viewBox="0 0 40 16" aria-hidden="true"><path d="M40 8H2M9 1L2 8l7 7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="ct-foot" data-reveal="fade">
+    <div class="ct-foot__top">
+      <div class="ct-foot__brand">
+        <a class="ct-foot__logo" href="#top" aria-label="חיה טאלר — לראש העמוד"><span class="ct-foot__word">CHAYA</span><span class="ct-foot__tag">אדריכלות שרואה אנשים</span></a>
+        <p class="ct-foot__about">תכנון ארכיטקטוני מדויק, עיצוב פנים ופיקוח בשטח — מהסקיצה הראשונה ועד הבית המושלם.</p>
+      </div>
+      <nav class="ct-foot__col" aria-label="ניווט באתר">
+        <p class="ct-foot__h">ניווט</p>
+        <a href="#top">דף הבית</a><a href="#about">אודות</a><a href="#process">איך זה עובד</a><a href="#projects">פרויקטים</a><a href="#testimonials">המלצות</a><a href="#blog">בלוג</a><a href="#contact">צרו קשר</a>
+      </nav>
+      <nav class="ct-foot__col" aria-label="פרויקטים">
+        <p class="ct-foot__h">פרויקטים</p>
+        <a href="#">פרויקטים פרטיים</a><a href="#">פרויקטים עסקיים</a><a href="#">כל הפרויקטים</a><a href="#">לקוחות ממליצים</a>
+      </nav>
+      <div class="ct-foot__col">
+        <p class="ct-foot__h">יצירת קשר</p>
+        <a href="tel:+972500000000" class="ct-foot__ph">050-000-0000</a>
+        <a href="mailto:info@example.com">info@example.com</a>
+        <a href="https://wa.me/972500000000" target="_blank" rel="noopener">וואטסאפ</a>
+        <div class="ct-foot__social">
+          <a href="#" aria-label="אינסטגרם"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="17.3" cy="6.7" r="1" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="פייסבוק"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 8h3V4h-3c-2.2 0-4 1.8-4 4v2H8v4h2v6h4v-6h3l1-4h-4V8z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></a>
+        </div>
+      </div>
+    </div>
+    <!-- לוגו (מהעיצוב בפיגמה) — לשים את הקובץ ב-images/logo-chaya.png. אם הקובץ חסר מוצג הכיתוב כגיבוי -->
+    <div class="ct-foot__logobar"><img class="ct-foot__logoimg" src="images/logo-chaya.png" alt="CHAYA — חיה טאלר אדריכלות שרואה אנשים" onerror="this.parentNode.classList.add('is-missing');this.remove()"><span class="ct-foot__giant" aria-hidden="true">CHAYA TALER</span></div>
+    <div class="ct-foot__bar">
+      <p>© 2026 חיה טאלר — אדריכלות ועיצוב פנים. כל הזכויות שמורות.</p>
+      <p class="ct-foot__links"><a href="#">הצהרת נגישות</a><a href="#">מדיניות פרטיות</a></p>
+      <button class="ct-foot__up" type="button" aria-label="חזרה לראש העמוד"><svg viewBox="0 0 16 40" aria-hidden="true"><path d="M8 40V2M1 9l7-7 7 7" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></button>
+    </div>
+  </footer>
+
+</main>
+
+<!-- גלילה חלקה (Lenis). אם לא נטען — האתר עובד רגיל -->
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script>
+(function(){
+  var root=document.documentElement, page=document.getElementById('ct-page');
+  if(!page) return;
+  var motion=root.classList.contains('ct-motion');
+  var desktop=matchMedia('(min-width:1100px)');
+  var finePointer=matchMedia('(hover:hover) and (pointer:fine)').matches;
+
+  /* ---------- סליידר: כל השכבות מתחלפות יחד ---------- */
+  var groups=[].slice.call(page.querySelectorAll('.ct-slides'));
+  var total=groups[0].children.length, cur=0, timer;
+  var curEl=page.querySelector('.ct-counter__cur'), fill=page.querySelector('.ct-counter__fill');
+  function show(i){
+    groups.forEach(function(g){[].forEach.call(g.children,function(s,k){s.classList.toggle('is-active',k===i)})});
+    if(curEl) curEl.textContent=('0'+(i+1)).slice(-2);
+    if(fill){fill.style.animation='none';void fill.offsetWidth;fill.style.animation='';}
+  }
+  function next(){cur=(cur+1)%total;show(cur)}
+  show(0);
+  function startTimer(){clearInterval(timer);timer=setInterval(next,6000)}
+  document.addEventListener('visibilitychange',function(){document.hidden?clearInterval(timer):startTimer()});
+
+  /* ---------- המלצות: סליידר + חלון חד מיושר לרקע ---------- */
+  var tmBlock=page.querySelector('.ct-tm__block');
+  if(tmBlock){
+    var tmCards=[].slice.call(tmBlock.querySelectorAll('.ct-tm-card'));
+    var tmTrack=tmBlock.querySelector('.ct-tm__track');
+    var tmFill=page.querySelector('.ct-tm__progress-fill'), tmCur=page.querySelector('.ct-tm__cur');
+    var prevB=page.querySelector('.ct-tm__arrow[data-dir="prev"]'), nextB=page.querySelector('.ct-tm__arrow[data-dir="next"]');
+    var tmPending=false;
+    var updateTm=function(){
+      tmPending=false;
+      var br=tmBlock.getBoundingClientRect(),bw=tmBlock.offsetWidth,bh=tmBlock.offsetHeight;
+      var tr=tmTrack.getBoundingClientRect(),mid=tr.right-tr.width*.15,best=0,bd=1e9;
+      tmCards.forEach(function(c,i){
+        var r=c.getBoundingClientRect();
+        c.style.setProperty('--ox',(r.left-br.left).toFixed(1));c.style.setProperty('--oy',c.offsetTop);
+        c.style.setProperty('--sw',bw);c.style.setProperty('--sh',bh);
+        var d=Math.abs(r.right-mid); if(d<bd){bd=d;best=i}
+      });
+      var max=tmTrack.scrollWidth-tmTrack.clientWidth, pos=Math.abs(tmTrack.scrollLeft);
+      var prog=max>0?pos/max:1;
+      if(tmFill) tmFill.style.setProperty('--tp',(.25+prog*.75).toFixed(3));
+      if(tmCur) tmCur.textContent=('0'+(best+1)).slice(-2);
+      if(prevB) prevB.disabled=pos<4;
+      if(nextB) nextB.disabled=pos>max-4;
+    };
+    var reqTm=function(){if(!tmPending){tmPending=true;requestAnimationFrame(updateTm)}};
+    updateTm(); addEventListener('resize',reqTm); addEventListener('load',reqTm);
+    if(document.fonts&&document.fonts.ready) document.fonts.ready.then(reqTm);
+    tmTrack.addEventListener('scroll',reqTm,{passive:true});
+    var stepW=function(){var c=tmCards[0],g=parseFloat(getComputedStyle(tmTrack).columnGap)||0;return c.offsetWidth+g};
+    /* RTL: "הבא" נע שמאלה */
+    if(nextB) nextB.addEventListener('click',function(){tmTrack.scrollBy({left:-stepW(),behavior:'smooth'})});
+    if(prevB) prevB.addEventListener('click',function(){tmTrack.scrollBy({left:stepW(),behavior:'smooth'})});
+    tmTrack.addEventListener('keydown',function(e){
+      if(e.key==='ArrowLeft'){e.preventDefault();tmTrack.scrollBy({left:-stepW(),behavior:'smooth'})}
+      if(e.key==='ArrowRight'){e.preventDefault();tmTrack.scrollBy({left:stepW(),behavior:'smooth'})}
+    });
+    /* גרירה בעכבר */
+    var down=false,sx=0,sl=0,moved=0;
+    tmTrack.addEventListener('mousedown',function(e){down=true;moved=0;sx=e.clientX;sl=tmTrack.scrollLeft;e.preventDefault()});
+    addEventListener('mousemove',function(e){
+      if(!down) return; var dx=e.clientX-sx; moved=Math.max(moved,Math.abs(dx));
+      if(moved>3) tmTrack.classList.add('is-drag');
+      tmTrack.scrollLeft=sl-dx;
+    });
+    addEventListener('mouseup',function(){
+      if(!down) return; down=false;
+      var cur=tmTrack.scrollLeft; tmTrack.classList.remove('is-drag');
+      /* הצמדה לכרטיס הקרוב */
+      tmTrack.scrollLeft=cur; var w=stepW(); var target=Math.round(cur/w)*w;
+      tmTrack.scrollTo({left:target,behavior:'smooth'});
+    });
+  }
+
+  /* ---------- חוויית לקוחות: רשימה + פאנל ---------- */
+  var xpPane=page.querySelector('.ct-xp__pane');
+  if(xpPane){
+    var xpRows=[].slice.call(xpPane.querySelectorAll('.ct-xp__row'));
+    var xpBgs=[].slice.call(xpPane.querySelectorAll('.ct-xp__bg'));
+    var xpC=xpPane.querySelector('.ct-xp__content'), xpQ=xpPane.querySelector('.ct-xp__quote'), xpW=xpPane.querySelector('.ct-xp__who'), xpN=xpPane.querySelector('.ct-xp__cnum');
+    var xpCur=0, xpT=null, xpSwap=null, xpHover=false;
+    var xpShow=function(i){
+      if(i===xpCur && xpQ.innerHTML) return;
+      xpCur=i;
+      xpRows.forEach(function(r,k){r.classList.toggle('is-active',k===i)});
+      xpBgs.forEach(function(b,k){b.classList.toggle('is-active',k===i)});
+      xpC.classList.add('is-out'); xpC.classList.remove('is-lit');
+      clearTimeout(xpSwap);
+      xpSwap=setTimeout(function(){
+        var row=xpRows[i];
+        xpQ.innerHTML=row.querySelector('.ct-xp__q').innerHTML;
+        xpW.textContent=row.querySelector('.ct-xp__name').textContent;
+        xpN.textContent=('0'+(i+1)).slice(-2);
+        xpC.classList.remove('is-out');
+        setTimeout(function(){xpC.classList.add('is-lit')},350);
+      },350);
+      xpRestart();
+    };
+    var xpRestart=function(){clearInterval(xpT);xpT=setInterval(function(){if(!xpHover&&!document.hidden) xpShow((xpCur+1)%xpRows.length)},7000)};
+    xpRows.forEach(function(r,i){
+      var b=r.querySelector('.ct-xp__btn');
+      b.addEventListener('click',function(){xpShow(i)});
+      b.addEventListener('mouseenter',function(){if(desktop.matches) xpShow(i)});
+      b.addEventListener('focus',function(){xpShow(i)});
+    });
+    xpPane.addEventListener('mouseenter',function(){xpHover=true;xpPane.classList.add('is-paused')});
+    xpPane.addEventListener('mouseleave',function(){xpHover=false;xpPane.classList.remove('is-paused')});
+    xpC.classList.add('is-lit'); xpRestart();
+  }
+
+  /* ---------- טופס ---------- */
+  var form=page.querySelector('.ct-form');
+  if(form){
+    var wrap=form.parentElement;
+    var check=function(inp){
+      var f=inp.closest('.ct-field'); if(!f) return true;
+      var v=inp.value.trim(), ok=true;
+      if(inp.required&&!v) ok=false;
+      else if(inp.type==='tel'&&v) ok=/^[0-9+\-\s]{9,15}$/.test(v)&&v.replace(/\D/g,'').length>=9;
+      else if(inp.type==='email'&&v) ok=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+      f.classList.toggle('is-error',!ok); return ok;
+    };
+    [].forEach.call(form.querySelectorAll('input,textarea'),function(inp){
+      inp.addEventListener('blur',function(){if(inp.value) check(inp)});
+      inp.addEventListener('input',function(){if(inp.closest('.ct-field.is-error')) check(inp)});
+    });
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var ok=true,first=null;
+      [].forEach.call(form.querySelectorAll('.ct-field input'),function(inp){if(!check(inp)){ok=false;first=first||inp}});
+      if(!ok){first.focus({preventScroll:true});return}
+      var btn=form.querySelector('button[type=submit]'); btn.classList.add('is-loading');
+      /* כאן מחברים שליחה אמיתית (Webhook / Make / אלמנטור). ראו CT_FORM_ENDPOINT */
+      var endpoint=window.CT_FORM_ENDPOINT;
+      var finish=function(){btn.classList.remove('is-loading');wrap.style.minHeight=wrap.offsetHeight+'px';wrap.classList.add('is-sent');};
+      if(endpoint){
+        fetch(endpoint,{method:'POST',body:new FormData(form)}).then(finish,finish);
+      } else setTimeout(finish,600);
+    });
+  }
+
+  /* ---------- קישורי עוגן + חזרה למעלה ---------- */
+  var goTo=function(el){
+    if(window.__ctLenis) window.__ctLenis.scrollTo(el,{offset:0,duration:1.6});
+    else el.scrollIntoView({behavior:'smooth',block:'start'});
+  };
+  [].forEach.call(page.querySelectorAll('a[href^="#"]'),function(a){
+    var id=a.getAttribute('href').slice(1); if(!id) return;
+    a.addEventListener('click',function(e){var el=document.getElementById(id); if(!el) return; e.preventDefault(); goTo(el);});
+  });
+  var upBtn=page.querySelector('.ct-foot__up');
+  if(upBtn) upBtn.addEventListener('click',function(){goTo(document.getElementById('top')||document.body)});
+
+  /* ---------- טעינה ---------- */
+  var first=page.querySelector('.ct-slides--blur .ct-slide'), loaded=false, t0=Date.now();
+  function ready(){
+    if(loaded) return; loaded=true;
+    setTimeout(function(){page.classList.add('is-loaded');startTimer()},Math.max(0,1100-(Date.now()-t0)));
+  }
+  if(!motion){page.classList.add('is-loaded');startTimer();window.__ctOk=true;return}
+  if(first.complete) ready(); else {first.addEventListener('load',ready);first.addEventListener('error',ready)}
+  setTimeout(ready,2600);
+
+  /* ---------- פיצול אותיות ---------- */
+  [].forEach.call(page.querySelectorAll('[data-reveal="split"]'),function(el){
+    var n=0;
+    (function walk(node){
+      [].slice.call(node.childNodes).forEach(function(c){
+        if(c.nodeType===3){
+          var frag=document.createDocumentFragment();
+          c.textContent.split(/(\s+)/).forEach(function(word){
+            if(!word) return;
+            if(!word.trim()){frag.appendChild(document.createTextNode(word));return}
+            var w=document.createElement('span');w.className='w';w.setAttribute('aria-hidden','true');
+            word.split('').forEach(function(ch){
+              var s=document.createElement('span');s.className='ch';s.textContent=ch;s.style.setProperty('--i',n++);w.appendChild(s);
+            });
+            frag.appendChild(w);
+          });
+          node.replaceChild(frag,c);
+        } else if(c.nodeType===1 && c.tagName!=='BR') walk(c);
+      });
+    })(el);
+  });
+  /* מילים למניפסט */
+  var manWords=[], manText=page.querySelector('[data-words]'), manKeys=[];
+  if(manText){
+    (function walk(node){
+      [].slice.call(node.childNodes).forEach(function(c){
+        if(c.nodeType===3){
+          var frag=document.createDocumentFragment();
+          c.textContent.split(/(\s+)/).forEach(function(t){
+            if(!t) return;
+            if(!t.trim()){frag.appendChild(document.createTextNode(t));return}
+            var w=document.createElement('span');w.className='wd';w.textContent=t;frag.appendChild(w);manWords.push(w);
+          });
+          node.replaceChild(frag,c);
+        } else if(c.nodeType===1) walk(c);
+      });
+    })(manText);
+    manKeys=[].slice.call(manText.querySelectorAll('.ct-key')).map(function(k){var ws=k.querySelectorAll('.wd');return {el:k,last:ws[ws.length-1]}});
+  }
+  [].forEach.call(page.querySelectorAll('[data-reveal="fade"]'),function(el){
+    [].forEach.call(el.children,function(c,i){c.style.setProperty('--i',i)});
+  });
+
+  /* ---------- ספירה (0 סופר אחורה מ-99) ---------- */
+  function countUp(node,i){
+    if(!node) return;
+    var to=+node.dataset.count, from=to===0?99:0, dur=1900, start=null;
+    node.textContent=from;
+    setTimeout(function(){
+      (function step(t){
+        if(!start) start=t;
+        var k=Math.min(1,(t-start)/dur), e=1-Math.pow(2,-10*k);
+        node.textContent=Math.round(from+(to-from)*(k===1?1:e));
+        if(k<1) requestAnimationFrame(step);
+      })(performance.now());
+      requestAnimationFrame(function s(t){});
+    },200+i*140);
+  }
+
+  /* ---------- כניסות בגלילה ---------- */
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting) return;
+      var el=e.target; el.classList.add('is-in'); io.unobserve(el);
+      if(el.dataset.reveal==='stat') countUp(el.querySelector('[data-count]'),+el.style.getPropertyValue('--i')||0);
+      [].forEach.call(el.querySelectorAll('[data-reveal="fade"]'),function(c){c.classList.add('is-in')});
+      setTimeout(function(){el.classList.add('is-done')},2600);
+    });
+  },{threshold:.18,rootMargin:'0px 0px -6% 0px'});
+  [].forEach.call(page.querySelectorAll('[data-reveal]'),function(el){
+    if(el.parentElement.closest('[data-reveal="wide"],[data-reveal="media"]')) return; // ייחשף עם ההורה
+    io.observe(el);
+  });
+
+  /* ---------- גלילה: פרלקסה, יציאת הפתיחה, פס התקדמות ---------- */
+  var hero=page.querySelector('.ct-hero'), heroText=page.querySelector('.ct-hero__text');
+  var glass=page.querySelector('.ct-hero__glass'), bar=page.querySelector('.ct-progressbar');
+  var px=[].slice.call(page.querySelectorAll('[data-parallax]'));
+  var pxx=[].slice.call(page.querySelectorAll('[data-px]'));
+  var mx=0,my=0,tx=0,ty=0;
+  function frame(){
+    var vh=innerHeight, y=scrollY||pageYOffset;
+    var hs=Math.min(1,Math.max(0,y/vh));
+    mx+=(tx-mx)*.06; my+=(ty-my)*.06;
+    heroText.style.transform='translate3d('+mx.toFixed(2)+'px,'+(my-hs*150).toFixed(2)+'px,0)';
+    heroText.style.opacity=(1-hs*1.35).toFixed(3);
+    glass.style.background='rgba(250,250,250,'+(.2+hs*.45).toFixed(3)+')';
+    var max=document.documentElement.scrollHeight-vh;
+    bar.style.setProperty('--sp',max>0?(y/max).toFixed(4):0);
+    if(manText){
+      var mr=manText.getBoundingClientRect();
+      var mp=Math.min(1,Math.max(0,(vh*.82-mr.top)/(mr.height+vh*.3)));
+      var lit=Math.round(mp*manWords.length*1.08);
+      manWords.forEach(function(w,i){w.classList.toggle('is-lit',i<lit)});
+      manKeys.forEach(function(k){k.el.classList.toggle('is-lit',k.last.classList.contains('is-lit'))});
+    }
+    pxx.forEach(function(el){
+      var r=el.parentElement.getBoundingClientRect();
+      if(r.bottom<-100||r.top>vh+100) return;
+      var p=(r.top+r.height/2-vh/2)/vh;
+      el.style.setProperty('--px',(Math.min(1,Math.max(0,p+.5))*50).toFixed(2)+'px');
+    });
+    px.forEach(function(el){
+      var r=el.parentElement.getBoundingClientRect();
+      if(r.bottom<-100||r.top>vh+100) return;
+      var p=(r.top+r.height/2-vh/2)/vh;
+      el.style.setProperty('--py',(p*-70*(+el.dataset.parallax||1)).toFixed(2)+'px');
+    });
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+  if(finePointer){
+    hero.addEventListener('mousemove',function(e){
+      if(!desktop.matches) return;
+      var r=hero.getBoundingClientRect();
+      tx=((e.clientX-r.left)/r.width-.5)*-26; ty=((e.clientY-r.top)/r.height-.5)*-16;
+    });
+    hero.addEventListener('mouseleave',function(){tx=ty=0});
+  }
+
+  /* ---------- הטיה תלת-ממדית ---------- */
+  if(finePointer){
+    [].forEach.call(page.querySelectorAll('[data-tilt]'),function(el){
+      el.addEventListener('mousemove',function(e){
+        if(!el.classList.contains('is-done')) return;
+        var r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+        el.style.transform='perspective(900px) rotateY('+(x*10).toFixed(2)+'deg) rotateX('+(-y*10).toFixed(2)+'deg) scale(1.02)';
+      });
+      el.addEventListener('mouseleave',function(){el.style.transform=''});
+    });
+  }
+
+  /* ---------- תמונה שעוקבת אחרי העכבר בשלבים ---------- */
+  if(finePointer){
+    [].forEach.call(page.querySelectorAll('.ct-step'),function(row){
+      var box=row.querySelector('.ct-step__img'); if(!box) return;
+      var x=0,y=0,tx=0,ty=0,on=false,raf=0,lastX=0;
+      function tick(){
+        x+=(tx-x)*.14; y+=(ty-y)*.14;
+        var rot=Math.max(-12,Math.min(12,(tx-x)*.05));
+        box.style.transform='translate3d('+(x-box.offsetWidth/2).toFixed(1)+'px,'+(y-box.offsetHeight/2).toFixed(1)+'px,0) rotate('+rot.toFixed(2)+'deg)';
+        if(on||Math.abs(tx-x)>.5||Math.abs(ty-y)>.5) raf=requestAnimationFrame(tick); else raf=0;
+      }
+      row.addEventListener('mouseenter',function(e){
+        if(!desktop.matches) return;
+        var r=row.getBoundingClientRect(); tx=x=e.clientX-r.left; ty=y=e.clientY-r.top;
+        on=true; box.classList.add('is-show'); if(!raf) raf=requestAnimationFrame(tick);
+      });
+      row.addEventListener('mousemove',function(e){
+        var r=row.getBoundingClientRect(); tx=e.clientX-r.left; ty=e.clientY-r.top;
+        if(!raf) raf=requestAnimationFrame(tick);
+      });
+      row.addEventListener('mouseleave',function(){on=false;box.classList.remove('is-show')});
+    });
+  }
+
+  /* ---------- כפתורים מגנטיים ---------- */
+  if(finePointer){
+    [].forEach.call(page.querySelectorAll('[data-magnetic]'),function(btn){
+      btn.addEventListener('mousemove',function(e){
+        var r=btn.getBoundingClientRect(),x=e.clientX-r.left-r.width/2,y=e.clientY-r.top-r.height/2;
+        btn.style.transform='translate('+(x*.18).toFixed(1)+'px,'+(y*.3).toFixed(1)+'px)';
+        btn.style.transition='transform .2s ease-out,color .5s,border-color .5s';
+      });
+      btn.addEventListener('mouseleave',function(){
+        btn.style.transition='transform .7s cubic-bezier(.3,1.6,.5,1),color .5s,border-color .5s';
+        btn.style.transform='';
+      });
+    });
+  }
+
+  /* ---------- סמן מותאם ---------- */
+  var dot=page.querySelector('.ct-cursor'), ring=page.querySelector('.ct-cursor-ring');
+  if(finePointer && dot){
+    var cx=-100,cy=-100,rx=-100,ry=-100;
+    addEventListener('mousemove',function(e){cx=e.clientX;cy=e.clientY;dot.classList.remove('is-hidden');ring.classList.remove('is-hidden')});
+    document.addEventListener('mouseleave',function(){dot.classList.add('is-hidden');ring.classList.add('is-hidden')});
+    (function loop(){
+      rx+=(cx-rx)*.16; ry+=(cy-ry)*.16;
+      dot.style.transform='translate3d('+cx+'px,'+cy+'px,0)';
+      ring.style.transform='translate3d('+rx.toFixed(1)+'px,'+ry.toFixed(1)+'px,0)';
+      requestAnimationFrame(loop);
+    })();
+    [].forEach.call(page.querySelectorAll('[data-view]'),function(el){
+      el.addEventListener('mouseenter',function(){ring.setAttribute('data-label','לפרויקט');ring.classList.add('is-view')});
+      el.addEventListener('mouseleave',function(){ring.classList.remove('is-view')});
+    });
+    [].forEach.call(page.querySelectorAll('.ct-media,.ct-card,.ct-gold,.ct-wide,.ct-hero__frame,.ct-tm-card,.ct-step,.ct-stat,.ct-post,a,button'),function(el){
+      el.addEventListener('mouseenter',function(){ring.classList.add('is-hover')});
+      el.addEventListener('mouseleave',function(){ring.classList.remove('is-hover')});
+    });
+  }
+
+  /* ---------- גלילה חלקה ---------- */
+  if(window.Lenis){
+    try{
+      var lenis=new Lenis({lerp:.09,smoothWheel:true}); window.__ctLenis=lenis;
+      (function raf(t){lenis.raf(t);requestAnimationFrame(raf)})(0);
+    }catch(err){}
+  }
+  window.__ctOk=true;
+})();
+</script>
+</body>
+</html>

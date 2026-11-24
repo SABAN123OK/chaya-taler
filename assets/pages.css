@@ -1,0 +1,575 @@
+﻿/* =========================================================
+   עמודים פנימיים + כותרת עליונה — משלים את site.css
+   משתמש באותם משתנים: --green --dark --gray --text --line --gold --u
+   ========================================================= */
+
+/* ---------- טקסט רץ: לפחות 22px (הפונט צר, לכן גדול יותר מהעיצוב המקורי) ---------- */
+.ct-page .ct-body,.ct-page .ct-foot__about{font-size:max(22px, calc(24 * var(--u, 1px)));line-height:1.45}
+@media (max-width:1099.98px){.ct-page .ct-body,.ct-page .ct-foot__about{font-size:22px}}
+/* מרווח שורות צפוף יותר (לפונט הצר יש מרווח פנימי גדול) */
+.ct-page .ct-body,.ct-page .ct-body p,.ct-page p.ct-body,.ct-page .ct-body li,.ct-page .ct-foot__about{line-height:1.25}
+/* פתיחה: טקסט שחור + כפתור "בתים עוצרים נשימה" בשפת הכפתורים של האתר */
+.ct-hero .ct-hero__lead{color:var(--text);text-shadow:none}
+/* שלוש שורות הפסקה במרווח שווה (בלי רווח נוסף בין הפסקאות) */
+.ct-hero .ct-hero__lead p{line-height:1.22;margin:0}
+/* כפתור עדין: קו דק ובהיר יותר, ריפוד קטן, טקסט במשקל רגיל, כמעט בלי הבהרה של הרקע */
+.ct-hero .ct-hero__btn{
+  display:inline-flex;width:auto;min-width:0;margin-top:.8em;
+  padding:9px 18px;gap:18px;font-size:inherit;font-weight:400; /* אותו גודל כמו הטקסט שמעליו */
+  border:1px solid rgba(62,62,62,.38);background:rgba(255,255,255,.12);
+}
+.ct-hero .ct-hero__btn .ct-btn__arrow{width:24px}
+/* מרווחים צפופים יותר: "להתפנק..." ← כותרת ← טקסט */
+@media (min-width:1100px){
+  .ct-hero .ct-kicker{top:calc(293 * var(--u))}
+  .ct-hero .ct-hero__lead{top:calc(733 * var(--u))}
+}
+@media (max-width:1099.98px){
+  .ct-hero .ct-title--1{margin-top:-.05em}
+  .ct-hero .ct-hero__lead{margin-top:.4em}
+  .ct-hero .ct-hero__btn{padding:8px 16px;gap:16px}
+  .ct-step__title{font-size:clamp(24px,5.52vw,31.2px)}
+}
+@media (min-width:1100px){
+  /* פתיחה: טקסט רחב יותר כדי שלא יתארך מדי */
+  .ct-hero__lead{width:calc(720 * var(--u))}
+  /* איך זה עובד: הטקסט בזרימה רגילה, כך שהשורה גדלה עם הטקסט ולא עולה על השלב הבא */
+  /* כרטיס ההמלצה (משפחת שורין): ריווח שווה משני הצדדים במקום טקסט צמוד לימין */
+  .ct-card__quote{width:auto;margin:0;padding:calc(125 * var(--u)) max(22px, calc(44 * var(--u))) calc(30 * var(--u))}
+  /* כותרות השלבים: גדולות ב-20% מהעיצוב, ולעולם לא קטנות מהטקסט הרץ */
+  .ct-step__title{font-size:max(26px, calc(33.6 * var(--u)))}
+  .ct-step__text{position:relative;top:auto;left:auto;margin-left:calc(1222 * var(--u));width:calc(408 * var(--u));padding:calc(52 * var(--u)) 0 calc(48 * var(--u))}
+}
+/* פתיחה במחשב: תמונה אחת על כל הכרטיס, מעליה שכבת זכוכית בהירה ומטושטשת,
+   ובתוך המסגרת "חור" שבו אותה תמונה נראית חדה (השכבה החדה נחתכת בדיוק לגבולות המסגרת — clip-path ב-site.css) */
+/* הרקע שמתחת לזכוכית: רוויה מופחתת ב-50%. החלק החד (בחור / במסגרת בנייד) נשאר ברוויה רגילה */
+html body .ct-page .ct-hero .ct-slides--blur{filter:blur(16px) saturate(.5)}
+/* פתיחה במחשב — כמו בפיגמה: תמונה אחת חדה על כל הכרטיס, ומעליה שכבת זכוכית אחת שמטשטשת ומפחיתה רוויה
+   של מה שמתחתיה, עם "חור" חתוך במקום המסגרת. דרך החור רואים את אותה תמונה — חדה וברוויה רגילה. */
+@media (min-width:1100px){
+  html body .ct-page .ct-hero .ct-slides--blur{display:none}
+  html body .ct-page .ct-hero .ct-slides--sharp{display:block;clip-path:none;z-index:0}
+  html body .ct-page .ct-hero .ct-hero__glass{
+    z-index:1;
+    -webkit-backdrop-filter:blur(calc(12 * var(--u))) saturate(.5);backdrop-filter:blur(calc(12 * var(--u))) saturate(.5);
+    clip-path:polygon(evenodd,
+      0 0, 100% 0, 100% 100%, 0 100%, 0 0,
+      calc(50% + 64 * var(--u)) calc(50% - 463.5 * var(--u)),
+      calc(50% + 818 * var(--u)) calc(50% - 463.5 * var(--u)),
+      calc(50% + 818 * var(--u)) calc(50% + 409.5 * var(--u)),
+      calc(50% + 64 * var(--u)) calc(50% + 409.5 * var(--u)),
+      calc(50% + 64 * var(--u)) calc(50% - 463.5 * var(--u)));
+  }
+  html body .ct-page .ct-hero .ct-grain{z-index:1}
+  /* קו לבן דקיק בדיוק על קו המתאר של החור */
+  html body .ct-page .ct-hero .ct-hero__frame > .ct-frame-line{display:block;inset:0;width:100%;height:100%;z-index:1}
+  html body .ct-page .ct-hero .ct-hero__frame > .ct-frame-line rect{stroke:rgba(255,255,255,.9);stroke-width:1;stroke-dasharray:none}
+  html body .ct-page .ct-hero .ct-hero__stage{z-index:2}
+  .ct-slides--frame{display:none}
+  /* צל פנימי בחור: שכבת הזכוכית "מטילה צל" על התמונה החדה שמתחתיה — תחושת עומק */
+  .ct-hero__frame{box-shadow:
+    inset 0 calc(12 * var(--u)) calc(40 * var(--u)) calc(-6 * var(--u)) rgba(30,28,25,.16),
+    inset calc(8 * var(--u)) 0 calc(36 * var(--u)) calc(-8 * var(--u)) rgba(30,28,25,.08),
+    inset calc(-8 * var(--u)) 0 calc(36 * var(--u)) calc(-8 * var(--u)) rgba(30,28,25,.08),
+    inset 0 0 calc(70 * var(--u)) rgba(30,28,25,.05)}
+}
+/* טקסט הפתיחה סטטי: בלי תזוזה בעקבות העכבר או בגלילה */
+.ct-hero__text{transform:none!important;opacity:1!important}
+
+/* ---------- עטיפה ברוחב העיצוב ---------- */
+.ct-wrap{width:calc(1630 * var(--u, 1px));margin-right:calc(142 * var(--u, 1px))}
+@media (max-width:1099.98px){
+  .ct-wrap{width:auto;max-width:860px;margin-inline:auto;padding-inline:clamp(20px,6vw,64px)}
+}
+.ct-sec{padding-bottom:calc(156 * var(--u))}
+@media (max-width:1099.98px){.ct-sec{padding-bottom:clamp(64px,10vw,110px)}}
+
+/* ---------- כותרת עליונה ---------- */
+.ct-head{
+  position:fixed;top:0;right:0;left:0;z-index:50;
+  display:flex;align-items:center;gap:32px;
+  width:100%;box-sizing:border-box;padding:18px 15px;
+  font-family:"Plinko FS","Heebo",sans-serif;direction:rtl;
+  transition:background-color .4s ease, box-shadow .4s ease, padding .4s ease;
+}
+.ct-head.is-solid, .ct-head--solid{background:rgba(255,255,255,.94);box-shadow:0 1px 0 var(--line, #b5bdb7);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);padding-block:12px}
+.ct-head__logo{display:flex;flex-direction:column;align-items:flex-start;text-decoration:none;color:#3e3e3e;line-height:1}
+.ct-head__logo img{display:block;height:56px;width:auto;transition:height .4s ease}
+.ct-head.is-solid .ct-head__logo img,.ct-head--solid .ct-head__logo img{height:48px}
+.ct-foot__logo img{display:block;width:clamp(200px, calc(300 * var(--u, 1px)), 300px);height:auto}
+@media (max-width:1099.98px){.ct-foot__logo img{width:220px}}
+.ct-head__nav{display:flex;gap:clamp(16px,2.2vw,38px);margin-inline-start:auto}
+.ct-head__nav a{color:#3e3e3e;text-decoration:none;font-size:20px;font-weight:500;position:relative;padding:6px 0}
+.ct-head__nav a::after{content:"";position:absolute;right:0;left:0;bottom:0;height:1px;background:#b8913f;transform:scaleX(0);transform-origin:right;transition:transform .4s ease}
+.ct-head__nav a:hover::after,.ct-head__nav a[aria-current="page"]::after{transform:scaleX(1)}
+.ct-head__nav a[aria-current="page"]{color:#79938d}
+.ct-head__cta{border:1px solid #3e3e3e;color:#3e3e3e;text-decoration:none;font-weight:700;font-size:16px;padding:10px 22px;white-space:nowrap;transition:background .3s,color .3s,border-color .3s}
+.ct-head__cta:hover{background:#79938d;border-color:#79938d;color:#fff}
+.ct-head__toggle{display:none;background:none;border:1px solid #b5bdb7;width:46px;height:46px;cursor:pointer;color:#3e3e3e;margin-inline-start:auto}
+.ct-head__toggle span{display:block;width:20px;height:1.5px;background:currentColor;margin:5px auto;transition:transform .3s,opacity .3s}
+@media (max-width:1099.98px){
+  .ct-head{gap:12px;padding:12px 15px}
+  .ct-head__logo img,.ct-head.is-solid .ct-head__logo img,.ct-head--solid .ct-head__logo img{height:44px}
+  .ct-head__toggle{display:block}
+  .ct-head__cta{display:none}
+  .ct-head__nav{
+    position:fixed;top:70px;right:0;left:0;bottom:0;margin:0;
+    flex-direction:column;gap:0;padding:24px clamp(20px,6vw,64px);
+    background:#fff;transform:translateY(-8px);opacity:0;visibility:hidden;transition:opacity .3s,transform .3s,visibility .3s;
+  }
+  .ct-head.is-open .ct-head__nav{opacity:1;visibility:visible;transform:none}
+  .ct-head.is-open{background:#fff}
+  .ct-head__nav a{font-size:24px;padding:16px 0;border-bottom:1px solid #b5bdb7}
+  .ct-head.is-open .ct-head__toggle span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+  .ct-head.is-open .ct-head__toggle span:nth-child(2){opacity:0}
+  .ct-head.is-open .ct-head__toggle span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+}
+
+/* הפתיחה בדף הבית: מקום לכותרת הקבועה בנייד/טאבלט */
+@media (max-width:1099.98px){.ct-hero{padding-top:96px}}
+
+/* ---------- כותרת עמוד פנימי ---------- */
+.ct-ph{padding-top:calc(220 * var(--u));padding-bottom:calc(90 * var(--u))}
+.ct-ph__row{display:flex;direction:ltr;justify-content:space-between;align-items:flex-end;gap:24px}
+.ct-ph__big{font-weight:900;color:var(--green);direction:ltr;text-align:left;font-size:calc(150 * var(--u));line-height:calc(100 * var(--u))}
+.ct-ph__big span{color:var(--gray)}
+.ct-ph__he{font-weight:900;color:var(--dark);font-size:calc(84 * var(--u));line-height:1.08;max-width:calc(1250 * var(--u))}
+.ct-ph__lead{margin-top:calc(40 * var(--u));max-width:calc(760 * var(--u));color:var(--text)}
+.ct-ph__meta{display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:calc(30 * var(--u));color:var(--gray);font-size:max(14px,calc(18 * var(--u)))}
+.ct-ph__meta a{color:var(--green)}
+.ct-crumbs{font-size:max(13px,calc(15 * var(--u)));letter-spacing:.2em;color:var(--green);margin-bottom:calc(26 * var(--u))}
+.ct-crumbs a{color:inherit;text-decoration:none}
+@media (max-width:1099.98px){
+  .ct-ph{padding-top:120px;padding-bottom:36px}
+  .ct-ph__row{flex-direction:column;align-items:flex-start;gap:8px}
+  .ct-ph__row .ct-tm__kicker{order:1}
+  .ct-ph__big{order:2;align-self:flex-end;font-size:clamp(52px,13vw,130px);line-height:.9}
+  .ct-ph__he{font-size:clamp(32px,8.6vw,64px)}
+  .ct-ph__lead{margin-top:20px;max-width:none}
+  .ct-ph__meta{margin-top:16px}
+  .ct-crumbs{margin-bottom:14px}
+}
+
+/* ---------- גריד פרויקטים (ארכיון) ---------- */
+.ct-pgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:calc(80 * var(--u));row-gap:calc(110 * var(--u))}
+.ct-pgrid .ct-proj{margin:0}
+.ct-pgrid .ct-proj:nth-child(even){margin-top:calc(180 * var(--u))}
+.ct-pgrid .ct-proj__img{aspect-ratio:4/3;height:auto}
+.ct-pgrid .ct-proj:nth-child(4n+2) .ct-proj__img,.ct-pgrid .ct-proj:nth-child(4n+3) .ct-proj__img{aspect-ratio:4/5}
+.ct-proj__img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.ct-proj:hover .ct-proj__img img{transform:scale(1.04)}
+.ct-pgrid .ct-media__inner{position:absolute;inset:0;top:0;height:100%;transform:none}
+/* תוויות קטנות באנגלית (LET'S TALK, THE TALER STANDARD, STEP...) — 22px */
+.ct-page .ct-cta__eyebrow,.ct-page .ct-cta2__eyebrow,.ct-page .ct-man__eyebrow,.ct-page .ct-aside__h,
+.ct-page .ct-step__label,.ct-page .ct-proj__go,.ct-page .ct-xp__label,.ct-page .ct-welcome,.ct-page .ct-credit{
+  font-size:22px;letter-spacing:.25em;
+}
+.ct-page .ct-proj__go svg{width:28px}
+/* הכיתוב בתחתית המסגרת בפתיחה: ממורכז ויורד שורה במקום להיחתך */
+.ct-page .ct-hero .ct-credit{left:0;right:0;padding:0 16px;text-align:center;white-space:normal;letter-spacing:.12em;line-height:1.25}
+/* מחשב — בדיוק לפי הפיגמה (מיקום יחסית לחור, צבע, ריווח אותיות) */
+@media (min-width:1100px){
+  html body .ct-page .ct-hero .ct-welcome{left:auto;right:calc(44 * var(--u));top:calc(31.5 * var(--u));width:auto;
+    color:#232323;letter-spacing:calc(10 * var(--u));text-shadow:0 1px 14px rgba(0,0,0,.28)}
+  html body .ct-page .ct-hero .ct-credit{left:0;right:auto;top:calc(100% + 27 * var(--u));bottom:auto;padding:0;
+    text-align:left;white-space:nowrap;color:#353535;letter-spacing:calc(4 * var(--u));text-shadow:0 1px 14px rgba(0,0,0,.28)}
+}
+
+/* רווח של 100px אחרי אזור THE TALER STANDARD */
+@media (min-width:1100px){.ct-page .ct-man{padding-bottom:calc(170 * var(--u) + 100px)}}
+@media (max-width:1099.98px){.ct-page .ct-man{padding-bottom:calc(clamp(70px,12vw,120px) + 100px)}}
+
+/* ---------- פוטר ---------- */
+/* בלי קו מעל הפוטר */
+.ct-page .ct-foot,.ct-page .ct-foot__top{border-top:0}
+/* פריטי העמודות: 18px ורווח קטן ביניהם */
+.ct-page .ct-foot__col{gap:2px}
+.ct-page .ct-foot__col a{font-size:22px;line-height:1.3}
+/* CHAYA TALER הענק: ירוק-אפרפר בהיר מאוד, צמוד לקו התחתון, בלי ברק במעבר עכבר */
+.ct-page .ct-foot__logobar,.ct-page .ct-foot__logobar.is-missing{padding-bottom:0;padding-left:0;justify-content:flex-start}
+.ct-page .ct-foot__giant{text-align:left;margin-left:-.031em} /* מבטל את הרווח המובנה של האות C */
+.ct-page .ct-foot__giant{background:none;-webkit-text-fill-color:currentColor;color:#e3e9e6;opacity:1;animation:none;transition:none;margin-bottom:-.121em}
+.ct-page .ct-foot__giant:hover{opacity:1;animation:none}
+/* השורה התחתונה: זכויות, קישורים וקרדיט — 18px */
+.ct-page .ct-foot__bar{font-size:18px;flex-wrap:wrap;gap:12px 32px;border-top:.5px solid rgba(181,189,183,.55)} /* קו תחתון דק ועדין */
+.ct-page .ct-foot__bar p{line-height:1.3}
+.ct-page .ct-foot__links{gap:24px}
+.ct-page .ct-foot__links a{font-size:18px}
+.ct-page .ct-foot__credit{margin-inline-start:auto;direction:ltr}
+@media (max-width:1099.98px){.ct-page .ct-foot__credit{margin-inline-start:0}}
+
+/* אזור "הבית שלכם ראוי לגימור הטוב ביותר": בלי מסגרת פנימית */
+.ct-page .ct-cta2__frame{display:none}
+.ct-page .ct-cta2__title{line-height:.82}
+
+/* ציטוטי לקוחות גדולים: מרווח שורות צפוף (ה"רגיל" של הפונט גבוה מדי) */
+.ct-page .ct-xp__quote,.ct-page .ct-xp__quote p{line-height:1.2}
+.ct-page .ct-quote-box__text{line-height:1.3}
+@media (max-width:1099.98px){.ct-page .ct-quote-box__text,.ct-page .ct-quote-box--long .ct-quote-box__text{font-size:22px}}
+
+/* פרטי הפוסט בבלוג (קטגוריה ותאריך) — 20px ברשימות ובעמוד המאמר */
+.ct-page .ct-post__cat,.ct-page .ct-post__date,.ct-page .ct-ph__meta{font-size:20px}
+
+/* כותרות גדולות (THE PERFECT BALANCE וכו'): האותיות לא קופצות ולא מזהיבות במעבר עכבר */
+.ct-page .ct-split .ch:hover,.ct-page .ct-split.is-done .ch:hover{transform:none;color:inherit}
+/* טאלר במספרים: המספרים לא עולים ולא משנים צבע במעבר עכבר */
+.ct-page .ct-stat:hover .ct-stat__num,.ct-motion .ct-page .ct-stat.is-done:hover .ct-stat__num{transform:none}
+.ct-page .ct-stat:hover .ct-stat__val{color:inherit}
+.ct-page .ct-stat:hover .ct-stat__sep{transform:none}
+
+/* סמן העכבר: בלי היפוך צבעים (תשליל) — נקודה וטבעת ירוקות רגילות, הטבעת לא מתמלאת */
+.ct-motion .ct-cursor,.ct-motion .ct-cursor-ring{mix-blend-mode:normal}
+.ct-page .ct-cursor{background:var(--green)}
+.ct-page .ct-cursor-ring{border-color:rgba(121,147,141,.75)}
+.ct-page .ct-cursor-ring.is-hover{background:transparent;border-color:var(--green)}
+
+/* כפתורים: במעבר עכבר רק מילוי צבע — בלי תזוזה של הכפתור או החץ, ובלי הקו הדק בתחתית */
+.ct-page .ct-btn::after{display:none}
+.ct-page .ct-btn:hover .ct-btn__arrow,.ct-page .ct-btn:focus-visible .ct-btn__arrow{transform:none}
+.ct-page .ct-btn,.ct-page .ct-btn:active{transform:none}
+
+/* "VIEW PROJECT" יוצא מהשורה של השם (מופיע מתחת לקו במעבר עכבר), כך שהשם מקבל את כל הרוחב */
+.ct-proj__name{flex:1 1 auto;min-width:0}
+.ct-proj__go{position:absolute;left:0;top:calc(100% + 12px);white-space:nowrap;margin:0}
+.ct-pgrid .ct-proj__cap{flex-wrap:wrap;row-gap:4px}
+.ct-pgrid .ct-proj__name{flex:1 1 0;min-width:0}
+.ct-proj__cat{display:block;width:100%;color:var(--gray);font-size:max(13px,calc(16 * var(--u)))}
+@media (max-width:1099.98px){
+  .ct-pgrid{grid-template-columns:1fr;row-gap:44px}
+  .ct-pgrid .ct-proj:nth-child(even){margin-top:0}
+  .ct-pgrid .ct-proj__img,.ct-pgrid .ct-proj:nth-child(4n+2) .ct-proj__img,.ct-pgrid .ct-proj:nth-child(4n+3) .ct-proj__img{aspect-ratio:4/3}
+}
+.ct-pgrid .ct-proj[hidden]{display:none}
+.ct-filter{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:calc(64 * var(--u))}
+.ct-filter button{font-family:inherit;font-size:max(15px,calc(18 * var(--u)));background:none;border:1px solid var(--line);padding:10px 22px;cursor:pointer;color:var(--dark)}
+.ct-filter button[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:#fff}
+@media (max-width:1099.98px){.ct-filter{margin-bottom:28px}}
+
+/* ---------- עמוד פרויקט ---------- */
+.ct-sum{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:calc(90 * var(--u));align-items:start}
+.ct-sum__text{border-top:1px solid var(--line);padding-top:calc(40 * var(--u))}
+.ct-sum__text p{margin-bottom:.15em}
+.ct-sum__text p:first-child{color:var(--green);font-weight:700}
+.ct-sum__cover{aspect-ratio:16/10;overflow:hidden}
+.ct-sum__cover img{width:100%;height:100%;object-fit:cover;display:block}
+.ct-story{display:flex;flex-direction:column;gap:calc(120 * var(--u));margin-top:calc(140 * var(--u))}
+.ct-row{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr);gap:calc(80 * var(--u));align-items:center}
+.ct-row:nth-child(even){direction:ltr}
+.ct-row:nth-child(even) > *{direction:rtl}
+.ct-row__img{overflow:hidden;background:#f2f0ec}
+.ct-row__img img{width:100%;height:auto;display:block}
+.ct-row__text{border-right:1px solid var(--gold);padding-right:calc(36 * var(--u))}
+.ct-row--solo{grid-template-columns:1fr}
+.ct-row--text{grid-template-columns:minmax(0,1fr);max-width:calc(820 * var(--u))}
+.ct-row__text h3,.ct-article h2,.ct-article h3{font-weight:700;color:var(--dark);line-height:1.2;margin:1.2em 0 .45em}
+.ct-row__text h3:first-child{margin-top:0}
+.ct-quote-box{position:relative;margin-top:calc(140 * var(--u));background:#272727;color:#fffbfb;padding:calc(90 * var(--u)) calc(110 * var(--u))}
+.ct-quote-box .ct-tm-card__mark{display:block;color:var(--gold);font-size:calc(170 * var(--u));line-height:1;height:calc(80 * var(--u))}
+.ct-quote-box__text{font-size:max(17px,calc(30 * var(--u)));line-height:1.55;max-width:calc(1150 * var(--u))}
+.ct-quote-box--long .ct-quote-box__text{font-size:max(22px,calc(24 * var(--u)));line-height:1.3;columns:2;column-gap:calc(80 * var(--u));max-width:none}
+@media (max-width:1099.98px){.ct-quote-box--long .ct-quote-box__text{columns:1}}
+.ct-quote-box__by{margin-top:calc(30 * var(--u));color:var(--gold);letter-spacing:.2em;font-size:max(13px,calc(15 * var(--u)))}
+.ct-pnav{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:calc(140 * var(--u))}
+.ct-pnav a{display:flex;flex-direction:column;gap:8px;padding:calc(44 * var(--u)) 0;text-decoration:none;color:var(--dark)}
+.ct-pnav a + a{border-right:1px solid var(--line);padding-right:calc(44 * var(--u))}
+.ct-pnav small{color:var(--green);letter-spacing:.25em;font-size:max(12px,calc(14 * var(--u)))}
+.ct-pnav strong{font-size:max(17px,calc(30 * var(--u)))}
+@media (max-width:1099.98px){
+  .ct-sum{grid-template-columns:1fr;gap:28px}
+  .ct-sum__cover{order:-1}
+  .ct-sum__text{padding-top:22px}
+  .ct-story{gap:48px;margin-top:56px}
+  .ct-row,.ct-row:nth-child(even){grid-template-columns:1fr;gap:18px;direction:rtl}
+  .ct-row__text{padding-right:18px}
+  .ct-row--text{max-width:none}
+  .ct-quote-box{margin-top:56px;padding:40px 26px}
+  .ct-quote-box .ct-tm-card__mark{font-size:110px;height:52px}
+  .ct-pnav{grid-template-columns:1fr;margin-top:56px}
+  .ct-pnav a{padding:22px 0}
+  .ct-pnav a + a{border-right:0;border-top:1px solid var(--line);padding-right:0}
+}
+
+/* ---------- מאמר ---------- */
+.ct-article{max-width:calc(820 * var(--u));margin-inline:auto 0}
+.ct-page .ct-article p,.ct-page .ct-article li{margin-bottom:.8em;line-height:1.4}
+.ct-article ul,.ct-article ol{padding-right:1.3em;margin-bottom:1em}
+.ct-article strong{color:var(--dark)}
+.ct-article h2{font-size:max(22px,calc(40 * var(--u)))}
+.ct-article h3{font-size:max(19px,calc(30 * var(--u)))}
+.ct-article h4{font-size:max(17px,calc(24 * var(--u)));margin:1em 0 .4em;color:var(--green)}
+.ct-article blockquote{border-right:2px solid var(--gold);padding-right:1em;color:var(--dark);margin:1.2em 0}
+.ct-article figure{margin:calc(50 * var(--u)) 0}
+.ct-article figure img{width:100%;height:auto;display:block}
+.ct-post-cover{aspect-ratio:21/9;overflow:hidden;margin-bottom:calc(90 * var(--u))}
+.ct-post-cover img{width:100%;height:100%;object-fit:cover;display:block}
+.ct-layout{display:grid;grid-template-columns:minmax(0,1fr) calc(440 * var(--u));gap:calc(110 * var(--u));align-items:start}
+.ct-aside{position:sticky;top:120px;border-top:1px solid var(--line);padding-top:calc(34 * var(--u))}
+.ct-aside__h{color:var(--green);letter-spacing:.3em;font-size:max(12px,calc(14 * var(--u)));margin-bottom:calc(20 * var(--u))}
+.ct-aside__t{font-weight:900;color:var(--dark);font-size:max(22px,calc(38 * var(--u)));line-height:1.15;margin-bottom:calc(20 * var(--u))}
+.ct-aside .ct-btn{width:100%;margin-top:calc(30 * var(--u))}
+@media (max-width:1099.98px){
+  .ct-article{max-width:none}
+  .ct-article figure{margin:28px 0}
+  .ct-post-cover{aspect-ratio:16/10;margin-bottom:32px}
+  .ct-layout{grid-template-columns:1fr;gap:48px}
+  .ct-aside{position:static;padding-top:24px}
+}
+
+/* ---------- רשימת מאמרים — תמונה לכל שורה ---------- */
+.ct-blog__list .ct-post__thumbwrap{overflow:hidden}
+.ct-blog__list .ct-post__thumb{width:100%;height:100%;object-fit:cover}
+.ct-post__date{display:block;color:var(--gray);font-size:max(13px,calc(15 * var(--u)));margin-top:6px}
+
+/* ---------- אודות ---------- */
+.ct-about{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:calc(110 * var(--u));align-items:center}
+.ct-about__img{aspect-ratio:4/5;overflow:hidden;background:#ebe7e1}
+.ct-about__img img{width:100%;height:100%;object-fit:cover;display:block}
+.ct-about__text p{margin-bottom:.8em}
+.ct-about__sign{margin-top:calc(30 * var(--u));font-weight:900;color:var(--green);font-size:max(22px,calc(40 * var(--u)))}
+.ct-wall{columns:3;column-gap:calc(40 * var(--u))}
+.ct-wall__item{break-inside:avoid;margin-bottom:calc(40 * var(--u));border-top:1px solid var(--line);padding-top:calc(28 * var(--u))}
+.ct-wall__item .ct-tm-card__mark{display:block;color:var(--gold);font-size:max(60px,calc(110 * var(--u)));line-height:1;height:max(30px,calc(52 * var(--u)))}
+.ct-wall__who{margin-top:14px;color:var(--green);font-weight:700}
+.ct-wall__who a{color:inherit}
+@media (max-width:1099.98px){
+  .ct-about{grid-template-columns:1fr;gap:32px}
+  .ct-about__img{aspect-ratio:4/3}
+  .ct-wall{columns:1}
+  .ct-wall__item{margin-bottom:28px;padding-top:22px}
+}
+@media (min-width:700px) and (max-width:1099.98px){.ct-wall{columns:2;column-gap:28px}}
+
+/* ---------- לקוחות מספרים ---------- */
+.ct-stories{columns:2;column-gap:calc(90 * var(--u))}
+.ct-story{break-inside:avoid;border-top:1px solid var(--line);padding:calc(40 * var(--u)) 0 calc(56 * var(--u));margin-bottom:calc(30 * var(--u))}
+.ct-story .ct-tm-card__mark{display:block;color:var(--gold);line-height:1;height:.5em;margin-bottom:.12em}
+.ct-story__text p{margin-bottom:.9em}
+.ct-story__text p:last-child{margin-bottom:0}
+.ct-story__by{display:flex;flex-direction:column;gap:6px;margin-top:calc(30 * var(--u));padding-top:16px;border-top:1px solid var(--gold);width:fit-content;min-width:120px}
+.ct-story__by strong{color:var(--green)}
+.ct-story__proj{color:var(--dark)}
+@media (max-width:1099.98px){
+  .ct-stories{columns:1}
+  .ct-story{padding:26px 0 36px;margin-bottom:8px}
+  .ct-story__by{margin-top:20px}
+}
+
+/* ---------- הדמיות ---------- */
+.ct-gal{columns:3;column-gap:calc(30 * var(--u))}
+.ct-gal figure{break-inside:avoid;margin-bottom:calc(30 * var(--u));position:relative;overflow:hidden;background:#ebe7e1}
+.ct-gal img{width:100%;height:auto;display:block;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.ct-gal figure:hover img{transform:scale(1.03)}
+.ct-gal figcaption{position:absolute;right:0;left:0;bottom:0;padding:28px 16px 12px;color:#fff;font-size:14px;background:linear-gradient(transparent,rgba(0,0,0,.55));opacity:0;transition:opacity .4s}
+.ct-gal figure:hover figcaption{opacity:1}
+@media (max-width:1099.98px){
+  .ct-gal{columns:2;column-gap:12px}
+  .ct-gal figure{margin-bottom:12px}
+  .ct-gal figcaption{opacity:1;font-size:12px;padding:20px 10px 8px}
+}
+@media (max-width:560px){.ct-gal{columns:1}}
+.ct-cases{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:calc(80 * var(--u))}
+.ct-case{border-top:1px solid var(--line);padding-top:calc(40 * var(--u))}
+.ct-case__no{color:var(--green);letter-spacing:.3em;font-size:max(13px,calc(15 * var(--u)))}
+.ct-case__t{font-weight:900;color:var(--dark);font-size:max(22px,calc(42 * var(--u)));line-height:1.15;margin:calc(14 * var(--u)) 0 calc(24 * var(--u))}
+.ct-case__q{background:#272727;color:#fffbfb;padding:calc(36 * var(--u)) calc(40 * var(--u));margin:calc(24 * var(--u)) 0}
+.ct-case__q b{display:block;color:var(--gold);font-size:max(12px,calc(14 * var(--u)));letter-spacing:.3em;margin-bottom:8px}
+.ct-case__tip{border-right:2px solid var(--gold);padding-right:16px;margin:calc(24 * var(--u)) 0}
+.ct-case__tip b{color:var(--gold)}
+@media (max-width:1099.98px){
+  .ct-cases{grid-template-columns:1fr;gap:48px}
+  .ct-case__q{padding:24px 22px;margin:18px 0}
+}
+.ct-faq details{border-top:1px solid var(--line)}
+.ct-faq details:last-child{border-bottom:1px solid var(--line)}
+.ct-faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:calc(34 * var(--u)) 0;font-weight:700;color:var(--dark);font-size:max(18px,calc(30 * var(--u)))}
+.ct-faq summary::-webkit-details-marker{display:none}
+.ct-faq summary::after{content:"+";color:var(--gold);font-size:1.4em;font-weight:400;transition:transform .3s}
+.ct-faq details[open] summary::after{transform:rotate(45deg)}
+.ct-faq details > div{padding-bottom:calc(34 * var(--u));max-width:calc(1000 * var(--u))}
+@media (max-width:1099.98px){
+  .ct-faq summary{padding:20px 0}
+  .ct-faq details > div{padding-bottom:20px;max-width:none}
+}
+
+/* ---------- יצירת קשר ---------- */
+.ct-contact-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid var(--line);margin-bottom:calc(110 * var(--u))}
+.ct-contact-list a{display:flex;flex-direction:column;gap:10px;padding:calc(44 * var(--u)) calc(30 * var(--u)) calc(44 * var(--u)) 0;text-decoration:none;color:var(--dark);border-left:1px solid var(--line)}
+.ct-contact-list a:last-child{border-left:0}
+.ct-contact-list small{color:var(--green);letter-spacing:.3em;font-size:max(12px,calc(14 * var(--u)))}
+.ct-contact-list strong{font-size:max(20px,calc(36 * var(--u)));font-weight:900;direction:ltr;text-align:right}
+@media (max-width:1099.98px){
+  .ct-contact-list{grid-template-columns:1fr;margin-bottom:48px}
+  .ct-contact-list a{border-left:0;border-bottom:1px solid var(--line);padding:20px 0}
+}
+.ct-home-link{color:var(--green)}
+
+/* =========================================================
+   סולם גדלי הפונט של האתר — המקור היחיד לגדלים
+   6 דרגות + דרגה 7 לספרות 01–05 ב"איך זה עובד" (נשארו כמו שהיו)
+   מחשב: גדל בהדרגה עם רוחב המסך (מכויל ל-1440 / 1920). נייד: ערך קבוע.
+   ========================================================= */
+:root{
+  --fs-unit:calc(min(100vw, 1920px) / 1920);
+  --fs-1:calc(150 * var(--fs-unit));                 /* ענק: 111 ב-1440 */
+  --fs-2:max(36px, calc(64.7 * var(--fs-unit)));      /* כותרת אזור: 48 ב-1440 */
+  --fs-3:max(26px, calc(40.4 * var(--fs-unit)));      /* כותרת משנה: 30 ב-1440 */
+  --fs-4:20px;                                         /* טקסט: 20 בכל המסכים (בקשת הלקוחה) */
+  --fs-5:18px;                                        /* קטן */
+  --fs-6:14px;                                        /* זעיר */
+}
+@media (max-width:1099.98px){
+  :root{--fs-1:clamp(48px, 15vw, 110px);--fs-2:32px;--fs-3:24px;--fs-4:20px}
+}
+
+/* ---- 1 · ענק ---- */
+html body .ct-page .ct-big,html body .ct-page .ct-tm__big,html body .ct-page .ct-steps__big,html body .ct-page .ct-nums__big,
+html body .ct-page .ct-xp__big,html body .ct-page .ct-ph__big,html body .ct-page .ct-stat__num,
+html body .ct-page .ct-tm-card__mark,html body .ct-page .ct-quote-box .ct-tm-card__mark,html body .ct-page .ct-wall__item .ct-tm-card__mark,
+html body .ct-page .ct-ph__he{font-size:var(--fs-1)}
+/* כותרות העמודים הפנימיים (שם פרויקט / מאמר) בדרגה 1 — שורות צפופות */
+html body .ct-page .ct-ph__he{line-height:.95;max-width:none}
+
+/* ---- 2 · כותרת אזור ---- */
+html body .ct-page .ct-cta2__title,html body .ct-page .ct-cta__title,html body .ct-page .ct-man__text,
+html body .ct-page .ct-mq__item{font-size:var(--fs-2)}
+
+/* ---- 3 · כותרת משנה ---- */
+html body .ct-page .ct-proj__name,html body .ct-page .ct-post__title,html body .ct-page .ct-step__title,
+html body .ct-page .ct-xp__quote,html body .ct-page .ct-pnav strong,
+html body .ct-page .ct-aside__t,html body .ct-page .ct-contact-list strong,html body .ct-page .ct-about__sign,
+html body .ct-page .ct-faq summary,html body .ct-page .ct-case__t,html body .ct-page .ct-article h2,
+html body .ct-page .ct-quote-box__text,html body .ct-page .ct-form__done-title{font-size:var(--fs-3)}
+
+/* ---- 4 · טקסט ---- */
+html body .ct-page .ct-body,html body .ct-page .ct-body p,html body .ct-page .ct-foot__about,html body .ct-page .ct-foot__col a,
+html body .ct-page .ct-btn,html body .ct-page .ct-tm__kicker,html body .ct-page .ct-filter button,
+html body .ct-page .ct-cta__eyebrow,html body .ct-page .ct-cta2__eyebrow,html body .ct-page .ct-man__eyebrow,html body .ct-page .ct-aside__h,
+html body .ct-page .ct-step__label,html body .ct-page .ct-proj__go,html body .ct-page .ct-xp__label,html body .ct-page .ct-xp__who,html body .ct-page .ct-xp__name,
+html body .ct-page .ct-welcome,html body .ct-page .ct-credit,html body .ct-page .ct-stat__label,
+html body .ct-page .ct-article h3,html body .ct-page .ct-article h4,html body .ct-page .ct-quote-box--long .ct-quote-box__text,
+html body .ct-page .ct-loader__word,
+html body .ct-head .ct-head__nav a{font-size:var(--fs-4)}
+
+/* ---- 4 · טקסט (המשך): קטגוריה ותאריך, שורת הזכויות, שדות הטופס, "לתיאום פגישה" בהדר ---- */
+html body .ct-page .ct-post__cat,html body .ct-page .ct-post__date,html body .ct-page .ct-ph__meta,html body .ct-page .ct-proj__cat,
+html body .ct-page .ct-foot__bar,html body .ct-page .ct-foot__bar p,html body .ct-page .ct-foot__links a,
+html body .ct-page .ct-field input,html body .ct-page .ct-field textarea,html body .ct-page .ct-field label,
+html body .ct-page .ct-choice legend,html body .ct-page .ct-choice span,
+html body .ct-head .ct-head__cta{font-size:var(--fs-4)}
+
+/* ---- 5 · קטן ---- */
+html body .ct-page .ct-crumbs,html body .ct-page .ct-form__note,
+html body .ct-page .ct-quote-box__by,html body .ct-page .ct-pnav small,
+html body .ct-page .ct-contact-list small,html body .ct-page .ct-gal figcaption,html body .ct-page .ct-case__no,
+html body .ct-page .ct-case__q b{font-size:var(--fs-5)}
+
+/* ---- 5 · קטן (המשך): המספור הקטן וכותרות העמודות בפוטר ---- */
+html body .ct-page .ct-proj__no,html body .ct-page .ct-post__no,html body .ct-page .ct-tm-card__num,html body .ct-page .ct-xp__no,
+html body .ct-page .ct-tm__count,html body .ct-page .ct-foot__h{font-size:var(--fs-5)}
+
+/* ---- 6 · זעיר: הודעות שגיאה בטופס ---- */
+html body .ct-page .ct-field__err{font-size:var(--fs-6)}
+
+/* ---- פתיחה: אותן דרגות, מחושבות ביחידה של הפתיחה (שמתחשבת גם בגובה המסך) ---- */
+/* "בבית עוצר נשימה": 20% גדול יותר מדרגה 1 (בקשת הלקוחה), והמרווחים בין השורות גדלו באותו יחס */
+@media (min-width:1100px){
+  html body .ct-page .ct-hero .ct-title{font-size:calc(180 * var(--u));line-height:calc(120 * var(--u))}
+  html body .ct-page .ct-hero .ct-title--1{top:calc(365 * var(--u))}
+  html body .ct-page .ct-hero .ct-title--2{top:calc(478 * var(--u))}
+  html body .ct-page .ct-hero .ct-title--3{top:calc(594 * var(--u))}
+  html body .ct-page .ct-hero .ct-kicker{font-size:max(36px, calc(64.7 * var(--u)))}
+}
+/* הכותרת הראשית בפונט אקסיומה */
+html body .ct-page .ct-hero .ct-title{font-family:"Axioma","Plinko FS",sans-serif;font-synthesis:none}
+@media (max-width:1099.98px){
+  html body .ct-page .ct-hero .ct-title{font-size:calc(var(--fs-1) * 1.2)}
+  html body .ct-page .ct-hero .ct-kicker{font-size:var(--fs-2)}
+}
+/* תפריט נייד נפתח: נשאר גדול לנוחות האצבע (כותרת משנה) */
+@media (max-width:1099.98px){html body .ct-head .ct-head__nav a{font-size:var(--fs-3)}}
+/* 7 · הספרות 01–05 ב"איך זה עובד" — ללא שינוי (מוגדרות ב-site.css) */
+
+/* בתוך העמוד: הדרגות מחושבות ביחידת העמוד (בלי פס הגלילה) — כמו בפתיחה, כדי שהערכים יהיו זהים בדיוק */
+@media (min-width:1100px){
+  .ct-page{
+    --fs-1:calc(150 * var(--u));
+    --fs-2:max(36px, calc(64.7 * var(--u)));
+    --fs-3:max(26px, calc(40.4 * var(--u)));
+    --fs-4:20px;
+  }
+}
+
+
+
+
+/* =========================================================
+   מסך הפתיחה כ"כרטיס": 2.5% מרוחב המסך שוליים לבנים בכל צד ולמטה (גם כשהמסך רחב מ-1920 או כשהדפדפן בזום מוקטן — הכרטיס יוצא מגבול רוחב העמוד), ההדר על רקע לבן מעליו
+   ========================================================= */
+:root{--head-h:92px}
+@media (max-width:1099.98px){:root{--head-h:70px}}
+.ct-head{background:#fff}
+html body .ct-page .ct-hero{margin:var(--head-h) calc(50% - (100vw - var(--sbw, 0px)) / 2 + 2.5vw) 2.5vw;width:auto}
+@media (min-width:1100px){
+  html body .ct-page .ct-hero{
+    /* היחידה הפנימית מחושבת לפי גודל הכרטיס (95% מרוחב המסך, הגובה שנשאר מתחת להדר) כדי שהפרופורציות יישמרו */
+    --u:min(calc(95vw / 1920), calc((100svh - var(--head-h) - 2.5vw) / 1119));
+    height:calc(100svh - var(--head-h) - 2.5vw);
+  }
+}
+@media (max-width:1099.98px){
+  html body .ct-page .ct-hero{height:auto;min-height:calc(100svh - var(--head-h) - 2.5vw);padding-top:clamp(28px,6vh,56px)}
+}
+
+/* ---- הדר: גובה max(48px, 3vw) + 10px ריפוד — כך הלוגו בגודל המקורי ---- */
+/* + 5px ריפוד למעלה ולמטה (בקשת הלקוחה); הלוגו נשאר באותו גודל */
+:root{--head-h:calc(max(48px, 3vw) + 10px)}
+@media (max-width:1099.98px){:root{--head-h:66px}}
+html body .ct-head,html body .ct-head.is-solid,html body .ct-head--solid{height:var(--head-h);padding-top:5px;padding-bottom:5px;box-sizing:border-box}
+html body .ct-head .ct-head__logo img,html body .ct-head.is-solid .ct-head__logo img,html body .ct-head--solid .ct-head__logo img{height:calc(var(--head-h) - 18px);width:auto}
+html body .ct-head .ct-head__nav a{padding-top:0;padding-bottom:0}
+html body .ct-head .ct-head__cta{padding:3px 16px;line-height:1.2}
+@media (max-width:1099.98px){
+  html body .ct-head .ct-head__toggle{width:42px;height:42px}
+  html body .ct-head .ct-head__nav{top:var(--head-h)}
+  html body .ct-head .ct-head__nav a{padding:16px 0}
+}
+
+/* ---------- אודות: אזור הפתיחה (לפי העיצוב שנשלח) ---------- */
+.ct-ab{padding:calc(220 * var(--u)) 0 calc(170 * var(--u))}
+.ct-ab__grid{direction:ltr;width:calc(1463 * var(--u));margin:0 auto;display:grid;
+  grid-template-columns:calc(499 * var(--u)) calc(27 * var(--u)) calc(467 * var(--u)) calc(52 * var(--u)) calc(418 * var(--u));
+  grid-template-areas:"t t t . ." "a . b . c" ". . v v v" ". . x x x"}
+html body .ct-page .ct-ab .ct-ph__big{color:#262a27;line-height:calc(100 * var(--u))}
+html body .ct-page .ct-ab .ct-ph__big span{color:var(--green)}
+.ct-ab__title{grid-area:t;margin:0 0 calc(73 * var(--u)) calc(108 * var(--u))}
+.ct-ab__colA{grid-area:a;display:flex;flex-direction:column;align-items:flex-end}
+.ct-ab__colB{grid-area:b;padding-top:calc(147 * var(--u))}
+.ct-ab__colC{grid-area:c;padding-top:calc(37 * var(--u))}
+.ct-ab__vision{grid-area:v;margin:0 0 0 calc(32 * var(--u))}
+.ct-ab__img{margin:0;overflow:hidden;background:#ebe7e1}
+.ct-ab__img img{display:block;width:100%;height:100%;object-fit:cover}
+.ct-ab__img--kitchen{width:100%;height:calc(548 * var(--u))}
+.ct-ab__img--kitchen img{object-position:50% 40%}
+.ct-ab__img--green{width:calc(438 * var(--u));height:calc(559 * var(--u));margin-top:calc(40 * var(--u))}
+.ct-ab__img--green img{object-position:38% 50%}
+.ct-ab__img--dining{width:100%;height:calc(559 * var(--u))}
+.ct-ab__img--dining img{object-position:42% 50%}
+.ct-ab__text{direction:rtl;text-align:right;color:var(--text)}
+html body .ct-page .ct-ab__text p{margin:0;line-height:1.3}
+.ct-ab__text strong{font-weight:700}
+.ct-ab__text--2{width:calc(401 * var(--u));margin:calc(34 * var(--u)) 0 0 auto}
+.ct-ab__text--3{grid-area:x;justify-self:end;width:calc(485 * var(--u));margin-top:calc(56 * var(--u))}
+@media (max-width:1099.98px){
+  .ct-ab{padding:110px 20px 48px}
+  .ct-ab__grid{width:auto;display:flex;flex-direction:column}
+  .ct-ab__colA,.ct-ab__colB,.ct-ab__colC{display:contents}
+  html body .ct-page .ct-ab .ct-ph__big{line-height:.9}
+  .ct-ab__title{order:1;margin:0 0 28px}
+  .ct-ab__text--1{order:2;margin-bottom:28px}
+  .ct-ab__img--kitchen{order:3;height:auto;aspect-ratio:4/5}
+  .ct-ab__img--dining{order:4;height:auto;aspect-ratio:4/5;margin-top:16px}
+  .ct-ab__text--2{order:5;width:auto;margin:24px 0 0}
+  .ct-ab__img--green{order:6;width:100%;height:auto;aspect-ratio:4/5;margin-top:28px}
+  .ct-ab__vision{order:7;margin:40px 0 0}
+  .ct-ab__text--3{order:8;width:auto;margin-top:20px}
+}
