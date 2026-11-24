@@ -523,6 +523,8 @@ html body .ct-page .ct-hero{margin:var(--head-h) calc(50% - (100vw - var(--sbw, 
 /* ---- הדר: גובה max(48px, 3vw) + 10px ריפוד — כך הלוגו בגודל המקורי ---- */
 /* + 5px ריפוד למעלה ולמטה (בקשת הלקוחה); הלוגו נשאר באותו גודל */
 :root{--head-h:calc(max(48px, 3vw) + 10px)}
+/* גובה ההדר מעוגל לפיקסל זוגי — כך קווי ההמבורגר יושבים על פיקסלים שלמים ונראים בעובי אחיד */
+@supports (height:round(1.5px, 2px)){:root{--head-h:round(calc(max(48px, 3vw) + 10px), 2px)}}
 @media (max-width:1099.98px){:root{--head-h:66px}}
 html body .ct-head,html body .ct-head.is-solid,html body .ct-head--solid{height:var(--head-h);padding-top:5px;padding-bottom:5px;box-sizing:border-box}
 html body .ct-head .ct-head__logo img,html body .ct-head.is-solid .ct-head__logo img,html body .ct-head--solid .ct-head__logo img{height:calc(var(--head-h) - 18px);width:auto}
@@ -601,37 +603,30 @@ html body .ct-page .ct-btn--solid .ct-btn__arrow{color:#fff}
 
 /* ===== הדר — גרסה 2: תפריט מימין, לוגו משמאל, בלי "לתיאום פגישה".
    בראש העמוד התפריט פתוח; כשמתחילים לגלול הוא נעלם ובמקומו מופיע כפתור המבורגר (במחשב). ===== */
-:root{--pink:#c4717f}
 html body .ct-head{gap:24px}
 html body .ct-head .ct-head__toggle{order:0;margin:0;border:0;background:none;padding:0}
 html body .ct-head .ct-head__nav{order:1;margin:0}
 html body .ct-head .ct-head__logo{order:2;margin-inline-start:auto}
 html body .ct-head .ct-head__nav a{font-weight:400;transition:color .3s ease}
 html body .ct-head .ct-head__nav a::after{display:none}
-html body .ct-head .ct-head__nav a[aria-current="page"],html body .ct-head .ct-head__nav a:hover{color:var(--pink)}
-html body .ct-head .ct-head__toggle span{width:26px;height:1.5px;margin:6px auto}
-html body .ct-head.is-open .ct-head__toggle span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+html body .ct-head .ct-head__nav a[aria-current="page"],html body .ct-head .ct-head__nav a:hover{color:#79938d}
+html body .ct-head .ct-head__toggle span{width:26px;height:2px;margin:6px auto;border-radius:0;transform:translateZ(0)}
+html body .ct-head.is-open .ct-head__toggle span:nth-child(1){transform:translateY(8px) rotate(45deg)}
 html body .ct-head.is-open .ct-head__toggle span:nth-child(2){opacity:0}
-html body .ct-head.is-open .ct-head__toggle span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+html body .ct-head.is-open .ct-head__toggle span:nth-child(3){transform:translateY(-8px) rotate(-45deg)}
 @keyframes ct-fade-in{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 @media (min-width:1100px){
   html body .ct-head .ct-head__toggle{display:none;width:42px;height:42px}
   html body .ct-head .ct-head__nav{transition:opacity .4s ease,transform .4s ease,visibility .4s}
   html body .ct-head.is-compact .ct-head__nav{opacity:0;visibility:hidden;transform:translateY(-8px);pointer-events:none}
   html body .ct-head.is-compact .ct-head__toggle{display:block;animation:ct-fade-in .4s ease both}
-  /* פתיחת התפריט מכפתור ההמבורגר: לוח לבן מתחת להדר */
-  html body .ct-head.is-compact.is-open .ct-head__nav{position:fixed;top:var(--head-h);right:0;left:0;
-    flex-direction:column;align-items:flex-start;gap:0;padding:20px 3vw 36px;background:#fff;
-    box-shadow:0 18px 30px -18px rgba(0,0,0,.18);opacity:1;visibility:visible;transform:none;pointer-events:auto}
-  html body .ct-head.is-compact.is-open .ct-head__nav a{font-size:var(--fs-3);padding:10px 0;animation:ct-fade-in .4s ease both}
-  html body .ct-head.is-compact.is-open .ct-head__nav a:nth-child(2){animation-delay:.04s}
-  html body .ct-head.is-compact.is-open .ct-head__nav a:nth-child(3){animation-delay:.08s}
-  html body .ct-head.is-compact.is-open .ct-head__nav a:nth-child(4){animation-delay:.12s}
-  html body .ct-head.is-compact.is-open .ct-head__nav a:nth-child(5){animation-delay:.16s}
-  html body .ct-head.is-compact.is-open .ct-head__nav a:nth-child(6){animation-delay:.2s}
+  /* פתיחת התפריט מכפתור ההמבורגר: חוזר לשורה אופקית במקומו, כמו בראש העמוד */
+  html body .ct-head.is-compact.is-open .ct-head__nav{opacity:1;visibility:visible;transform:none;pointer-events:auto}
 }
 /* ההדר לבן מלא — בלי backdrop-filter, שאחרת "כולא" את תפריט הנייד הפתוח בגובה ההדר */
 html body .ct-head,html body .ct-head.is-solid,html body .ct-head--solid{-webkit-backdrop-filter:none;backdrop-filter:none}
 
 /* TALER IN NUMBERS: ספרות צמודות מעט יותר (בקשת הלקוחה) */
 html body .ct-page .ct-stat__val{letter-spacing:-.05em;font-variant-numeric:proportional-nums}
+/* לוגו מעט גדול יותר בתוך אותו גובה הדר (בלי לשנות ריפוד או שוליים) */
+html body .ct-head .ct-head__logo img,html body .ct-head.is-solid .ct-head__logo img,html body .ct-head--solid .ct-head__logo img{height:calc(var(--head-h) - 12px)}
