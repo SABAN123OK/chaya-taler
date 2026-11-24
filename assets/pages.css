@@ -61,17 +61,8 @@ html body .ct-page .ct-hero .ct-slides--blur{filter:blur(16px) saturate(.5)}
       calc(50% + 64 * var(--u)) calc(50% - 463.5 * var(--u)));
   }
   html body .ct-page .ct-hero .ct-grain{z-index:1}
-  /* קו לבן דקיק בדיוק על קו המתאר של החור */
-  html body .ct-page .ct-hero .ct-hero__frame > .ct-frame-line{display:block;inset:0;width:100%;height:100%;z-index:1}
-  html body .ct-page .ct-hero .ct-hero__frame > .ct-frame-line rect{stroke:rgba(255,255,255,.9);stroke-width:1;stroke-dasharray:none}
   html body .ct-page .ct-hero .ct-hero__stage{z-index:2}
   .ct-slides--frame{display:none}
-  /* צל פנימי בחור: שכבת הזכוכית "מטילה צל" על התמונה החדה שמתחתיה — תחושת עומק */
-  .ct-hero__frame{box-shadow:
-    inset 0 calc(12 * var(--u)) calc(40 * var(--u)) calc(-6 * var(--u)) rgba(30,28,25,.16),
-    inset calc(8 * var(--u)) 0 calc(36 * var(--u)) calc(-8 * var(--u)) rgba(30,28,25,.08),
-    inset calc(-8 * var(--u)) 0 calc(36 * var(--u)) calc(-8 * var(--u)) rgba(30,28,25,.08),
-    inset 0 0 calc(70 * var(--u)) rgba(30,28,25,.05)}
 }
 /* טקסט הפתיחה סטטי: בלי תזוזה בעקבות העכבר או בגלילה */
 .ct-hero__text{transform:none!important;opacity:1!important}
@@ -630,3 +621,7 @@ html body .ct-head,html body .ct-head.is-solid,html body .ct-head--solid{-webkit
 html body .ct-page .ct-stat__val{letter-spacing:-.05em;font-variant-numeric:proportional-nums}
 /* לוגו מעט גדול יותר בתוך אותו גובה הדר (בלי לשנות ריפוד או שוליים) */
 html body .ct-head .ct-head__logo img,html body .ct-head.is-solid .ct-head__logo img,html body .ct-head--solid .ct-head__logo img{height:calc(var(--head-h) - 12px)}
+
+/* החור בזכוכית: בלי קו לבן ובלי צל פנימי (בקשת הלקוחה) — בכל המסכים */
+html body .ct-page .ct-hero .ct-hero__frame > .ct-frame-line{display:none}
+html body .ct-page .ct-hero .ct-hero__frame{box-shadow:none}
