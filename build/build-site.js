@@ -233,7 +233,7 @@ function buildHome() {
   // מתוך התיקייה "תמונות למסך הפתיחה": ספה_1 (כמו בפיגמה), קיר כוח סלון 3, 3, קליניקה סופי, כתביה, מיטה copy
   const HERO = [
     ['hero-1.webp', '72% 55%', '50% 55%'], ['hero-2.jpg', '74% 50%', '50% 50%'], ['hero-3.webp', '55% 55%', '50% 50%'],
-    ['hero-4.jpg', '50% 55%', '50% 50%'], ['hero-5.webp', '62% 50%', '50% 50%'], ['hero-6.jpg', '55% 50%', '50% 50%'],
+    ['hero-5.webp', '62% 50%', '50% 50%'], ['hero-6.jpg', '55% 50%', '50% 50%'],
   ];
   const slides = (layer) => HERO.map(([f, posFrame, posFull], i) => `<img class="ct-slide" src="images/hero/${f}" alt="${layer === 'sharp' && i === 0 ? 'עיצוב פנים של חיה טאלר' : ''}" style="object-position:${layer === 'frame' ? posFrame : posFull}"${i ? ' loading="lazy"' : ''}>`).join('\n      ');
   for (const layer of ['blur', 'sharp', 'frame'])
