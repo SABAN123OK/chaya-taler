@@ -703,3 +703,6 @@ html body .ct-page .ct-cta--cta .ct-cta__btn .ct-btn__arrow{width:34px}
 
 /* כותרות השלבים ("איך זה עובד" / THE METHOD) באקסיומה */
 html body .ct-page .ct-step__title{font-family:"Axioma","Plinko FS",sans-serif;font-synthesis:none}
+
+/* ניסיון: משפט THE TALER STANDARD באקסיומה */
+html body .ct-page .ct-man__text,html body .ct-page .ct-man__text *{font-family:"Axioma","Plinko FS",sans-serif;font-synthesis:none}
