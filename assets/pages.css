@@ -38,7 +38,7 @@
   .ct-card__quote{width:auto;margin:0;padding:calc(125 * var(--u)) max(22px, calc(44 * var(--u))) calc(30 * var(--u))}
   /* כותרות השלבים: גדולות ב-20% מהעיצוב, ולעולם לא קטנות מהטקסט הרץ */
   .ct-step__title{font-size:max(26px, calc(33.6 * var(--u)))}
-  .ct-step__text{position:relative;top:auto;left:auto;margin-left:calc(930 * var(--u));width:calc(700 * var(--u));padding:calc(52 * var(--u)) 0 calc(48 * var(--u))}
+  .ct-step__text{position:relative;top:auto;left:auto;margin-left:auto;margin-right:0;width:min(calc(700 * var(--u)), 520px);padding:calc(52 * var(--u)) 0 calc(48 * var(--u))}
 }
 /* פתיחה במחשב: תמונה אחת על כל הכרטיס, מעליה שכבת זכוכית בהירה ומטושטשת,
    ובתוך המסגרת "חור" שבו אותה תמונה נראית חדה (השכבה החדה נחתכת בדיוק לגבולות המסגרת — clip-path ב-site.css) */
@@ -749,3 +749,6 @@ html body .ct-head .ct-head__nav a::before{font-family:"Plinko FS",sans-serif}
 
 /* THE TALER STANDARD: הפסקה כמעט עד קצה הגריד (1630) */
 @media (min-width:1100px){html body .ct-page .ct-man__text{max-width:calc(1600 * var(--u))}}
+
+/* כותרות השלבים בשורה אחת במחשב (שלב 5 יורד שורה אחרי "ופיקוח" בכוונה) */
+@media (min-width:1100px){html body .ct-page .ct-step__title{white-space:nowrap}}

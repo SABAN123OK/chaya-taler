@@ -218,6 +218,8 @@ function buildHome() {
   const trackOpen = '<div class="ct-tm__track" data-lenis-prevent tabindex="0" aria-label="המלצות — אפשר לגלול לצדדים">';
   b = b.replace(between(b, trackOpen, '<div class="ct-tm__ctrl">'), `${trackOpen}\n        ${track}\n      </div>\n    </div>\n    `);
   b = b.replace('<span class="ct-tm__cur">01</span> / 04', `<span class="ct-tm__cur">01</span> / ${pad(n)}`);
+  // כותרת שלב 5: ירידת שורה אחרי "ופיקוח"
+  b = b.replace('נוכחות בשטח ופיקוח בהתאמה מלאה לתוכניות', 'נוכחות בשטח ופיקוח<br>בהתאמה מלאה לתוכניות');
   // step buttons, all-testimonials, blog
   b = b.replace('href="#" data-magnetic><span class="ct-btn__label">לפרויקטים פרטיים', 'href="projects.html?type=private" data-magnetic><span class="ct-btn__label">לפרויקטים פרטיים');
   b = b.replace('href="#" data-magnetic><span class="ct-btn__label">לפרויקטים עסקיים', 'href="projects.html?type=business" data-magnetic><span class="ct-btn__label">לפרויקטים עסקיים');
