@@ -157,7 +157,7 @@
   var first=page.querySelector('.ct-slides--blur .ct-slide'), loaded=false, t0=Date.now();
   function ready(){
     if(loaded) return; loaded=true;
-    setTimeout(function(){page.classList.add('is-loaded');startTimer()},Math.max(0,1100-(Date.now()-t0)));
+    setTimeout(function(){page.classList.add('is-loaded');startTimer()},Math.max(0,2150-(Date.now()-t0)));
   }
   if(!motion){page.classList.add('is-loaded');startTimer();window.__ctOk=true;return}
   if(!first||first.complete) ready(); else {first.addEventListener('load',ready);first.addEventListener('error',ready)}

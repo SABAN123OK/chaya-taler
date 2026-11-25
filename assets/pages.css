@@ -829,3 +829,21 @@ html body .ct-page .ct-stat__val{letter-spacing:0}
 }
 /* כל כיתוב בשתי שורות קבועות (שבירה ידנית ב-HTML) ובלי גלישה נוספת — הרוחב שווה לטקסט, ולכן הרווחים בין הפריטים שווים בדיוק */
 @media (min-width:1100px){html body .ct-page .ct-stat__label{white-space:nowrap;max-width:none}}
+
+/* ---------- מסך טעינה: הלוגו של טאלר מונפש ----------
+   1. האותיות T-A-L-E-R עולות אחת אחרי השנייה מתוך קו בסיס נסתר
+   2. הכיתוב "Architecture & Design" בזהב נחשף משמאל לימין
+   3. קו דק מתמלא מתחת, ובסוף הלוגו עולה ונעלם והמסך נפתח כלפי מעלה */
+.ct-motion .ct-loader{gap:clamp(22px,3vh,34px)}
+.ct-logoanim{position:relative;width:min(320px,64vw);aspect-ratio:353/154;direction:ltr;transition:transform .8s var(--ease-io),opacity .6s ease}
+.ct-logoanim__l,.ct-logoanim__tag{position:absolute;top:0;display:block;overflow:hidden}
+.ct-logoanim img{display:block;max-width:none;height:auto}
+.ct-logoanim__l img{transform:translateY(78%);opacity:0;animation:ct-logo-rise 1.05s cubic-bezier(.2,.75,.15,1) calc(.2s + var(--i) * .12s) forwards}
+.ct-logoanim__tag{left:0;right:0;bottom:0;clip-path:inset(0 100% 0 0);animation:ct-logo-wipe 1s cubic-bezier(.77,0,.18,1) 1.05s forwards}
+.ct-logoanim__tag img{width:100%}
+@keyframes ct-logo-rise{60%{opacity:1}to{transform:translateY(0);opacity:1}}
+@keyframes ct-logo-wipe{to{clip-path:inset(0 0 0 0)}}
+.ct-motion .ct-loader .ct-loader__line{width:min(320px,64vw)}
+.ct-motion .ct-loader .ct-loader__line::after{animation-duration:1.9s}
+.ct-motion .is-loaded .ct-logoanim{transform:translateY(-28px);opacity:0}
+.ct-motion .is-loaded .ct-loader__line{opacity:0;transition:opacity .4s ease}

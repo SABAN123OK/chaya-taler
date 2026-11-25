@@ -190,6 +190,19 @@ const T_SITE_LONG = [
 // =========================================================
 function buildHome() {
   let b = body;
+  // מסך טעינה: הלוגו של טאלר "נבנה" — כל אות (T A L E R) עולה בתורה מתוך קו בסיס, ואז הכיתוב בזהב נחשף
+  // הלוגו הוא תמונה אחת (images/logo-taler.png, 353x154) שנחתכת לפרוסות לפי עמודות האותיות
+  const LOGO_W = 353, LOGO_H = 154, LETTERS_H = 108;
+  const cuts = [40, 84, 147, 196, 248, 306];
+  const slices = cuts.slice(0, -1).map((x0, i) => {
+    const x1 = cuts[i + 1], w = x1 - x0;
+    return `<span class="ct-logoanim__l" style="--i:${i};left:${(x0 / LOGO_W * 100).toFixed(3)}%;width:${(w / LOGO_W * 100).toFixed(3)}%;height:${(LETTERS_H / LOGO_H * 100).toFixed(3)}%"><img src="images/logo-taler.png" alt="" style="width:${(LOGO_W / w * 100).toFixed(3)}%;margin-left:-${(x0 / w * 100).toFixed(3)}%"></span>`;
+  }).join('');
+  const loader = `<div class="ct-loader" aria-hidden="true">
+    <div class="ct-logoanim">${slices}<span class="ct-logoanim__tag" style="top:${(LETTERS_H / LOGO_H * 100).toFixed(3)}%"><img src="images/logo-taler.png" alt="" style="margin-top:-${(LETTERS_H / LOGO_W * 100).toFixed(3)}%"></span></div>
+    <span class="ct-loader__line"></span>
+  </div>`;
+  b = b.replace(/<div class="ct-loader" aria-hidden="true">[\s\S]*?<\/div>/, loader);
   // projects: 4 newest
   const [p1, p2, p3, p4] = S.projects;
   const projGrid = `<div class="ct-projs__grid">
