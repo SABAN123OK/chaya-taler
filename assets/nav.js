@@ -35,7 +35,13 @@
     // במחשב: בראש העמוד התפריט פתוח; אחרי גלילה הוא מתחלף בכפתור המבורגר
     var compact = y > 80;
     if (!compact && desk.matches && head.classList.contains('is-open')) setOpen(false);
-    head.classList.toggle('is-compact', compact);
+    // מעבר בין תפריט פתוח למצב מקוצר — בלי אנימציה, כדי שהחלונית הצדדית לא "תקפוץ" ותחליק החוצה בגלילה הראשונה
+    if (compact !== head.classList.contains('is-compact')) {
+      head.classList.add('is-switching');
+      head.classList.toggle('is-compact', compact);
+      void head.offsetWidth;
+      clearTimeout(head._swT); head._swT = setTimeout(function () { head.classList.remove('is-switching'); }, 60);
+    }
   };
   addEventListener('scroll', onScroll, { passive: true });
   onScroll();

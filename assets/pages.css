@@ -854,3 +854,6 @@ html body .ct-page .ct-stat__val{letter-spacing:0}
   animation:ct-logo-shine .9s ease-in-out 1.3s forwards}
 @keyframes ct-logo-shine{to{background-position:-20% 0}}
 .ct-motion .is-loaded .ct-logoanim{transform:translateY(-28px);opacity:0}
+
+/* מעבר בין התפריט הפתוח למצב המקוצר בגלילה: בלי אנימציות (אחרת החלונית הצדדית נראית לרגע ומחליקה החוצה) */
+html body .ct-head.is-switching .ct-head__nav,html body .ct-head.is-switching .ct-head__nav a,html body .ct-head.is-switching .ct-head__toggle,html body .ct-head.is-switching::before{transition:none!important;animation:none!important}
