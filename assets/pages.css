@@ -804,9 +804,9 @@ html body .ct-page .ct-cta2__title{line-height:.95}
   html body .ct-page .ct-blog{padding-bottom:calc(clamp(70px,12vw,120px) + 140px + 15px)}
 }
 
-/* ניסיון: THE PERFECT BALANCE ב-Kanit Regular (400), עם מעט יותר רווח בין השורות */
-html body .ct-page .ct-big,html body .ct-page .ct-big *{font-family:"Kanit","Plinko FS",sans-serif;font-weight:400}
-html body .ct-page .ct-big{line-height:.78;font-size:calc(var(--fs-1) * .82);letter-spacing:-.02em}
+/* כל הכותרות הענקיות באנגלית: Kanit Regular (400), קטנות מעט, שורות ואותיות צפופות (נקבע על THE PERFECT BALANCE והוחל על כולן) */
+html body .ct-page .ct-big,html body .ct-page .ct-tm__big,html body .ct-page .ct-steps__big,html body .ct-page .ct-nums__big,html body .ct-page .ct-xp__big,html body .ct-page .ct-ph__big,html body .ct-page .ct-big *,html body .ct-page .ct-tm__big *,html body .ct-page .ct-steps__big *,html body .ct-page .ct-nums__big *,html body .ct-page .ct-xp__big *,html body .ct-page .ct-ph__big *{font-family:"Kanit","Plinko FS",sans-serif;font-weight:400}
+html body .ct-page .ct-big,html body .ct-page .ct-tm__big,html body .ct-page .ct-steps__big,html body .ct-page .ct-nums__big,html body .ct-page .ct-xp__big,html body .ct-page .ct-ph__big,html body .ct-page .ct-ab .ct-ph__big{line-height:.78;font-size:calc(var(--fs-1) * .82);letter-spacing:-.02em}
 
 /* TALER IN NUMBERS: בלי קווים בין המספרים — נשאר רק הקו העליון */
 html body .ct-page .ct-stat__line{display:none}
